@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-dep
+  labels:
+    k8s-app: test-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: test-dep
+  template:
+    metadata:
+      labels:
+        k8s-app: test-dep
+    spec:
+      containers:
+      - name: mypod
+        image: ubuntu
+        resources:
+           limits:
+             memory: 500Mi
+             cpu: 500m
+           requests:
+             memory: 100Mi
+             cpu: 50m
+        command: ["sh", "-c", "sleep infinity"]

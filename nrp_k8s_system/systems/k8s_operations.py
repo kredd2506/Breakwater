@@ -8,8 +8,13 @@ Designed to run inside a Kubernetes pod in the 'gsoc' namespace.
 import os
 import re
 import sys
+import yaml
+from pathlib import Path
+from typing import List, Optional
 from kubernetes import client, config
 from kubernetes.client.exceptions import ApiException
+from kubernetes.stream import stream
+from kubernetes.utils import create_from_yaml
 from openai import OpenAI
 
 # Initialize Kubernetes client
@@ -38,6 +43,106 @@ openai_client = OpenAI(
 
 # Hardcoded namespace
 CURRENT_NAMESPACE = "gsoc"
+
+# YAML Templates for pod and deployment creation
+POD_TEMPLATE_YAML = """apiVersion: v1
+kind: Pod
+metadata:
+  name: {name}
+  namespace: {namespace}
+spec:
+  containers:
+  - name: {container_name}
+    image: {image}
+    resources:
+      limits:
+        memory: {memory_limit}
+        cpu: {cpu_limit}
+      requests:
+        memory: {memory_request}
+        cpu: {cpu_request}
+    command: {command}
+"""
+
+DEPLOYMENT_TEMPLATE_YAML = """apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {name}
+  namespace: {namespace}
+  labels:
+    k8s-app: {name}
+spec:
+  replicas: {replicas}
+  selector:
+    matchLabels:
+      k8s-app: {name}
+  template:
+    metadata:
+      labels:
+        k8s-app: {name}
+    spec:
+      containers:
+      - name: {container_name}
+        image: {image}
+        resources:
+           limits:
+             memory: {memory_limit}
+             cpu: {cpu_limit}
+           requests:
+             memory: {memory_request}
+             cpu: {cpu_request}
+        command: {command}
+"""
+
+# Default templates for quick pod/deployment creation
+DEFAULT_POD_YAML = """apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pod
+  namespace: gsoc
+spec:
+  containers:
+  - name: mypod
+    image: ubuntu
+    resources:
+      limits:
+        memory: 100Mi
+        cpu: 100m
+      requests:
+        memory: 100Mi
+        cpu: 100m
+    command: ["sh", "-c", "echo 'Im a new pod' && sleep infinity"]
+"""
+
+DEFAULT_DEPLOYMENT_YAML = """apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-dep
+  namespace: gsoc
+  labels:
+    k8s-app: test-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: test-dep
+  template:
+    metadata:
+      labels:
+        k8s-app: test-dep
+    spec:
+      containers:
+      - name: mypod
+        image: ubuntu
+        resources:
+           limits:
+             memory: 500Mi
+             cpu: 500m
+           requests:
+             memory: 100Mi
+             cpu: 50m
+        command: ["sh", "-c", "sleep infinity"]
+"""
 
 class Agent:
     def __init__(self, system=""):
@@ -111,6 +216,22 @@ describe_daemonset:
 describe_ingress:
 describe_node:
 Each of the above describes the specified resource.
+create_pod:
+Create a pod programmatically. Takes parameter string like: "name=my-pod image=nginx memory_limit=256Mi"
+create_pod_yaml:
+Create a pod from YAML content. Takes YAML string as parameter.
+create_deployment:
+Create a deployment programmatically. Takes parameter string like: "name=my-deploy image=nginx replicas=2"
+create_deployment_yaml:
+Create a deployment from YAML content. Takes YAML string as parameter.
+delete_pod:
+Delete a pod by name. Takes pod name as parameter.
+delete_deployment:
+Delete a deployment by name. Takes deployment name as parameter.
+pod_logs:
+Get logs from a pod. Takes pod name as parameter, optionally with tail_lines.
+pod_exec:
+Execute command in a pod. Takes format: "pod_name command1 command2"
 check_permissions:
 Check what permissions the current service account has in the current namespace.
 get_service_account:
@@ -143,7 +264,7 @@ Question: Why can't I list pods?
 Thought: The user is having trouble listing pods. I should check the permissions for the current service account.
 Action: check_permissions:
 PAUSE
-(Observation: ❌ Permission denied: User "system:serviceaccount:gsoc:default" cannot list resource "pods" in API group "" in the namespace "gsoc")
+(Observation: [ERROR] Permission denied: User "system:serviceaccount:gsoc:default" cannot list resource "pods" in API group "" in the namespace "gsoc")
 Thought: The service account doesn't have permission to list pods in the gsoc namespace. I should get more information about the service account and suggest a solution.
 Action: get_service_account:
 PAUSE
@@ -162,18 +283,18 @@ def validate_k8s_name(name):
     """Validate that the name follows Kubernetes RFC1123 naming convention."""
     pattern = r'^[a-z0-9]([-a-z0-9]*[a-z0-9])?$'
     if not re.match(pattern, name):
-        raise ValueError(f"❌ Invalid Kubernetes resource name: '{name}'. Must match RFC1123 format.")
+        raise ValueError(f"[ERROR] Invalid Kubernetes resource name: '{name}'. Must match RFC1123 format.")
     return name
 
 # Helper function to handle API errors
 def handle_api_error(e):
     """Handle Kubernetes API errors and return user-friendly messages."""
     if e.status == 403:
-        return f"❌ Permission denied: {e.reason}"
+        return f"[ERROR] Permission denied: {e.reason}"
     elif e.status == 404:
-        return f"❌ Resource not found: {e.reason}"
+        return f"[ERROR] Resource not found: {e.reason}"
     else:
-        return f"❌ API error ({e.status}): {e.reason}"
+        return f"[ERROR] API error ({e.status}): {e.reason}"
 
 # List functions
 def list_pods(_=None):
@@ -285,7 +406,39 @@ def describe_pod(name):
         name = name.strip()
         namespace = get_namespace()
         pod = v1.read_namespaced_pod(name=name, namespace=namespace)
-        return f"📋 Pod '{name}' phase: {pod.status.phase}, node: {pod.spec.node_name}"
+        
+        # Enhanced pod description with more details
+        description = [f"Pod '{name}' Details:"]
+        description.append(f"  Phase: {pod.status.phase}")
+        description.append(f"  Node: {pod.spec.node_name or 'Not assigned'}")
+        description.append(f"  Namespace: {namespace}")
+        
+        # Pod IP and host IP
+        if pod.status.pod_ip:
+            description.append(f"  Pod IP: {pod.status.pod_ip}")
+        if pod.status.host_ip:
+            description.append(f"  Host IP: {pod.status.host_ip}")
+        
+        # Container information
+        if pod.spec.containers:
+            description.append(f"  Containers ({len(pod.spec.containers)}):")
+            for container in pod.spec.containers:
+                description.append(f"    - {container.name}: {container.image}")
+        
+        # Resource requests/limits
+        if pod.spec.containers and pod.spec.containers[0].resources:
+            res = pod.spec.containers[0].resources
+            if res.requests:
+                description.append(f"  Resource Requests: {dict(res.requests)}")
+            if res.limits:
+                description.append(f"  Resource Limits: {dict(res.limits)}")
+        
+        # Creation timestamp
+        if pod.metadata.creation_timestamp:
+            description.append(f"  Created: {pod.metadata.creation_timestamp}")
+        
+        return "\n".join(description)
+        
     except ApiException as e:
         return handle_api_error(e)
 
@@ -294,7 +447,35 @@ def describe_deployment(name):
         name = name.strip()
         namespace = get_namespace()
         dep = apps_v1.read_namespaced_deployment(name=name, namespace=namespace)
-        return f"📦 Deployment '{name}' has {dep.status.replicas or 0} replicas and {dep.status.ready_replicas or 0} ready."
+        
+        # Enhanced deployment description
+        description = [f"Deployment '{name}' Details:"]
+        description.append(f"  Namespace: {namespace}")
+        description.append(f"  Replicas: {dep.status.replicas or 0}")
+        description.append(f"  Ready Replicas: {dep.status.ready_replicas or 0}")
+        description.append(f"  Available Replicas: {dep.status.available_replicas or 0}")
+        description.append(f"  Updated Replicas: {dep.status.updated_replicas or 0}")
+        
+        # Strategy
+        if dep.spec.strategy:
+            description.append(f"  Strategy: {dep.spec.strategy.type}")
+        
+        # Selector
+        if dep.spec.selector and dep.spec.selector.match_labels:
+            labels = ", ".join([f"{k}={v}" for k, v in dep.spec.selector.match_labels.items()])
+            description.append(f"  Selector: {labels}")
+        
+        # Template info
+        if dep.spec.template.spec.containers:
+            container = dep.spec.template.spec.containers[0]
+            description.append(f"  Image: {container.image}")
+        
+        # Creation timestamp
+        if dep.metadata.creation_timestamp:
+            description.append(f"  Created: {dep.metadata.creation_timestamp}")
+        
+        return "\n".join(description)
+        
     except ApiException as e:
         return handle_api_error(e)
 
@@ -303,7 +484,50 @@ def describe_service(name):
         name = name.strip()
         namespace = get_namespace()
         svc = v1.read_namespaced_service(name=name, namespace=namespace)
-        return f"🌐 Service '{name}' type: {svc.spec.type}, cluster IP: {svc.spec.cluster_ip}"
+        
+        # Enhanced service description
+        description = [f"Service '{name}' Details:"]
+        description.append(f"  Namespace: {namespace}")
+        description.append(f"  Type: {svc.spec.type}")
+        description.append(f"  Cluster IP: {svc.spec.cluster_ip}")
+        
+        # External IP
+        if svc.spec.external_i_ps:
+            description.append(f"  External IPs: {', '.join(svc.spec.external_i_ps)}")
+        
+        # Load balancer ingress
+        if svc.status.load_balancer and svc.status.load_balancer.ingress:
+            ingress_ips = [ing.ip for ing in svc.status.load_balancer.ingress if ing.ip]
+            ingress_hosts = [ing.hostname for ing in svc.status.load_balancer.ingress if ing.hostname]
+            if ingress_ips:
+                description.append(f"  Load Balancer IPs: {', '.join(ingress_ips)}")
+            if ingress_hosts:
+                description.append(f"  Load Balancer Hosts: {', '.join(ingress_hosts)}")
+        
+        # Ports
+        if svc.spec.ports:
+            description.append("  Ports:")
+            for port in svc.spec.ports:
+                port_info = f"    - {port.port}"
+                if port.target_port:
+                    port_info += f"→{port.target_port}"
+                if port.protocol:
+                    port_info += f" ({port.protocol})"
+                if port.name:
+                    port_info += f" [{port.name}]"
+                description.append(port_info)
+        
+        # Selector
+        if svc.spec.selector:
+            labels = ", ".join([f"{k}={v}" for k, v in svc.spec.selector.items()])
+            description.append(f"  Selector: {labels}")
+        
+        # Creation timestamp
+        if svc.metadata.creation_timestamp:
+            description.append(f"  Created: {svc.metadata.creation_timestamp}")
+        
+        return "\n".join(description)
+        
     except ApiException as e:
         return handle_api_error(e)
 
@@ -396,6 +620,230 @@ def describe_node(name):
     except ApiException as e:
         return handle_api_error(e)
 
+# ----------------------- Creation Functions -----------------------
+
+def create_pod_from_yaml(yaml_content: str, namespace: str = None):
+    """Create a pod from YAML content"""
+    try:
+        namespace = namespace or get_namespace()
+        
+        # Parse YAML content
+        yaml_data = yaml.safe_load(yaml_content)
+        
+        # Ensure namespace is set
+        if not yaml_data.get("metadata"):
+            yaml_data["metadata"] = {}
+        yaml_data["metadata"]["namespace"] = namespace
+        
+        # Create pod using Kubernetes API
+        api = client.CoreV1Api()
+        pod = api.create_namespaced_pod(namespace=namespace, body=yaml_data)
+        
+        return f"[SUCCESS] Created pod '{pod.metadata.name}' in namespace '{namespace}'"
+        
+    except ApiException as e:
+        return handle_api_error(e)
+    except Exception as e:
+        return f"[ERROR] Error creating pod: {str(e)}"
+
+def create_pod_programmatic(name: str = "test-pod", image: str = "ubuntu", 
+                          memory_limit: str = "100Mi", cpu_limit: str = "100m",
+                          memory_request: str = "100Mi", cpu_request: str = "100m",
+                          command: List[str] = None, namespace: str = None):
+    """Create a pod programmatically with specified parameters"""
+    try:
+        namespace = namespace or get_namespace()
+        command = command or ["sh", "-c", "echo 'Im a new pod' && sleep infinity"]
+        
+        validate_k8s_name(name)
+        
+        api = client.CoreV1Api()
+        pod = client.V1Pod(
+            api_version="v1",
+            kind="Pod",
+            metadata=client.V1ObjectMeta(name=name, namespace=namespace),
+            spec=client.V1PodSpec(
+                containers=[
+                    client.V1Container(
+                        name="main-container",
+                        image=image,
+                        resources=client.V1ResourceRequirements(
+                            limits={"memory": memory_limit, "cpu": cpu_limit},
+                            requests={"memory": memory_request, "cpu": cpu_request},
+                        ),
+                        command=command,
+                    )
+                ]
+            ),
+        )
+        
+        result = api.create_namespaced_pod(namespace=namespace, body=pod)
+        return f"[SUCCESS] Created pod '{name}' in namespace '{namespace}'"
+        
+    except ApiException as e:
+        return handle_api_error(e)
+    except Exception as e:
+        return f"[ERROR] Error creating pod: {str(e)}"
+
+def create_deployment_from_yaml(yaml_content: str, namespace: str = None):
+    """Create a deployment from YAML content"""
+    try:
+        namespace = namespace or get_namespace()
+        
+        # Parse YAML content
+        yaml_data = yaml.safe_load(yaml_content)
+        
+        # Ensure namespace is set
+        if not yaml_data.get("metadata"):
+            yaml_data["metadata"] = {}
+        yaml_data["metadata"]["namespace"] = namespace
+        
+        # Create deployment using Kubernetes API
+        api = client.AppsV1Api()
+        deployment = api.create_namespaced_deployment(namespace=namespace, body=yaml_data)
+        
+        return f"[SUCCESS] Created deployment '{deployment.metadata.name}' in namespace '{namespace}'"
+        
+    except ApiException as e:
+        return handle_api_error(e)
+    except Exception as e:
+        return f"[ERROR] Error creating deployment: {str(e)}"
+
+def create_deployment_programmatic(name: str = "test-dep", image: str = "ubuntu", 
+                                 replicas: int = 1, memory_limit: str = "500Mi", 
+                                 cpu_limit: str = "500m", memory_request: str = "100Mi", 
+                                 cpu_request: str = "50m", command: List[str] = None, 
+                                 namespace: str = None):
+    """Create a deployment programmatically with specified parameters"""
+    try:
+        namespace = namespace or get_namespace()
+        command = command or ["sh", "-c", "sleep infinity"]
+        
+        validate_k8s_name(name)
+        
+        api = client.AppsV1Api()
+        
+        # Create deployment object
+        deployment = client.V1Deployment(
+            api_version="apps/v1",
+            kind="Deployment",
+            metadata=client.V1ObjectMeta(
+                name=name, 
+                namespace=namespace,
+                labels={"k8s-app": name}
+            ),
+            spec=client.V1DeploymentSpec(
+                replicas=replicas,
+                selector=client.V1LabelSelector(
+                    match_labels={"k8s-app": name}
+                ),
+                template=client.V1PodTemplateSpec(
+                    metadata=client.V1ObjectMeta(
+                        labels={"k8s-app": name}
+                    ),
+                    spec=client.V1PodSpec(
+                        containers=[
+                            client.V1Container(
+                                name="main-container",
+                                image=image,
+                                resources=client.V1ResourceRequirements(
+                                    limits={"memory": memory_limit, "cpu": cpu_limit},
+                                    requests={"memory": memory_request, "cpu": cpu_request},
+                                ),
+                                command=command,
+                            )
+                        ]
+                    )
+                )
+            )
+        )
+        
+        result = api.create_namespaced_deployment(namespace=namespace, body=deployment)
+        return f"[SUCCESS] Created deployment '{name}' in namespace '{namespace}' with {replicas} replica(s)"
+        
+    except ApiException as e:
+        return handle_api_error(e)
+    except Exception as e:
+        return f"[ERROR] Error creating deployment: {str(e)}"
+
+def delete_pod(name: str, namespace: str = None):
+    """Delete a pod by name"""
+    try:
+        namespace = namespace or get_namespace()
+        validate_k8s_name(name)
+        
+        api = client.CoreV1Api()
+        api.delete_namespaced_pod(name=name, namespace=namespace)
+        return f"[DELETE] Deleting pod '{name}' in namespace '{namespace}' (gracefully)"
+        
+    except ApiException as e:
+        if e.status == 404:
+            return f"[INFO] Pod '{name}' not found in namespace '{namespace}'. Nothing to delete."
+        return handle_api_error(e)
+    except Exception as e:
+        return f"[ERROR] Error deleting pod: {str(e)}"
+
+def delete_deployment(name: str, namespace: str = None):
+    """Delete a deployment by name"""
+    try:
+        namespace = namespace or get_namespace()
+        validate_k8s_name(name)
+        
+        api = client.AppsV1Api()
+        propagation = client.V1DeleteOptions(propagation_policy="Foreground")
+        api.delete_namespaced_deployment(name=name, namespace=namespace, body=propagation)
+        return f"[DELETE] Deleting deployment '{name}' in namespace '{namespace}'"
+        
+    except ApiException as e:
+        if e.status == 404:
+            return f"[INFO] Deployment '{name}' not found in namespace '{namespace}'. Nothing to delete."
+        return handle_api_error(e)
+    except Exception as e:
+        return f"[ERROR] Error deleting deployment: {str(e)}"
+
+def pod_logs(name: str, tail_lines: Optional[int] = None, namespace: str = None):
+    """Get logs from a pod"""
+    try:
+        namespace = namespace or get_namespace()
+        validate_k8s_name(name)
+        
+        api = client.CoreV1Api()
+        logs = api.read_namespaced_pod_log(name=name, namespace=namespace, tail_lines=tail_lines)
+        return f"[LOGS] Logs for pod '{name}':\n{logs}"
+        
+    except ApiException as e:
+        if e.status == 404:
+            return f"[INFO] Pod '{name}' not found in namespace '{namespace}'"
+        return handle_api_error(e)
+    except Exception as e:
+        return f"[ERROR] Error getting pod logs: {str(e)}"
+
+def pod_exec(name: str, command: List[str], container: Optional[str] = None, 
+           namespace: str = None):
+    """Execute a command in a pod"""
+    try:
+        namespace = namespace or get_namespace()
+        validate_k8s_name(name)
+        
+        api = client.CoreV1Api()
+        resp = stream(
+            api.connect_get_namespaced_pod_exec,
+            name,
+            namespace,
+            command=command,
+            container=container,
+            stderr=True,
+            stdin=False,
+            stdout=True,
+            tty=False,
+        )
+        return f"[EXEC] Executed '{' '.join(command)}' in pod '{name}':\n{resp}"
+        
+    except ApiException as e:
+        return handle_api_error(e)
+    except Exception as e:
+        return f"[ERROR] Error executing command in pod: {str(e)}"
+
 # Context functions
 def get_service_account(_=None):
     """Get information about the current service account."""
@@ -413,7 +861,7 @@ def get_service_account(_=None):
             # If the service account name file doesn't exist, return what we can
             return f"Current service account in gsoc namespace (token available but name not directly accessible)"
     except Exception as e:
-        return f"❌ Error getting service account info: {str(e)}"
+        return f"[ERROR] Error getting service account info: {str(e)}"
 
 def get_pod_info(_=None):
     """Get information about the current pod."""
@@ -421,14 +869,14 @@ def get_pod_info(_=None):
         # Get pod name from environment variable
         pod_name = os.environ.get("HOSTNAME")
         if not pod_name:
-            return "❌ Could not determine pod name from HOSTNAME environment variable"
+            return "[ERROR] Could not determine pod name from HOSTNAME environment variable"
         
         # Get pod details
         pod = v1.read_namespaced_pod(name=pod_name, namespace=CURRENT_NAMESPACE)
         
         return f"📋 Current pod: {pod_name}\nNamespace: {CURRENT_NAMESPACE}\nStatus: {pod.status.phase}\nNode: {pod.spec.node_name}\nService Account: {pod.spec.service_account_name}"
     except Exception as e:
-        return f"❌ Error getting pod info: {str(e)}"
+        return f"[ERROR] Error getting pod info: {str(e)}"
 
 # Check permissions function
 def check_permissions(_=None):
@@ -452,9 +900,9 @@ def check_permissions(_=None):
         if response.status.allowed:
             return "✅ You have permission to list pods in gsoc namespace"
         else:
-            return f"❌ Permission denied: {response.status.reason}"
+            return f"[ERROR] Permission denied: {response.status.reason}"
     except Exception as e:
-        return f"❌ Error checking permissions: {str(e)}"
+        return f"[ERROR] Error checking permissions: {str(e)}"
 
 # Action registry
 KNOWN_ACTIONS = {
@@ -485,6 +933,17 @@ KNOWN_ACTIONS = {
     "describe_daemonset": describe_daemonset,
     "describe_ingress": describe_ingress,
     "describe_node": describe_node,
+    # CREATE actions
+    "create_pod": create_pod_programmatic,
+    "create_pod_yaml": create_pod_from_yaml,
+    "create_deployment": create_deployment_programmatic,
+    "create_deployment_yaml": create_deployment_from_yaml,
+    # DELETE actions
+    "delete_pod": delete_pod,
+    "delete_deployment": delete_deployment,
+    # UTILITY actions
+    "pod_logs": pod_logs,
+    "pod_exec": pod_exec,
     # CONTEXT actions
     "check_permissions": check_permissions,
     "get_service_account": get_service_account,

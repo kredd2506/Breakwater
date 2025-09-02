@@ -29,7 +29,14 @@ from enum import Enum
 from pathlib import Path
 
 # Import from package
-from .core.nrp_init import init_chat_model
+try:
+    from .core.nrp_init import init_chat_model
+except ImportError:
+    # Fallback for direct execution
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parent))
+    from core.nrp_init import init_chat_model
 
 # ----------------------- Configuration -----------------------
 
@@ -115,7 +122,8 @@ def fallback_classification(user_input: str) -> RouterDecision:
     # Command keywords
     command_keywords = [
         'list', 'get', 'show', 'describe', 'delete', 'create', 'apply',
-        'exec', 'logs', 'scale', 'restart', 'rollout', 'port-forward'
+        'exec', 'logs', 'scale', 'restart', 'rollout', 'port-forward',
+        'deploy', 'remove', 'pod', 'deployment'
     ]
     
     # Question keywords
@@ -159,7 +167,11 @@ def handle_k8s_command(user_input: str) -> Tuple[str, bool]:
         print("[*] Executing K8s command...")
         
         # Import k8s_operations from systems module
-        from .systems import k8s_operations
+        try:
+            from .systems import k8s_operations
+        except ImportError:
+            # Fallback for direct execution
+            from systems import k8s_operations
         
         # Parse command and route to appropriate function
         user_input_lower = user_input.lower()
@@ -195,6 +207,115 @@ def handle_k8s_command(user_input: str) -> Tuple[str, bool]:
             else:
                 return "Available list commands: pods, services, deployments, jobs, configmaps, secrets, pvcs, events, nodes", True
         
+        elif "create" in user_input_lower or "deploy" in user_input_lower or "make" in user_input_lower:
+            words = user_input.split()
+            
+            if "pod" in user_input_lower:
+                # Extract pod name if provided - improved parsing
+                pod_name = None
+                image = "ubuntu"
+                
+                # Look for patterns like "pod called red5", "pod named red5", "make a pod red5"
+                import re
+                # Pattern to find pod name after words like "called", "named", or directly after "pod"
+                name_patterns = [
+                    r'pod\s+called\s+(\w+)',
+                    r'pod\s+named\s+(\w+)', 
+                    r'pod\s+(\w+)',
+                    r'called\s+(\w+)',
+                    r'named\s+(\w+)'
+                ]
+                
+                for pattern in name_patterns:
+                    match = re.search(pattern, user_input_lower)
+                    if match:
+                        potential_name = match.group(1)
+                        # Skip common words that aren't pod names
+                        if potential_name not in ['with', 'using', 'from', 'in', 'on', 'at', 'to', 'for']:
+                            pod_name = potential_name
+                            break
+                
+                # Fallback to word-by-word parsing
+                if not pod_name:
+                    for i, word in enumerate(words):
+                        if word.lower() == "pod" and i + 1 < len(words):
+                            next_word = words[i + 1].lower()
+                            if next_word not in ['with', 'using', 'from', 'called', 'named']:
+                                pod_name = words[i + 1]
+                                break
+                        elif word.lower().startswith("image="):
+                            image = word.split("=")[1]
+                        elif ":" in word and not word.startswith("http"):  # likely image:tag format
+                            image = word
+                
+                if not pod_name:
+                    pod_name = "test-pod"
+                
+                result = k8s_operations.create_pod_programmatic(name=pod_name, image=image)
+                return f"Pod creation result:\n{result}", True
+                
+            elif "deployment" in user_input_lower or "deploy" in user_input_lower:
+                # Extract deployment name if provided
+                deploy_name = None
+                image = "ubuntu"
+                replicas = 1
+                
+                for i, word in enumerate(words):
+                    if word.lower() in ["deployment", "deploy"] and i + 1 < len(words) and not deploy_name:
+                        deploy_name = words[i + 1]
+                    elif word.lower().startswith("image="):
+                        image = word.split("=")[1]
+                    elif word.lower().startswith("replicas="):
+                        try:
+                            replicas = int(word.split("=")[1])
+                        except ValueError:
+                            replicas = 1
+                    elif ":" in word and not word.startswith("http"):  # likely image:tag format
+                        image = word
+                
+                if not deploy_name:
+                    deploy_name = "test-deployment"
+                
+                result = k8s_operations.create_deployment_programmatic(
+                    name=deploy_name, image=image, replicas=replicas
+                )
+                return f"Deployment creation result:\n{result}", True
+            else:
+                return "Available create commands: 'create pod <name>', 'create deployment <name>'", True
+        
+        elif "delete" in user_input_lower or "remove" in user_input_lower:
+            words = user_input.split()
+            
+            if "pod" in user_input_lower:
+                # Extract pod name
+                pod_name = None
+                for i, word in enumerate(words):
+                    if word.lower() == "pod" and i + 1 < len(words):
+                        pod_name = words[i + 1]
+                        break
+                
+                if not pod_name:
+                    return "Please specify pod name: 'delete pod <name>'", True
+                
+                result = k8s_operations.delete_pod(pod_name)
+                return f"Pod deletion result:\n{result}", True
+                
+            elif "deployment" in user_input_lower or "deploy" in user_input_lower:
+                # Extract deployment name
+                deploy_name = None
+                for i, word in enumerate(words):
+                    if word.lower() in ["deployment", "deploy"] and i + 1 < len(words):
+                        deploy_name = words[i + 1]
+                        break
+                
+                if not deploy_name:
+                    return "Please specify deployment name: 'delete deployment <name>'", True
+                
+                result = k8s_operations.delete_deployment(deploy_name)
+                return f"Deployment deletion result:\n{result}", True
+            else:
+                return "Available delete commands: 'delete pod <name>', 'delete deployment <name>'", True
+        
         elif "describe" in user_input_lower:
             # Extract resource name for describe commands
             words = user_input.split()
@@ -208,27 +329,53 @@ def handle_k8s_command(user_input: str) -> Tuple[str, bool]:
                 elif resource_type == "service":
                     result = k8s_operations.describe_service(resource_name)
                     return f"Service '{resource_name}' details:\n{result}", True
+                elif resource_type == "deployment":
+                    result = k8s_operations.describe_deployment(resource_name)
+                    return f"Deployment '{resource_name}' details:\n{result}", True
                 else:
                     return f"Describe not yet supported for resource type: {resource_type}", True
             else:
                 return "Please specify resource type and name: 'describe pod <name>' or 'describe service <name>'", True
         
+        elif "logs" in user_input_lower:
+            words = user_input.split()
+            pod_name = None
+            
+            # Extract pod name
+            for i, word in enumerate(words):
+                if word.lower() in ["logs", "log"] and i + 1 < len(words):
+                    pod_name = words[i + 1]
+                    break
+                elif "pod" in word.lower() and i + 1 < len(words):
+                    pod_name = words[i + 1]
+                    break
+            
+            if not pod_name:
+                return "Please specify pod name: 'logs <pod-name>' or 'pod logs <pod-name>'", True
+            
+            result = k8s_operations.pod_logs(pod_name)
+            return f"Pod logs:\n{result}", True
+        
         else:
             # Fallback: suggest available commands
             return """Available K8s commands:
-- list/get/show pods
-- list/get/show services  
-- list/get/show deployments
-- list/get/show jobs
-- list/get/show configmaps
-- list/get/show secrets
-- list/get/show pvcs
-- list/get/show events
-- list/get/show nodes
+- list/get/show pods, services, deployments, jobs, configmaps, secrets, pvcs, events, nodes
+- create pod <name> [image=<image>]
+- create deployment <name> [image=<image>] [replicas=<count>]
+- delete pod <name>
+- delete deployment <name>
 - describe pod <name>
 - describe service <name>
+- describe deployment <name>
+- logs <pod-name>
 
-Example: 'list my pods' or 'describe pod myapp'""", True
+Examples: 
+- 'list my pods' 
+- 'create pod my-app image=nginx'
+- 'create deployment web-app image=nginx replicas=3'
+- 'delete pod my-app'
+- 'describe pod myapp'
+- 'logs my-app'""", True
             
     except Exception as e:
         return f"Error executing K8s command: {str(e)}", False

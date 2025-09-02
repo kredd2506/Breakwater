@@ -9,9 +9,10 @@ A smart routing system that analyzes user intent and routes requests to appropri
 ## Features
 
 - 🤖 **Intelligent Intent Classification**: Uses NRP LLM to determine if user wants to execute commands or get explanations
-- ⚡ **Direct K8s Operations**: Execute kubectl commands through Python Kubernetes client
+- ⚡ **Complete K8s Operations**: Create, delete, list, describe pods and deployments through Python Kubernetes client
+- 🚀 **Resource Creation**: Create pods and deployments with configurable parameters (image, replicas, resources)
 - 📚 **NRP Documentation Integration**: Get comprehensive guidance using NRP LLM with contextual examples
-- 🔄 **Smart Fallback**: Handles unclear intents with clarification prompts
+- 🔄 **Smart Fallback**: Handles unclear intents and vague descriptions with intelligent defaults
 - 💬 **Interactive Mode**: Chat interface for continuous interaction
 - 🧩 **Modular Architecture**: Clean package structure for easy maintenance and extension
 
@@ -50,9 +51,18 @@ pip install -e .
 
 **Single command mode:**
 ```bash
-# K8s operations
+# List and inspect resources
 python -m nrp_k8s_system.intelligent_router "list my pods"
 python -m nrp_k8s_system.intelligent_router "describe pod myapp"
+python -m nrp_k8s_system.intelligent_router "logs my-pod"
+
+# Create resources
+python -m nrp_k8s_system.intelligent_router "create pod my-app image=nginx"
+python -m nrp_k8s_system.intelligent_router "create deployment web-app image=nginx replicas=3"
+
+# Delete resources
+python -m nrp_k8s_system.intelligent_router "delete pod my-app"
+python -m nrp_k8s_system.intelligent_router "delete deployment web-app"
 
 # Documentation/guidance
 python -m nrp_k8s_system.intelligent_router "How do I request GPUs?"
@@ -102,7 +112,9 @@ nrp_k8s_system/
 
 ### Command Handler  
 - Routes kubectl operations to `k8s_operations.py`
-- Supports: list, get, describe for pods, services, deployments, jobs, etc.
+- **Full CRUD Operations**: Create, read, update, delete for pods and deployments
+- **List & Inspect**: list, get, describe for pods, services, deployments, jobs, etc.
+- **Utility Functions**: logs, exec commands for debugging
 - Works in 'gsoc' namespace by default
 
 ### Explanation Handler
@@ -113,12 +125,39 @@ nrp_k8s_system/
 ## Examples
 
 ### K8s Commands
+
+**Listing & Inspection:**
 ```bash
 "list my pods"           → Shows pods in gsoc namespace
 "get services"           → Lists services  
 "describe pod myapp"     → Pod details
 "show deployments"       → Deployment list
 "list nodes"             → Cluster nodes
+"logs my-pod"            → Pod logs
+```
+
+**Resource Creation:**
+```bash
+"create pod my-app"                    → Creates basic pod
+"create pod nginx-pod image=nginx"     → Creates nginx pod
+"create deployment web-app"            → Creates basic deployment  
+"create deployment api replicas=3"     → Creates deployment with 3 replicas
+"deploy nginx image=nginx:latest"      → Creates nginx deployment
+```
+
+**Resource Management:**
+```bash
+"delete pod my-app"         → Deletes pod
+"delete deployment web-app" → Deletes deployment
+"remove pod nginx-pod"      → Alternative delete syntax
+```
+
+**Vague Commands (System interprets intelligently):**
+```bash
+"make a pod"            → Creates default pod
+"deploy something"      → Creates default deployment  
+"show my stuff"         → Lists pods
+"create nginx"          → Creates nginx pod/deployment
 ```
 
 ### Documentation Queries
@@ -140,14 +179,23 @@ The package follows Python packaging best practices:
 
 ### Adding New Features
 
-1. **New K8s Operations**: Add functions to `systems/k8s_operations.py`
-2. **New Intent Types**: Extend `UserIntent` enum and classification logic
+1. **New K8s Operations**: Add functions to `systems/k8s_operations.py` and update `KNOWN_ACTIONS` registry
+2. **New Intent Types**: Extend `UserIntent` enum and classification logic  
 3. **New Handlers**: Create handler functions in `intelligent_router.py`
+4. **YAML Templates**: Add new resource templates in `k8s_operations.py` for standardized deployments
 
 ### Testing
 ```bash
 # Install development dependencies
 pip install -e ".[dev]"
+
+# Test basic functionality
+python test_integration.py
+
+# Test specific operations
+cd nrp_k8s_system
+python intelligent_router.py "list pods"
+python intelligent_router.py "create pod test-nginx image=nginx"
 
 # Run tests (when available)
 pytest

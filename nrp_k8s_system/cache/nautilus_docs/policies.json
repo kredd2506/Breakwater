@@ -1,0 +1,194 @@
+[
+  {
+    "topic": "job time limits termination",
+    "policy": "\u2705 \u2705 k8s-chase-ci-07.calit2.optiputer.net \u2705 \u2705 k8s-gpu-2.ucsc.edu \u2705 \u2705 edited jun 10, 2024 by dima mishin assignee loading time tracking loading https://github.com/nvidia/nvidia-container-toolkit/issues/48 solution: https://github.com/nvidia/nvidia-container-toolkit/issues/381 test: run",
+    "warning_level": "info",
+    "details": "\u2705 \u2705 k8s-chase-ci-07.calit2.optiputer.net \u2705 \u2705 k8s-gpu-2.ucsc.edu \u2705 \u2705 edited jun 10, 2024 by dima mishin assignee loading time tracking loading https://github.com/nvidia/nvidia-container-toolkit/issues/48 solution: https://github.com/nvidia/nvidia-container-toolkit/issues/381 test: run",
+    "source_url": "https://gitlab.nrp-nautilus.io/prp/nautilus-cluster/-/issues/984",
+    "violations": [],
+    "consequences": []
+  },
+  {
+    "topic": "sleep commands in batch jobs",
+    "policy": "Using sleep commands in batch jobs while holding GPU resources is strictly prohibited and monitored.",
+    "warning_level": "critical",
+    "details": "Nautilus actively monitors for resource abuse. Jobs that use sleep commands while allocated expensive resources like GPUs are considered wasteful and violate fair usage policies.",
+    "source_url": "https://nrp-nautilus.io/docs/policies/",
+    "violations": [
+      "Using sleep commands in Kubernetes Jobs",
+      "Holding GPU resources while idle",
+      "Running waiting loops instead of computation",
+      "Batch jobs with minimal CPU/GPU utilization"
+    ],
+    "consequences": [
+      "Immediate account suspension",
+      "Permanent account banning",
+      "Loss of cluster access",
+      "Investigation by NRP administrators"
+    ]
+  },
+  {
+    "topic": "resource abuse and monitoring",
+    "policy": "All resource usage is monitored. Inappropriate usage patterns are automatically detected and penalized.",
+    "warning_level": "critical",
+    "details": "Nautilus uses automated monitoring to detect resource abuse patterns including idle GPU usage, excessive resource requests, and jobs that don't utilize allocated resources.",
+    "source_url": "https://nrp-nautilus.io/docs/usage/",
+    "violations": [
+      "Requesting more resources than needed",
+      "Holding resources without active computation",
+      "Running jobs longer than necessary",
+      "GPU allocation without GPU-accelerated workloads"
+    ],
+    "consequences": [
+      "Account restrictions",
+      "Job termination",
+      "Resource quota reduction",
+      "Account suspension for repeat offenses"
+    ]
+  },
+  {
+    "topic": "job time limits and termination",
+    "policy": "Jobs must complete within reasonable time limits. Long-running jobs without progress are terminated.",
+    "warning_level": "warning",
+    "details": "Nautilus enforces time limits on jobs to ensure fair resource sharing. Jobs should set activeDeadlineSeconds and complete work efficiently.",
+    "source_url": "https://nrp-nautilus.io/docs/kubernetes/",
+    "violations": [
+      "Jobs without time limits",
+      "Excessively long-running jobs",
+      "Jobs that appear stuck or inactive"
+    ],
+    "consequences": [
+      "Automatic job termination",
+      "Resource quota adjustments",
+      "Account review for repeated violations"
+    ]
+  },
+  {
+    "topic": "job time limits termination",
+    "policy": "\u2705 \u2705 k8s-chase-ci-07.calit2.optiputer.net \u2705 \u2705 k8s-gpu-2.ucsc.edu \u2705 \u2705 edited jun 10, 2024 by dima mishin assignee loading time tracking loading https://github.com/nvidia/nvidia-container-toolkit/issues/48 solution: https://github.com/nvidia/nvidia-container-toolkit/issues/381 test: run",
+    "warning_level": "info",
+    "details": "\u2705 \u2705 k8s-chase-ci-07.calit2.optiputer.net \u2705 \u2705 k8s-gpu-2.ucsc.edu \u2705 \u2705 edited jun 10, 2024 by dima mishin assignee loading time tracking loading https://github.com/nvidia/nvidia-container-toolkit/issues/48 solution: https://github.com/nvidia/nvidia-container-toolkit/issues/381 test: run",
+    "source_url": "https://gitlab.nrp-nautilus.io/prp/nautilus-cluster/-/issues/984",
+    "violations": [],
+    "consequences": []
+  },
+  {
+    "topic": "sleep commands in batch jobs",
+    "policy": "Using sleep commands in batch jobs while holding GPU resources is strictly prohibited and monitored.",
+    "warning_level": "critical",
+    "details": "Nautilus actively monitors for resource abuse. Jobs that use sleep commands while allocated expensive resources like GPUs are considered wasteful and violate fair usage policies.",
+    "source_url": "https://nrp-nautilus.io/docs/policies/",
+    "violations": [
+      "Using sleep commands in Kubernetes Jobs",
+      "Holding GPU resources while idle",
+      "Running waiting loops instead of computation",
+      "Batch jobs with minimal CPU/GPU utilization"
+    ],
+    "consequences": [
+      "Immediate account suspension",
+      "Permanent account banning",
+      "Loss of cluster access",
+      "Investigation by NRP administrators"
+    ]
+  },
+  {
+    "topic": "resource abuse and monitoring",
+    "policy": "All resource usage is monitored. Inappropriate usage patterns are automatically detected and penalized.",
+    "warning_level": "critical",
+    "details": "Nautilus uses automated monitoring to detect resource abuse patterns including idle GPU usage, excessive resource requests, and jobs that don't utilize allocated resources.",
+    "source_url": "https://nrp-nautilus.io/docs/usage/",
+    "violations": [
+      "Requesting more resources than needed",
+      "Holding resources without active computation",
+      "Running jobs longer than necessary",
+      "GPU allocation without GPU-accelerated workloads"
+    ],
+    "consequences": [
+      "Account restrictions",
+      "Job termination",
+      "Resource quota reduction",
+      "Account suspension for repeat offenses"
+    ]
+  },
+  {
+    "topic": "job time limits and termination",
+    "policy": "Jobs must complete within reasonable time limits. Long-running jobs without progress are terminated.",
+    "warning_level": "warning",
+    "details": "Nautilus enforces time limits on jobs to ensure fair resource sharing. Jobs should set activeDeadlineSeconds and complete work efficiently.",
+    "source_url": "https://nrp-nautilus.io/docs/kubernetes/",
+    "violations": [
+      "Jobs without time limits",
+      "Excessively long-running jobs",
+      "Jobs that appear stuck or inactive"
+    ],
+    "consequences": [
+      "Automatic job termination",
+      "Resource quota adjustments",
+      "Account review for repeated violations"
+    ]
+  },
+  {
+    "topic": "job time limits termination",
+    "policy": "\u2705 \u2705 k8s-chase-ci-07.calit2.optiputer.net \u2705 \u2705 k8s-gpu-2.ucsc.edu \u2705 \u2705 edited jun 10, 2024 by dima mishin assignee loading time tracking loading https://github.com/nvidia/nvidia-container-toolkit/issues/48 solution: https://github.com/nvidia/nvidia-container-toolkit/issues/381 test: run",
+    "warning_level": "info",
+    "details": "\u2705 \u2705 k8s-chase-ci-07.calit2.optiputer.net \u2705 \u2705 k8s-gpu-2.ucsc.edu \u2705 \u2705 edited jun 10, 2024 by dima mishin assignee loading time tracking loading https://github.com/nvidia/nvidia-container-toolkit/issues/48 solution: https://github.com/nvidia/nvidia-container-toolkit/issues/381 test: run",
+    "source_url": "https://gitlab.nrp-nautilus.io/prp/nautilus-cluster/-/issues/984",
+    "violations": [],
+    "consequences": []
+  },
+  {
+    "topic": "sleep commands in batch jobs",
+    "policy": "Using sleep commands in batch jobs while holding GPU resources is strictly prohibited and monitored.",
+    "warning_level": "critical",
+    "details": "Nautilus actively monitors for resource abuse. Jobs that use sleep commands while allocated expensive resources like GPUs are considered wasteful and violate fair usage policies.",
+    "source_url": "https://nrp-nautilus.io/docs/policies/",
+    "violations": [
+      "Using sleep commands in Kubernetes Jobs",
+      "Holding GPU resources while idle",
+      "Running waiting loops instead of computation",
+      "Batch jobs with minimal CPU/GPU utilization"
+    ],
+    "consequences": [
+      "Immediate account suspension",
+      "Permanent account banning",
+      "Loss of cluster access",
+      "Investigation by NRP administrators"
+    ]
+  },
+  {
+    "topic": "resource abuse and monitoring",
+    "policy": "All resource usage is monitored. Inappropriate usage patterns are automatically detected and penalized.",
+    "warning_level": "critical",
+    "details": "Nautilus uses automated monitoring to detect resource abuse patterns including idle GPU usage, excessive resource requests, and jobs that don't utilize allocated resources.",
+    "source_url": "https://nrp-nautilus.io/docs/usage/",
+    "violations": [
+      "Requesting more resources than needed",
+      "Holding resources without active computation",
+      "Running jobs longer than necessary",
+      "GPU allocation without GPU-accelerated workloads"
+    ],
+    "consequences": [
+      "Account restrictions",
+      "Job termination",
+      "Resource quota reduction",
+      "Account suspension for repeat offenses"
+    ]
+  },
+  {
+    "topic": "job time limits and termination",
+    "policy": "Jobs must complete within reasonable time limits. Long-running jobs without progress are terminated.",
+    "warning_level": "warning",
+    "details": "Nautilus enforces time limits on jobs to ensure fair resource sharing. Jobs should set activeDeadlineSeconds and complete work efficiently.",
+    "source_url": "https://nrp-nautilus.io/docs/kubernetes/",
+    "violations": [
+      "Jobs without time limits",
+      "Excessively long-running jobs",
+      "Jobs that appear stuck or inactive"
+    ],
+    "consequences": [
+      "Automatic job termination",
+      "Resource quota adjustments",
+      "Account review for repeated violations"
+    ]
+  }
+]

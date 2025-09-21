@@ -1,0 +1,96 @@
+gotcha—here’s the **Infogent architecture logic** only (no code), trimmed to the essentials and tuned for **Kubernetes × NRP docs**.
+
+# Infogent — Architecture Logic (K8s × NRP)
+
+## 1) Navigator & Extractor = Information gatherers
+
+**Purpose:** find and lift the most relevant K8s/NRP knowledge from docs and the web.
+
+* **Inputs**
+
+  * User question (e.g., “Expose a Flask app with storage on NRP”).
+  * Current KB snapshot (optional; used to avoid re-fetching).
+
+* **Where it looks (K8s/NRP-focused)**
+
+  * NRP/Nautilus docs sites; linked GitHub READMEs.
+  * Kubernetes official docs for API semantics.
+  * Operator- and stack-specific pages referenced by NRP (rook-ceph, HAProxy ingress, DCGM/GPU, Prometheus/Grafana).
+
+* **What it extracts (info chunks)**
+
+  * **Text:** definitions, constraints, defaults (namespace, quotas).
+  * **Artifacts:** YAML snippets (Deployment/Service/Ingress/PVC/RBAC), CLI/Helm commands, PromQL/DCGM examples.
+  * **Metadata:** source URL, section/heading, last-modified, apiVersion, resource kind, namespace hints.
+
+* **Selection heuristics**
+
+  * Prefer **NRP-specific guidance** (haproxy Ingress, rook-ceph storage classes).
+  * Prefer **stable apiVersions** and pages with clear last-modified.
+  * De-duplicate near-identical snippets; keep newest/stablest.
+
+**Output:** a small set of normalized “info chunks” per topic (yaml/cli/text + metadata + confidence).
+
+---
+
+## 2) Aggregator = Information organizer
+
+**Purpose:** maintain a clean, current knowledge state for answering.
+
+* **Operations**
+
+  * **ADD** new chunks when they cover a gap or a new scenario.
+  * **REPLACE** when a chunk is newer, more specific to NRP, or uses a more stable apiVersion.
+  * **MERGE** related chunks (e.g., Deployment + Service + Ingress) into a coherent pattern.
+
+* **Conflict policy**
+
+  * Newer `last-modified` wins.
+  * Kubernetes stability: `v1` > `v1beta1` > `alpha`.
+  * **NRP defaults** override generic K8s when they differ:
+
+    * Ingress class → **haproxy**
+    * Storage classes → **rook-ceph-block** (RWO) by default; **rook-cephfs** for RWX/shared
+    * Namespace → user/project default (e.g., `gsoc`) if unspecified
+    * GPU workloads → require `nvidia.com/gpu` limits when GPU is mentioned
+
+* **Quality gates (light validation, no code)**
+
+  * YAML has required fields per kind (e.g., Service selectors match Deployment labels; Ingress has backend service+port).
+  * Flag deprecated apiVersions or risky fields (privileged, hostNetwork) for the answer notes.
+
+**Output:** a compact “aggregated pack” (the best single set of snippets + supporting notes + citations).
+
+---
+
+## 3) Feedback = Continuous refinement
+
+**Purpose:** loop until the answer is specific, correct, and minimal.
+
+* **How the loop works**
+
+  * Draft an answer from the aggregated pack.
+  * If gaps/ambiguity remain (e.g., storage type unclear, GPU vs CPU), the agent **asks itself** targeted follow-ups (or prompts the user) and re-invokes the Navigator on that subtopic.
+  * Replace weaker chunks with stronger ones (ADD/REPLACE again) and tighten the draft.
+
+* **Exit criteria**
+
+  * Snippets align with NRP defaults and pass sanity checks.
+  * The set is minimal (only the manifests/commands needed).
+  * Citations to source sections are attached.
+  * Notes include any caveats (quotas, RWX needs, deprecated APIs).
+
+**Final answer shape (not code—just the contract)**
+
+* **Summary:** what matters for this task on NRP.
+* **Recommended artifacts:** Deployment/Service/Ingress (+PVC/RBAC if relevant), plus the exact commands and 1–2 PromQL/DCGM examples if GPUs are involved.
+* **Notes & caveats:** apiVersion/security/storage/ingress nuances.
+* **Citations:** source URLs/sections used.
+
+---
+
+### One-line mental model
+
+* **Navigator & Extractor** finds and lifts the right K8s/NRP chunks.
+* **Aggregator** curates them (add/replace, dedupe, validate, apply NRP defaults).
+* **Feedback** iterates until the answer is precise, minimal, and citation-backed.

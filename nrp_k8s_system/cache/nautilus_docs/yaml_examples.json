@@ -1,0 +1,45 @@
+[
+  {
+    "title": "GPU Pod Example",
+    "description": "Kubernetes Pod with A100 GPU allocation for PyTorch workloads",
+    "yaml_content": "apiVersion: v1\nkind: Pod\nmetadata:\n  name: gpu-pod-example\n  namespace: gsoc\nspec:\n  containers:\n  - name: pytorch-container\n    image: pytorch/pytorch:latest\n    resources:\n      limits:\n        nvidia.com/gpu: 1\n        memory: \"8Gi\"\n        cpu: \"4\"\n      requests:\n        nvidia.com/gpu: 1\n        memory: \"4Gi\"\n        cpu: \"2\"\n    command: [\"python\", \"-c\", \"import torch; print(f'CUDA available: {torch.cuda.is_available()}'); print(f'GPU count: {torch.cuda.device_count()}')\"]\n  restartPolicy: Never",
+    "source_url": "https://nrp-nautilus.io/docs/kubernetes/",
+    "category": "workload",
+    "tags": [
+      "gpu",
+      "pytorch",
+      "resources"
+    ],
+    "resource_type": "pod",
+    "complexity": "intermediate"
+  },
+  {
+    "title": "Batch Job with GPU",
+    "description": "Kubernetes Job with GPU resources and time limits for batch processing",
+    "yaml_content": "apiVersion: batch/v1\nkind: Job\nmetadata:\n  name: batch-job-example\n  namespace: gsoc\nspec:\n  activeDeadlineSeconds: 3600\n  template:\n    spec:\n      restartPolicy: Never\n      containers:\n      - name: worker\n        image: python:3.9\n        resources:\n          limits:\n            nvidia.com/gpu: 1\n            memory: \"8Gi\"\n            cpu: \"4\"\n          requests:\n            nvidia.com/gpu: 1\n            memory: \"4Gi\"\n            cpu: \"2\"\n        command: [\"python\", \"-c\", \"print('Starting batch job'); import time; time.sleep(10); print('Job completed successfully')\"]",
+    "source_url": "https://nrp-nautilus.io/docs/kubernetes/",
+    "category": "workload",
+    "tags": [
+      "batch",
+      "job",
+      "gpu",
+      "resources"
+    ],
+    "resource_type": "job",
+    "complexity": "intermediate"
+  },
+  {
+    "title": "Persistent Volume Claim",
+    "description": "PVC for persistent data storage with CephFS",
+    "yaml_content": "apiVersion: v1\nkind: PersistentVolumeClaim\nmetadata:\n  name: data-pvc-example\n  namespace: gsoc\nspec:\n  accessModes:\n    - ReadWriteOnce\n  resources:\n    requests:\n      storage: 50Gi\n  storageClassName: rook-cephfs",
+    "source_url": "https://nrp-nautilus.io/docs/storage/",
+    "category": "storage",
+    "tags": [
+      "storage",
+      "pvc",
+      "cephfs"
+    ],
+    "resource_type": "persistentvolumeclaim",
+    "complexity": "basic"
+  }
+]

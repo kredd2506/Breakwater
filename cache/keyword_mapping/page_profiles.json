@@ -1,0 +1,74 @@
+{
+  "https://nrp.ai/documentation/admindocs/cluster/fpga/": {
+    "url": "https://nrp.ai/documentation/admindocs/cluster/fpga/",
+    "title": "FPGA Configuration and Management",
+    "keywords": [
+      "fpga",
+      "smartnic",
+      "esnet",
+      "alveo",
+      "management",
+      "configuration"
+    ],
+    "topics": [
+      "admindocs",
+      "management",
+      "fpga",
+      "cluster",
+      "documentation",
+      "configuration"
+    ],
+    "content_type": "admin_documentation",
+    "importance_score": 1.0,
+    "related_pages": [],
+    "extract_quality": 0.5
+  },
+  "https://nrp.ai/documentation/userguide/gpu/": {
+    "url": "https://nrp.ai/documentation/userguide/gpu/",
+    "title": "GPU Computing Guide",
+    "keywords": [
+      "gpu",
+      "container",
+      "guide",
+      "kubernetes"
+    ],
+    "topics": [
+      "userguide",
+      "computing",
+      "documentation",
+      "gpu",
+      "guide"
+    ],
+    "content_type": "user_guide",
+    "importance_score": 1.0,
+    "related_pages": [
+      "https://nrp.ai/documentation/admindocs/cluster/fpga/"
+    ],
+    "extract_quality": 0.7
+  },
+  "https://nrp.ai/documentation/userguide/storage/": {
+    "url": "https://nrp.ai/documentation/userguide/storage/",
+    "title": "Storage Configuration",
+    "keywords": [
+      "storage",
+      "persistent",
+      "volume",
+      "backup",
+      "snapshot",
+      "configuration"
+    ],
+    "topics": [
+      "userguide",
+      "documentation",
+      "storage",
+      "configuration"
+    ],
+    "content_type": "user_guide",
+    "importance_score": 1.0,
+    "related_pages": [
+      "https://nrp.ai/documentation/admindocs/cluster/fpga/",
+      "https://nrp.ai/documentation/userguide/gpu/"
+    ],
+    "extract_quality": 0.5
+  }
+}

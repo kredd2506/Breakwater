@@ -1,0 +1,518 @@
+{
+  "tmpl_0_1758145862": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "job",
+    "yaml_snippet": "apiVersion: batch/v1kind: Jobmetadata:  name: myappspec:  template:    spec:      containers:      - name: demo        image: gitlab-registry.nrp-nautilus.io/prp/jupyter-stack/prp        command:        - \"python\"        args:        - \"/home/my_script.py\"        - \"--data=/mnt/data/...\"        volumeMounts:        - name: data          mountPath: /mnt/data        resources:          limits:            memory: 8Gi            cpu: \"6\"            nvidia.com/gpu: \"1\"            ephemeral-storage: 1",
+    "description": "apiVersion:batch/v1kind:Jobmetadata:name:myappspec:template:spec:containers:-name:demoimage:gitlab-registry.nrp-nautilus.io/prp/jupyter-stack/prpcomma",
+    "gpu_specific": true,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/io-jobs",
+    "relevance_keywords": [
+      "gpu",
+      "nvidia",
+      "job",
+      "storage",
+      "volume",
+      "limit",
+      "request",
+      "resource"
+    ],
+    "created_at": "1758145862"
+  },
+  "tmpl_1_1758145862": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "job",
+    "yaml_snippet": "apiVersion: batch/v1kind: Jobmetadata:  name: myappspec:  template:    spec:      containers:      - name: demo        image: gitlab-registry.nrp-nautilus.io/prp/jupyter-stack/prp        command:        - \"python\"        args:        - \"/home/my_script.py\"        - \"--data=/mnt/data/...\"        volumeMounts:        - name: data          mountPath: /mnt/data        resources:          limits:            memory: 8Gi            cpu: \"6\"            nvidia.com/gpu: \"1\"            ephemeral-storage: 1",
+    "description": "apiVersion:batch/v1kind:Jobmetadata:name:myappspec:template:spec:containers:-name:demoimage:gitlab-registry.nrp-nautilus.io/prp/jupyter-stack/prpcomma",
+    "gpu_specific": true,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/io-jobs",
+    "relevance_keywords": [
+      "gpu",
+      "nvidia",
+      "job",
+      "storage",
+      "volume",
+      "limit",
+      "request",
+      "resource"
+    ],
+    "created_at": "1758145862"
+  },
+  "tmpl_0_1758145863": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "pod",
+    "yaml_snippet": "apiVersion: v1kind: Podmetadata:  name: gpu-pod-examplespec:  containers:  - name: gpu-container    image: tensorflow/tensorflow:latest-gpu    command: [\"sleep\", \"infinity\"]    resources:      limits:        nvidia.com/gpu: 1      requests:        nvidia.com/gpu: 1",
+    "description": "apiVersion:v1kind:Podmetadata:name:gpu-pod-examplespec:containers:-name:gpu-containerimage:tensorflow/tensorflow:latest-gpucommand: [\"sleep\",\"infinity",
+    "gpu_specific": true,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/gpu-pods",
+    "relevance_keywords": [
+      "gpu",
+      "nvidia",
+      "pod",
+      "limit",
+      "request",
+      "resource"
+    ],
+    "created_at": "1758145863"
+  },
+  "tmpl_1_1758145863": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "pod",
+    "yaml_snippet": "apiVersion: v1kind: Podmetadata:  name: gpu-pod-examplespec:  containers:  - name: gpu-container    image: tensorflow/tensorflow:latest-gpu    command: [\"sleep\", \"infinity\"]    resources:      limits:        nvidia.com/gpu: 1      requests:        nvidia.com/gpu: 1",
+    "description": "apiVersion:v1kind:Podmetadata:name:gpu-pod-examplespec:containers:-name:gpu-containerimage:tensorflow/tensorflow:latest-gpucommand: [\"sleep\",\"infinity",
+    "gpu_specific": true,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/gpu-pods",
+    "relevance_keywords": [
+      "gpu",
+      "nvidia",
+      "pod",
+      "limit",
+      "request",
+      "resource"
+    ],
+    "created_at": "1758145863"
+  },
+  "tmpl_2_1758145863": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "pod",
+    "yaml_snippet": "apiVersion: v1kind: Podmetadata:  name: gpu-pod-examplespec:  containers:  - name: gpu-container    image: tensorflow/tensorflow:latest-gpu    command: [\"sleep\", \"infinity\"]    resources:      limits:        nvidia.com/a100: 1      requests:        nvidia.com/a100: 1",
+    "description": "apiVersion:v1kind:Podmetadata:name:gpu-pod-examplespec:containers:-name:gpu-containerimage:tensorflow/tensorflow:latest-gpucommand: [\"sleep\",\"infinity",
+    "gpu_specific": true,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/gpu-pods",
+    "relevance_keywords": [
+      "a100",
+      "gpu",
+      "nvidia",
+      "pod",
+      "limit",
+      "request",
+      "resource"
+    ],
+    "created_at": "1758145863"
+  },
+  "tmpl_3_1758145863": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "pod",
+    "yaml_snippet": "apiVersion: v1kind: Podmetadata:  name: gpu-pod-examplespec:  containers:  - name: gpu-container    image: tensorflow/tensorflow:latest-gpu    command: [\"sleep\", \"infinity\"]    resources:      limits:        nvidia.com/a100: 1      requests:        nvidia.com/a100: 1",
+    "description": "apiVersion:v1kind:Podmetadata:name:gpu-pod-examplespec:containers:-name:gpu-containerimage:tensorflow/tensorflow:latest-gpucommand: [\"sleep\",\"infinity",
+    "gpu_specific": true,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/gpu-pods",
+    "relevance_keywords": [
+      "a100",
+      "gpu",
+      "nvidia",
+      "pod",
+      "limit",
+      "request",
+      "resource"
+    ],
+    "created_at": "1758145863"
+  },
+  "tmpl_0_1758145864": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "pod",
+    "yaml_snippet": "apiVersion: v1kind: Podmetadata:  name: gpu-pod-examplespec:  containers:  - name: gpu-container    image: tensorflow/tensorflow:latest-gpu    command: [\"sleep\", \"infinity\"]    resources:      limits:        nvidia.com/gpu: 1      requests:        nvidia.com/gpu: 1",
+    "description": "apiVersion:v1kind:Podmetadata:name:gpu-pod-examplespec:containers:-name:gpu-containerimage:tensorflow/tensorflow:latest-gpucommand: [\"sleep\",\"infinity",
+    "gpu_specific": true,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/gpu-pods/",
+    "relevance_keywords": [
+      "gpu",
+      "nvidia",
+      "pod",
+      "limit",
+      "request",
+      "resource"
+    ],
+    "created_at": "1758145864"
+  },
+  "tmpl_1_1758145864": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "pod",
+    "yaml_snippet": "apiVersion: v1kind: Podmetadata:  name: gpu-pod-examplespec:  containers:  - name: gpu-container    image: tensorflow/tensorflow:latest-gpu    command: [\"sleep\", \"infinity\"]    resources:      limits:        nvidia.com/gpu: 1      requests:        nvidia.com/gpu: 1",
+    "description": "apiVersion:v1kind:Podmetadata:name:gpu-pod-examplespec:containers:-name:gpu-containerimage:tensorflow/tensorflow:latest-gpucommand: [\"sleep\",\"infinity",
+    "gpu_specific": true,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/gpu-pods/",
+    "relevance_keywords": [
+      "gpu",
+      "nvidia",
+      "pod",
+      "limit",
+      "request",
+      "resource"
+    ],
+    "created_at": "1758145864"
+  },
+  "tmpl_2_1758145864": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "pod",
+    "yaml_snippet": "apiVersion: v1kind: Podmetadata:  name: gpu-pod-examplespec:  containers:  - name: gpu-container    image: tensorflow/tensorflow:latest-gpu    command: [\"sleep\", \"infinity\"]    resources:      limits:        nvidia.com/a100: 1      requests:        nvidia.com/a100: 1",
+    "description": "apiVersion:v1kind:Podmetadata:name:gpu-pod-examplespec:containers:-name:gpu-containerimage:tensorflow/tensorflow:latest-gpucommand: [\"sleep\",\"infinity",
+    "gpu_specific": true,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/gpu-pods/",
+    "relevance_keywords": [
+      "a100",
+      "gpu",
+      "nvidia",
+      "pod",
+      "limit",
+      "request",
+      "resource"
+    ],
+    "created_at": "1758145864"
+  },
+  "tmpl_3_1758145864": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "pod",
+    "yaml_snippet": "apiVersion: v1kind: Podmetadata:  name: gpu-pod-examplespec:  containers:  - name: gpu-container    image: tensorflow/tensorflow:latest-gpu    command: [\"sleep\", \"infinity\"]    resources:      limits:        nvidia.com/a100: 1      requests:        nvidia.com/a100: 1",
+    "description": "apiVersion:v1kind:Podmetadata:name:gpu-pod-examplespec:containers:-name:gpu-containerimage:tensorflow/tensorflow:latest-gpucommand: [\"sleep\",\"infinity",
+    "gpu_specific": true,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/gpu-pods/",
+    "relevance_keywords": [
+      "a100",
+      "gpu",
+      "nvidia",
+      "pod",
+      "limit",
+      "request",
+      "resource"
+    ],
+    "created_at": "1758145864"
+  },
+  "tmpl_4_1758145864": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "pod",
+    "yaml_snippet": "apiVersion: v1kind: Podmetadata:  name: test-podspec:  containers:  - name: mypod    image: ubuntu:latest    command: [\"sh\", \"-c\", \"sleep infinity\"]    resources:      limits:        memory: 100Mi        cpu: 100m      requests:        memory: 100Mi        cpu: 100m    volumeMounts:    - mountPath: /examplevol      name: examplevol  volumes:    - name: examplevol      persistentVolumeClaim:        claimName: test-vol",
+    "description": "apiVersion:v1kind:Podmetadata:name:test-podspec:containers:-name:mypodimage:ubuntu:latestcommand: [\"sh\",\"-c\",\"sleep infinity\"]resources:limits:memory:",
+    "gpu_specific": false,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/tutorial/storage",
+    "relevance_keywords": [
+      "pod",
+      "volume",
+      "limit",
+      "request",
+      "resource"
+    ],
+    "created_at": "1758145864"
+  },
+  "tmpl_5_1758145864": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "pod",
+    "yaml_snippet": "apiVersion: v1kind: Podmetadata:  name: test-podspec:  containers:  - name: mypod    image: ubuntu:latest    command: [\"sh\", \"-c\", \"sleep infinity\"]    resources:      limits:        memory: 100Mi        cpu: 100m      requests:        memory: 100Mi        cpu: 100m    volumeMounts:    - mountPath: /examplevol      name: examplevol  volumes:    - name: examplevol      persistentVolumeClaim:        claimName: test-vol",
+    "description": "apiVersion:v1kind:Podmetadata:name:test-podspec:containers:-name:mypodimage:ubuntu:latestcommand: [\"sh\",\"-c\",\"sleep infinity\"]resources:limits:memory:",
+    "gpu_specific": false,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/tutorial/storage",
+    "relevance_keywords": [
+      "pod",
+      "volume",
+      "limit",
+      "request",
+      "resource"
+    ],
+    "created_at": "1758145864"
+  },
+  "tmpl_0_1758145865": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "job",
+    "yaml_snippet": "apiVersion: batch/v1kind: Jobmetadata:  name: myappspec:  template:    spec:      containers:      - name: demo        image: gitlab-registry.nrp-nautilus.io/prp/jupyter-stack/prp        command:        - \"python\"        args:        - \"/opt/repo/REPONAME/my_script.py\"        - \"arg_job_to_run\"        volumeMounts:        - name: git-repo          mountPath: /opt/repo        resources:          limits:            memory: 6Gi            cpu: \"6\"            nvidia.com/gpu: \"1\"          requests:  ",
+    "description": "apiVersion:batch/v1kind:Jobmetadata:name:myappspec:template:spec:containers:-name:demoimage:gitlab-registry.nrp-nautilus.io/prp/jupyter-stack/prpcomma",
+    "gpu_specific": true,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/jobs",
+    "relevance_keywords": [
+      "gpu",
+      "nvidia",
+      "job",
+      "volume",
+      "limit",
+      "request",
+      "resource"
+    ],
+    "created_at": "1758145865"
+  },
+  "tmpl_1_1758145865": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "job",
+    "yaml_snippet": "apiVersion: batch/v1kind: Jobmetadata:  name: myappspec:  template:    spec:      containers:      - name: demo        image: gitlab-registry.nrp-nautilus.io/prp/jupyter-stack/prp        command:        - \"python\"        args:        - \"/opt/repo/REPONAME/my_script.py\"        - \"arg_job_to_run\"        volumeMounts:        - name: git-repo          mountPath: /opt/repo        resources:          limits:            memory: 6Gi            cpu: \"6\"            nvidia.com/gpu: \"1\"          requests:  ",
+    "description": "apiVersion:batch/v1kind:Jobmetadata:name:myappspec:template:spec:containers:-name:demoimage:gitlab-registry.nrp-nautilus.io/prp/jupyter-stack/prpcomma",
+    "gpu_specific": true,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/jobs",
+    "relevance_keywords": [
+      "gpu",
+      "nvidia",
+      "job",
+      "volume",
+      "limit",
+      "request",
+      "resource"
+    ],
+    "created_at": "1758145865"
+  },
+  "tmpl_2_1758145865": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "job",
+    "yaml_snippet": "apiVersion: batch/v1kind: Jobmetadata:  name: myappspec:  template:    spec:      containers:      - name: demo        image: gitlab-registry.nrp-nautilus.io/prp/jupyter-stack/prp        command:        - \"python\"        args:        - \"/opt/repo/REPONAME/my_script.py\"        - \"arg_job_to_run\"        volumeMounts:        - name: git-repo          mountPath: /opt/repo        resources:          limits:            memory: 6Gi            cpu: \"6\"            nvidia.com/gpu: \"1\"          requests:  ",
+    "description": "apiVersion:batch/v1kind:Jobmetadata:name:myappspec:template:spec:containers:-name:demoimage:gitlab-registry.nrp-nautilus.io/prp/jupyter-stack/prpcomma",
+    "gpu_specific": true,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/jobs",
+    "relevance_keywords": [
+      "gpu",
+      "nvidia",
+      "job",
+      "volume",
+      "limit",
+      "request",
+      "resource"
+    ],
+    "created_at": "1758145865"
+  },
+  "tmpl_3_1758145865": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "job",
+    "yaml_snippet": "apiVersion: batch/v1kind: Jobmetadata:  name: myappspec:  template:    spec:      containers:      - name: demo        image: gitlab-registry.nrp-nautilus.io/prp/jupyter-stack/prp        command:        - \"python\"        args:        - \"/opt/repo/REPONAME/my_script.py\"        - \"arg_job_to_run\"        volumeMounts:        - name: git-repo          mountPath: /opt/repo        resources:          limits:            memory: 6Gi            cpu: \"6\"            nvidia.com/gpu: \"1\"          requests:  ",
+    "description": "apiVersion:batch/v1kind:Jobmetadata:name:myappspec:template:spec:containers:-name:demoimage:gitlab-registry.nrp-nautilus.io/prp/jupyter-stack/prpcomma",
+    "gpu_specific": true,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/jobs",
+    "relevance_keywords": [
+      "gpu",
+      "nvidia",
+      "job",
+      "volume",
+      "limit",
+      "request",
+      "resource"
+    ],
+    "created_at": "1758145865"
+  },
+  "tmpl_0_1758145867": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "pod",
+    "yaml_snippet": "apiVersion: v1kind: Podmetadata:  name: my-pod  labels:    k8s-app: test-httpspec:  containers:  - name: mypod    image: nginxdemos/hello:plain-text",
+    "description": "apiVersion:v1kind:Podmetadata:name:my-podlabels:k8s-app:test-httpspec:containers:-name:mypodimage:nginxdemos/hello:plain-text",
+    "gpu_specific": false,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/ingress",
+    "relevance_keywords": [
+      "pod",
+      "k8s"
+    ],
+    "created_at": "1758145867"
+  },
+  "tmpl_1_1758145867": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "pod",
+    "yaml_snippet": "apiVersion: v1kind: Podmetadata:  name: my-pod  labels:    k8s-app: test-httpspec:  containers:  - name: mypod    image: nginxdemos/hello:plain-text",
+    "description": "apiVersion:v1kind:Podmetadata:name:my-podlabels:k8s-app:test-httpspec:containers:-name:mypodimage:nginxdemos/hello:plain-text",
+    "gpu_specific": false,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/ingress",
+    "relevance_keywords": [
+      "pod",
+      "k8s"
+    ],
+    "created_at": "1758145867"
+  },
+  "tmpl_2_1758145867": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "service",
+    "yaml_snippet": "apiVersion: v1kind: Servicemetadata:  labels:    k8s-app: test-svc  name: test-svcspec:  ports:  - port: 8080    protocol: TCP    targetPort: 80  selector:    k8s-app: test-http  type: ClusterIP",
+    "description": "apiVersion:v1kind:Servicemetadata:labels:k8s-app:test-svcname:test-svcspec:ports:-port:8080protocol:TCPtargetPort:80selector:k8s-app:test-httptype:Clu",
+    "gpu_specific": false,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/ingress",
+    "relevance_keywords": [
+      "service",
+      "k8s"
+    ],
+    "created_at": "1758145867"
+  },
+  "tmpl_3_1758145867": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "service",
+    "yaml_snippet": "apiVersion: v1kind: Servicemetadata:  labels:    k8s-app: test-svc  name: test-svcspec:  ports:  - port: 8080    protocol: TCP    targetPort: 80  selector:    k8s-app: test-http  type: ClusterIP",
+    "description": "apiVersion:v1kind:Servicemetadata:labels:k8s-app:test-svcname:test-svcspec:ports:-port:8080protocol:TCPtargetPort:80selector:k8s-app:test-httptype:Clu",
+    "gpu_specific": false,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/ingress",
+    "relevance_keywords": [
+      "service",
+      "k8s"
+    ],
+    "created_at": "1758145867"
+  },
+  "tmpl_4_1758145867": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "unknown",
+    "yaml_snippet": "apiVersion: networking.k8s.io/v1kind: Ingressmetadata:  name: test-ingressspec:  ingressClassName: haproxy  rules:  - host: test-service.nrp-nautilus.io    http:      paths:      - path: /        pathType: Prefix        backend:          service:            name: test-svc            port:              number: 8080  tls:  - hosts:    - test-service.nrp-nautilus.io",
+    "description": "apiVersion:networking.k8s.io/v1kind:Ingressmetadata:name:test-ingressspec:ingressClassName:haproxyrules:-host:test-service.nrp-nautilus.iohttp:paths:-",
+    "gpu_specific": false,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/ingress",
+    "relevance_keywords": [
+      "service",
+      "k8s"
+    ],
+    "created_at": "1758145867"
+  },
+  "tmpl_5_1758145867": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "unknown",
+    "yaml_snippet": "apiVersion: networking.k8s.io/v1kind: Ingressmetadata:  name: test-ingressspec:  ingressClassName: haproxy  rules:  - host: test-service.nrp-nautilus.io    http:      paths:      - path: /        pathType: Prefix        backend:          service:            name: test-svc            port:              number: 8080  tls:  - hosts:    - test-service.nrp-nautilus.io",
+    "description": "apiVersion:networking.k8s.io/v1kind:Ingressmetadata:name:test-ingressspec:ingressClassName:haproxyrules:-host:test-service.nrp-nautilus.iohttp:paths:-",
+    "gpu_specific": false,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/ingress",
+    "relevance_keywords": [
+      "service",
+      "k8s"
+    ],
+    "created_at": "1758145867"
+  },
+  "tmpl_6_1758145867": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "unknown",
+    "yaml_snippet": "apiVersion: v1kind: Secretmetadata:  name: my-own-hostname-tlstype: kubernetes.io/tlsdata:  ca.crt: <optional base64-encoded ca>  tls.crt: <base64-encoded crt>  tls.key: <base64-encoded key>",
+    "description": "apiVersion:v1kind:Secretmetadata:name:my-own-hostname-tlstype:kubernetes.io/tlsdata:ca.crt:<optional base64-encoded ca>tls.crt:<base64-encoded crt>tls",
+    "gpu_specific": false,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/ingress",
+    "relevance_keywords": [
+      "kubernetes"
+    ],
+    "created_at": "1758145867"
+  },
+  "tmpl_7_1758145867": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "unknown",
+    "yaml_snippet": "apiVersion: v1kind: Secretmetadata:  name: my-own-hostname-tlstype: kubernetes.io/tlsdata:  ca.crt: <optional base64-encoded ca>  tls.crt: <base64-encoded crt>  tls.key: <base64-encoded key>",
+    "description": "apiVersion:v1kind:Secretmetadata:name:my-own-hostname-tlstype:kubernetes.io/tlsdata:ca.crt:<optional base64-encoded ca>tls.crt:<base64-encoded crt>tls",
+    "gpu_specific": false,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/ingress",
+    "relevance_keywords": [
+      "kubernetes"
+    ],
+    "created_at": "1758145867"
+  },
+  "tmpl_8_1758145867": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "unknown",
+    "yaml_snippet": "apiVersion: networking.k8s.io/v1kind: Ingressmetadata:  name: test-ingressspec:  ingressClassName: haproxy  rules:  - host: my-own-hostname.com    http:      paths:      - backend:          service:            name: test-svc            port:              number: 8080        path: /        pathType: Prefix  tls:  - hosts:    - my-own-hostname.com    secretName: my-own-hostname-tls",
+    "description": "apiVersion:networking.k8s.io/v1kind:Ingressmetadata:name:test-ingressspec:ingressClassName:haproxyrules:-host:my-own-hostname.comhttp:paths:-backend:s",
+    "gpu_specific": false,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/ingress",
+    "relevance_keywords": [
+      "service",
+      "k8s"
+    ],
+    "created_at": "1758145867"
+  },
+  "tmpl_9_1758145867": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "unknown",
+    "yaml_snippet": "apiVersion: networking.k8s.io/v1kind: Ingressmetadata:  name: test-ingressspec:  ingressClassName: haproxy  rules:  - host: my-own-hostname.com    http:      paths:      - backend:          service:            name: test-svc            port:              number: 8080        path: /        pathType: Prefix  tls:  - hosts:    - my-own-hostname.com    secretName: my-own-hostname-tls",
+    "description": "apiVersion:networking.k8s.io/v1kind:Ingressmetadata:name:test-ingressspec:ingressClassName:haproxyrules:-host:my-own-hostname.comhttp:paths:-backend:s",
+    "gpu_specific": false,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/ingress",
+    "relevance_keywords": [
+      "service",
+      "k8s"
+    ],
+    "created_at": "1758145867"
+  },
+  "tmpl_10_1758145867": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "unknown",
+    "yaml_snippet": "apiVersion: cert-manager.io/v1kind: Issuermetadata:  name: letsencryptspec:  acme:    email: <your_email>    preferredChain: \"\"    privateKeySecretRef:      name: issuer-account-key    server: https://acme-v02.api.letsencrypt.org/directory    solvers:    - http01:        ingress:          class: haproxy          ingressTemplate:            metadata:              annotations:                ingress.kubernetes.io/ssl-redirect: \"false\"          serviceType: ClusterIP",
+    "description": "apiVersion:cert-manager.io/v1kind:Issuermetadata:name:letsencryptspec:acme:email:<your_email>preferredChain:\"\"privateKeySecretRef:name:issuer-account-",
+    "gpu_specific": false,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/ingress",
+    "relevance_keywords": [
+      "service",
+      "kubernetes"
+    ],
+    "created_at": "1758145867"
+  },
+  "tmpl_11_1758145867": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "unknown",
+    "yaml_snippet": "apiVersion: cert-manager.io/v1kind: Issuermetadata:  name: letsencryptspec:  acme:    email: <your_email>    preferredChain: \"\"    privateKeySecretRef:      name: issuer-account-key    server: https://acme-v02.api.letsencrypt.org/directory    solvers:    - http01:        ingress:          class: haproxy          ingressTemplate:            metadata:              annotations:                ingress.kubernetes.io/ssl-redirect: \"false\"          serviceType: ClusterIP",
+    "description": "apiVersion:cert-manager.io/v1kind:Issuermetadata:name:letsencryptspec:acme:email:<your_email>preferredChain:\"\"privateKeySecretRef:name:issuer-account-",
+    "gpu_specific": false,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/ingress",
+    "relevance_keywords": [
+      "service",
+      "kubernetes"
+    ],
+    "created_at": "1758145867"
+  },
+  "tmpl_12_1758145867": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "unknown",
+    "yaml_snippet": "apiVersion: cert-manager.io/v1kind: Certificatemetadata:  annotations:  name: my-own-hostname-certspec:  commonName: my-own-hostname.com  dnsNames:  - my-own-hostname.com  issuerRef:    kind: Issuer    name: letsencrypt  secretName: my-own-hostname-tls",
+    "description": "apiVersion:cert-manager.io/v1kind:Certificatemetadata:annotations:name:my-own-hostname-certspec:commonName:my-own-hostname.comdnsNames:-my-own-hostnam",
+    "gpu_specific": false,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/ingress",
+    "relevance_keywords": [],
+    "created_at": "1758145867"
+  },
+  "tmpl_13_1758145867": {
+    "id": "",
+    "title": "On this page",
+    "resource_type": "unknown",
+    "yaml_snippet": "apiVersion: cert-manager.io/v1kind: Certificatemetadata:  annotations:  name: my-own-hostname-certspec:  commonName: my-own-hostname.com  dnsNames:  - my-own-hostname.com  issuerRef:    kind: Issuer    name: letsencrypt  secretName: my-own-hostname-tls",
+    "description": "apiVersion:cert-manager.io/v1kind:Certificatemetadata:annotations:name:my-own-hostname-certspec:commonName:my-own-hostname.comdnsNames:-my-own-hostnam",
+    "gpu_specific": false,
+    "warnings": [],
+    "source_url": "https://nrp.ai/documentation/userdocs/running/ingress",
+    "relevance_keywords": [],
+    "created_at": "1758145867"
+  }
+}

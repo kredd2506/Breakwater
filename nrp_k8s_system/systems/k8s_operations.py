@@ -983,6 +983,40 @@ def query(agent, question, max_turns=15):
             print("No more actions. Halting.")
             return
 
+def create_resource_from_yaml(yaml_content: str, namespace: str = None) -> str:
+    """Create Kubernetes resource from YAML content"""
+    try:
+        namespace = namespace or CURRENT_NAMESPACE
+        
+        # Parse YAML content
+        import tempfile
+        import os
+        
+        # Create temporary file with YAML content
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.yaml', delete=False) as f:
+            f.write(yaml_content)
+            temp_yaml_file = f.name
+        
+        try:
+            # Use Kubernetes utilities to create resource from YAML
+            k8s_client = client.ApiClient()
+            create_from_yaml(k8s_client, temp_yaml_file, namespace=namespace)
+            
+            # Extract resource info for response
+            yaml_data = yaml.safe_load(yaml_content)
+            resource_kind = yaml_data.get('kind', 'Resource')
+            resource_name = yaml_data.get('metadata', {}).get('name', 'unnamed')
+            
+            return f"[SUCCESS] Created {resource_kind} '{resource_name}' in namespace '{namespace}'"
+            
+        finally:
+            # Clean up temporary file
+            if os.path.exists(temp_yaml_file):
+                os.unlink(temp_yaml_file)
+                
+    except Exception as e:
+        return f"[ERROR] Failed to create resource from YAML: {str(e)}"
+
 def main():
     """Main interactive loop."""
     print("Kubernetes ReAct Agent - Operating in 'gsoc' namespace")

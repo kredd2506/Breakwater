@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: optimized-batch-job
+  namespace: gsoc
+spec:
+  activeDeadlineSeconds: 3600
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: worker
+        image: python:3.9
+        command: ["python", "-c", "print('Starting efficient work...'); import time; time.sleep(5); print('Work completed')"]
+        resources:
+          limits:
+            memory: "4Gi"
+            cpu: "2"
+          requests:
+            memory: "2Gi"
+            cpu: "1"

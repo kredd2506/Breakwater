@@ -1,0 +1,28 @@
+# GPU Pod Example
+# Source: https://nrp-nautilus.io/docs/kubernetes/
+# Description: Kubernetes Pod with A100 GPU allocation for PyTorch workloads
+# Category: workload
+# Resource Type: pod
+# Tags: gpu, pytorch, resources
+# Complexity: intermediate
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gpu-pod-example
+  namespace: gsoc
+spec:
+  containers:
+  - name: pytorch-container
+    image: pytorch/pytorch:latest
+    resources:
+      limits:
+        nvidia.com/gpu: 1
+        memory: "8Gi"
+        cpu: "4"
+      requests:
+        nvidia.com/gpu: 1
+        memory: "4Gi"
+        cpu: "2"
+    command: ["python", "-c", "import torch; print(f'CUDA available: {torch.cuda.is_available()}'); print(f'GPU count: {torch.cuda.device_count()}')"]
+  restartPolicy: Never

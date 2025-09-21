@@ -15,7 +15,7 @@ __version__ = "1.0.0"
 __author__ = "Your Name"
 __email__ = "your.email@example.com"
 
-from .intelligent_router import intelligent_route, interactive_mode
+from .routers import route_user_request, interactive_mode
 from .core.nrp_init import init_chat_model
 
-__all__ = ["intelligent_route", "interactive_mode", "init_chat_model"]
+__all__ = ["route_user_request", "interactive_mode", "init_chat_model"]

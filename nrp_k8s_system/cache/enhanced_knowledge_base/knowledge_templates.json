@@ -1,0 +1,307 @@
+{
+  "job_65bf412b": {
+    "template": {
+      "title": "Batch Job with Runtime Optimization",
+      "description": "Example showing batch job optimization and avoiding long sleep periods",
+      "resource_type": "job",
+      "yaml_content": "apiVersion: batch/v1\nkind: Job\nmetadata:\n  name: optimized-batch-job\n  namespace: gsoc\nspec:\n  activeDeadlineSeconds: 3600\n  template:\n    spec:\n      restartPolicy: Never\n      containers:\n      - name: worker\n        image: python:3.9\n        command: [\"python\", \"-c\", \"print('Starting work...'); import time; time.sleep(5); print('Work completed efficiently')\"]\n        resources:\n          limits:\n            memory: \"4Gi\"\n            cpu: \"2\"\n          requests:\n            memory: \"2Gi\"\n            cpu: \"1\"",
+      "usage_context": "This example demonstrates efficient batch job design without excessive sleep periods.",
+      "warnings": [
+        "Avoid using long sleep periods in batch jobs"
+      ],
+      "cautions": [
+        "Cluster policies may terminate long-running jobs",
+        "Design jobs for efficiency rather than indefinite execution"
+      ],
+      "notes": [
+        "Optimize workloads for shorter execution times",
+        "Use appropriate resource requests"
+      ],
+      "dangers": [
+        "Running indefinite loops can consume cluster resources"
+      ],
+      "examples": [
+        "Use sleep(5) for brief delays, not sleep(3600)",
+        "Process data in chunks rather than waiting"
+      ],
+      "best_practices": [
+        "Design jobs to complete work efficiently",
+        "Use appropriate timeouts with activeDeadlineSeconds",
+        "Monitor job execution and optimize bottlenecks",
+        "Avoid indefinite loops or long sleep periods"
+      ],
+      "common_mistakes": [
+        "Running sleep commands for hours in batch jobs",
+        "Not setting activeDeadlineSeconds",
+        "Using indefinite while loops"
+      ],
+      "source_url": "https://nrp.ai/documentation/running/",
+      "api_version": "batch/v1",
+      "namespace_requirements": [
+        "gsoc"
+      ],
+      "resource_requirements": {
+        "memory": "4Gi",
+        "cpu": "2"
+      },
+      "dependencies": [
+        "python:3.9 image"
+      ],
+      "confidence_score": 0.95,
+      "extraction_method": "manual_creation",
+      "validation_status": "valid"
+    },
+    "accuracy_score": 0.9,
+    "completeness_score": 0.9999999999999999,
+    "usefulness_score": 0.7999999999999999,
+    "last_verified": "1758416025",
+    "related_templates": [
+      "job_0d9e0eda"
+    ],
+    "superseded_by": null,
+    "supersedes": [],
+    "access_count": 0,
+    "last_accessed": "1758416025",
+    "success_feedback_count": 0,
+    "failure_feedback_count": 0
+  },
+  "job_0d9e0eda": {
+    "template": {
+      "title": "Why Jobs Should Not Run Indefinitely",
+      "description": "Explanation of cluster policies and best practices for job runtime",
+      "resource_type": "job",
+      "yaml_content": "apiVersion: batch/v1\nkind: Job\nmetadata:\n  name: finite-job-example\n  namespace: gsoc\nspec:\n  activeDeadlineSeconds: 1800  # 30 minutes max\n  template:\n    spec:\n      restartPolicy: Never\n      containers:\n      - name: processor\n        image: ubuntu:20.04\n        command: [\"bash\", \"-c\", \"echo 'Processing data...'; sleep 10; echo 'Data processed'; exit 0\"]\n        resources:\n          limits:\n            memory: \"2Gi\"\n            cpu: \"1\"",
+      "usage_context": "Jobs should have defined endpoints and not run indefinitely to maintain cluster health.",
+      "warnings": [
+        "Jobs running indefinitely will be terminated by cluster policies"
+      ],
+      "cautions": [
+        "Cluster has resource limits and fairness policies",
+        "Long-running workloads should use Deployments, not Jobs",
+        "Jobs are designed for finite, batch processing tasks"
+      ],
+      "notes": [
+        "Use activeDeadlineSeconds to set maximum job runtime",
+        "For continuous workloads, use Deployments instead of Jobs",
+        "Monitor resource usage and job completion"
+      ],
+      "dangers": [
+        "Indefinite jobs can monopolize cluster resources",
+        "May violate cluster usage policies",
+        "Can prevent other users from accessing resources"
+      ],
+      "examples": [
+        "Set activeDeadlineSeconds: 3600 for 1-hour maximum",
+        "Use 'exit 0' to properly terminate job containers",
+        "Monitor job status with kubectl get jobs"
+      ],
+      "best_practices": [
+        "Always set activeDeadlineSeconds for batch jobs",
+        "Use Deployments for long-running services",
+        "Design jobs with clear start and end conditions",
+        "Test job completion locally before cluster deployment"
+      ],
+      "common_mistakes": [
+        "Using while True loops without exit conditions",
+        "Not setting job timeout limits",
+        "Running interactive services as batch jobs"
+      ],
+      "source_url": "https://nrp.ai/documentation/running/",
+      "api_version": "batch/v1",
+      "namespace_requirements": [
+        "gsoc"
+      ],
+      "resource_requirements": {
+        "memory": "2Gi",
+        "cpu": "1"
+      },
+      "dependencies": [
+        "ubuntu:20.04 image"
+      ],
+      "confidence_score": 0.98,
+      "extraction_method": "manual_creation",
+      "validation_status": "valid"
+    },
+    "accuracy_score": 0.9,
+    "completeness_score": 0.9999999999999999,
+    "usefulness_score": 0.7999999999999999,
+    "last_verified": "1758416025",
+    "related_templates": [
+      "job_65bf412b"
+    ],
+    "superseded_by": null,
+    "supersedes": [],
+    "access_count": 0,
+    "last_accessed": "1758416025",
+    "success_feedback_count": 0,
+    "failure_feedback_count": 0
+  },
+  "fpga_9af75538": {
+    "template": {
+      "title": "Alveo FPGA and ESnet SmartNIC Workflow on NRP",
+      "description": "Complete administrative workflow for flashing and managing Alveo U55C FPGAs and ESnet SmartNIC on NRP cluster infrastructure",
+      "resource_type": "fpga",
+      "yaml_content": "# FPGA Device Verification\n# Check PCIe hardware connection\nlspci | grep -i fpga\n\n# Xilinx Runtime Tools setup\nsource /opt/xilinx/xrt/setup.sh\nxbmgmt examine\n\n# ESnet SmartNIC verification\nlspci | grep -i nic\n\n# For flashing operations (admin only):\n# Use Vivado software on admin Coder instance\n# Access FPGA Flashing template in admin environment",
+      "usage_context": "Administrative workflow for FPGA management on NRP cluster. Requires cluster administrator privileges and specialized knowledge of FPGA hardware configuration.",
+      "warnings": [
+        "FPGA flashing operations require administrator privileges",
+        "Only use Vivado software on designated admin Coder instances",
+        "Incorrect flashing can damage FPGA hardware permanently",
+        "ESnet SmartNIC has different requirements from standard Alveo workflow"
+      ],
+      "cautions": [
+        "This is administrative documentation for cluster operators only",
+        "FPGA operations can affect cluster stability and user workloads",
+        "Always verify device readiness before attempting operations",
+        "Follow AMD/Xilinx official flashing guides for detailed procedures"
+      ],
+      "notes": [
+        "32 U55C FPGAs available on PNRP Nodes at SDSC",
+        "ESnet SmartNIC only requires lspci visibility",
+        "Detailed inventory tracked in FPGA Inventory spreadsheet",
+        "XRT tools required for device verification"
+      ],
+      "dangers": [
+        "Improper FPGA flashing can permanently brick devices",
+        "Administrative access required - unauthorized users cannot perform these operations",
+        "Hardware modifications can affect entire cluster performance"
+      ],
+      "examples": [
+        "lspci verification: Check PCIe device enumeration",
+        "XRT examination: Use xbmgmt examine for device status",
+        "Vivado flashing: Access through admin Coder FPGA template",
+        "SmartNIC check: Verify ESnet device visibility"
+      ],
+      "best_practices": [
+        "Always verify device readiness with XRT tools before operations",
+        "Use designated admin Coder instances for FPGA flashing",
+        "Follow official AMD/Xilinx documentation for flashing procedures",
+        "Maintain updated FPGA inventory tracking",
+        "Test device functionality after any configuration changes",
+        "Coordinate with cluster administrators before hardware operations"
+      ],
+      "common_mistakes": [
+        "Attempting FPGA operations without administrator privileges",
+        "Using wrong flashing procedures for ESnet SmartNIC",
+        "Not verifying XRT tool setup before device operations",
+        "Confusing Alveo U55C workflow with SmartNIC requirements",
+        "Skipping device readiness verification steps"
+      ],
+      "source_url": "https://nrp.ai/documentation/admindocs/cluster/fpga/",
+      "api_version": "N/A",
+      "namespace_requirements": [
+        "admin"
+      ],
+      "resource_requirements": {
+        "admin_access": "required",
+        "vivado_software": "required",
+        "xrt_tools": "required",
+        "fpga_hardware": "Alveo U55C or ESnet SmartNIC"
+      },
+      "dependencies": [
+        "Xilinx Runtime Tools (XRT)",
+        "Vivado software suite",
+        "Administrator Coder instance access",
+        "PCIe hardware enumeration tools"
+      ],
+      "confidence_score": 0.98,
+      "extraction_method": "manual_from_correct_documentation",
+      "validation_status": "verified_from_official_nrp_docs"
+    },
+    "accuracy_score": 0.6000000000000001,
+    "completeness_score": 0.9999999999999999,
+    "usefulness_score": 0.8999999999999999,
+    "last_verified": "1758418838",
+    "related_templates": [],
+    "superseded_by": null,
+    "supersedes": [],
+    "access_count": 0,
+    "last_accessed": "1758418838",
+    "success_feedback_count": 0,
+    "failure_feedback_count": 0
+  },
+  "dpdk_prerequisites_esnet": {
+    "template": {
+      "title": "DPDK Prerequisites for ESnet SmartNIC on FPGA-equipped Nodes",
+      "description": "Technical prerequisites and requirements for running DPDK applications on FPGA-equipped nodes in the National Research Platform, specifically covering hugepages and IOMMU passthrough configuration.",
+      "resource_type": "fpga_dpdk",
+      "yaml_content": "# DPDK Prerequisites Check\n# Run on FPGA-equipped nodes\n\n# 1. Verify hugepages are available\ncat /proc/meminfo | grep -i hugepages\n\n# 2. Check IOMMU is enabled\ndmesg | grep -i iommu\n\n# 3. Verify FPGA devices\nlspci | grep -i fpga\n\n# 4. Check DPDK-compatible NICs\nlspci | grep -i network\n\n# Example DPDK application pod configuration:\napiVersion: v1\nkind: Pod\nmetadata:\n  name: dpdk-app\n  namespace: your-namespace\nspec:\n  nodeSelector:\n    fpga-enabled: \"true\"\n  containers:\n  - name: dpdk-container\n    image: dpdk-app:latest\n    securityContext:\n      privileged: true\n    volumeMounts:\n    - name: hugepages\n      mountPath: /dev/hugepages\n    - name: dev\n      mountPath: /dev\n  volumes:\n  - name: hugepages\n    emptyDir:\n      medium: HugePages\n  - name: dev\n    hostPath:\n      path: /dev",
+      "usage_context": "Required when setting up DPDK applications on NRP FPGA-equipped nodes, particularly for ESnet SmartNIC development workflows.",
+      "warnings": [
+        "DPDK applications require privileged container access",
+        "Hugepages must be pre-allocated on the host system",
+        "IOMMU passthrough is mandatory for DPDK functionality",
+        "Only available on specific FPGA-equipped nodes in the cluster"
+      ],
+      "cautions": [
+        "Verify node has FPGA support before deploying DPDK workloads",
+        "Check hugepages availability with /proc/meminfo",
+        "Ensure IOMMU is enabled in kernel boot parameters",
+        "Coordinate with cluster administrators for FPGA node access"
+      ],
+      "notes": [
+        "FPGA-equipped nodes at SDSC have pre-configured hugepages and IOMMU",
+        "ESnet SmartNIC requires specific driver configuration",
+        "DPDK applications use userspace polling mode drivers",
+        "Performance depends on proper CPU affinity and isolation"
+      ],
+      "dangers": [
+        "Privileged containers can access host system resources",
+        "Improper DPDK configuration can cause system instability",
+        "Resource conflicts with other DPDK applications possible"
+      ],
+      "examples": [
+        "Check hugepages: cat /proc/meminfo | grep HugePages",
+        "Verify IOMMU: dmesg | grep 'IOMMU enabled'",
+        "List FPGAs: lspci | grep Xilinx",
+        "DPDK bind: dpdk-devbind.py --status"
+      ],
+      "best_practices": [
+        "Always verify hugepages and IOMMU before DPDK deployment",
+        "Use node selectors to target FPGA-equipped nodes",
+        "Set appropriate CPU and memory limits for DPDK containers",
+        "Monitor DPDK application performance and resource usage",
+        "Test DPDK configuration in development environment first",
+        "Coordinate with NRP administrators for FPGA resource allocation"
+      ],
+      "common_mistakes": [
+        "Deploying DPDK pods on non-FPGA nodes",
+        "Not checking hugepages availability",
+        "Missing IOMMU passthrough configuration",
+        "Insufficient privileged access for DPDK applications"
+      ],
+      "source_url": "https://nrp.ai/documentation/userdocs/fpgas/esnet_development/#technical-information-for-reproducing-this-experiment-in-a-different-environment",
+      "api_version": "v1",
+      "namespace_requirements": [
+        "any"
+      ],
+      "resource_requirements": {
+        "memory": "Variable (depends on hugepage allocation)",
+        "cpu": "Variable (depends on DPDK application)",
+        "special": "FPGA-equipped nodes with hugepages and IOMMU"
+      },
+      "dependencies": [
+        "FPGA-equipped cluster nodes",
+        "Pre-allocated hugepages",
+        "IOMMU passthrough enabled",
+        "DPDK-compatible network interfaces"
+      ],
+      "confidence_score": 0.95,
+      "extraction_method": "enhanced_extraction",
+      "validation_status": "verified"
+    },
+    "accuracy_score": 0.95,
+    "completeness_score": 0.9,
+    "usefulness_score": 0.95,
+    "last_verified": "1758418900",
+    "related_templates": [
+      "fpga_77a3b2f8"
+    ],
+    "superseded_by": null,
+    "supersedes": [],
+    "access_count": 0,
+    "last_accessed": "1758418900",
+    "success_feedback_count": 0,
+    "failure_feedback_count": 0
+  }
+}

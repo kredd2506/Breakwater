@@ -1,0 +1,424 @@
+{
+  "keyword_index": {
+    "command": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "namespace": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "resources": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "limits": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "worker": [
+      "job_65bf412b"
+    ],
+    "cpu": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "efficient": [
+      "job_65bf412b"
+    ],
+    "long": [
+      "job_65bf412b"
+    ],
+    "starting": [
+      "job_65bf412b"
+    ],
+    "containers": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "work": [
+      "job_65bf412b"
+    ],
+    "restartpolicy": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "optimization": [
+      "job_65bf412b"
+    ],
+    "print": [
+      "job_65bf412b"
+    ],
+    "job": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "activedeadlineseconds": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "showing": [
+      "job_65bf412b"
+    ],
+    "this": [
+      "job_65bf412b"
+    ],
+    "metadata": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "periods": [
+      "job_65bf412b"
+    ],
+    "avoiding": [
+      "job_65bf412b"
+    ],
+    "optimized": [
+      "job_65bf412b"
+    ],
+    "import": [
+      "job_65bf412b"
+    ],
+    "demonstrates": [
+      "job_65bf412b"
+    ],
+    "template": [
+      "job_65bf412b",
+      "job_0d9e0eda",
+      "fpga_9af75538"
+    ],
+    "example": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "time": [
+      "job_65bf412b"
+    ],
+    "with": [
+      "job_65bf412b"
+    ],
+    "kind": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "gsoc": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "batch": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "spec": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "apiversion": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "completed": [
+      "job_65bf412b"
+    ],
+    "excessive": [
+      "job_65bf412b"
+    ],
+    "python": [
+      "job_65bf412b"
+    ],
+    "runtime": [
+      "job_65bf412b",
+      "job_0d9e0eda",
+      "fpga_9af75538"
+    ],
+    "memory": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "image": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "efficiently": [
+      "job_65bf412b"
+    ],
+    "design": [
+      "job_65bf412b"
+    ],
+    "sleep": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "requests": [
+      "job_65bf412b"
+    ],
+    "never": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "without": [
+      "job_65bf412b"
+    ],
+    "name": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "should": [
+      "job_0d9e0eda"
+    ],
+    "why": [
+      "job_0d9e0eda"
+    ],
+    "exit": [
+      "job_0d9e0eda"
+    ],
+    "have": [
+      "job_0d9e0eda"
+    ],
+    "defined": [
+      "job_0d9e0eda"
+    ],
+    "indefinitely": [
+      "job_0d9e0eda"
+    ],
+    "data": [
+      "job_0d9e0eda"
+    ],
+    "best": [
+      "job_0d9e0eda"
+    ],
+    "maintain": [
+      "job_0d9e0eda"
+    ],
+    "explanation": [
+      "job_0d9e0eda"
+    ],
+    "ubuntu": [
+      "job_0d9e0eda"
+    ],
+    "bash": [
+      "job_0d9e0eda"
+    ],
+    "health": [
+      "job_0d9e0eda"
+    ],
+    "echo": [
+      "job_0d9e0eda"
+    ],
+    "cluster": [
+      "job_0d9e0eda",
+      "fpga_9af75538"
+    ],
+    "policies": [
+      "job_0d9e0eda"
+    ],
+    "finite": [
+      "job_0d9e0eda"
+    ],
+    "minutes": [
+      "job_0d9e0eda"
+    ],
+    "max": [
+      "job_0d9e0eda"
+    ],
+    "practices": [
+      "job_0d9e0eda"
+    ],
+    "run": [
+      "job_0d9e0eda"
+    ],
+    "processor": [
+      "job_0d9e0eda"
+    ],
+    "processing": [
+      "job_0d9e0eda"
+    ],
+    "jobs": [
+      "job_0d9e0eda"
+    ],
+    "endpoints": [
+      "job_0d9e0eda"
+    ],
+    "processed": [
+      "job_0d9e0eda"
+    ],
+    "xrt": [
+      "fpga_9af75538"
+    ],
+    "privileges": [
+      "fpga_9af75538"
+    ],
+    "fpga": [
+      "fpga_9af75538"
+    ],
+    "fpgas": [
+      "fpga_9af75538"
+    ],
+    "operations": [
+      "fpga_9af75538"
+    ],
+    "hardware": [
+      "fpga_9af75538"
+    ],
+    "flashing": [
+      "fpga_9af75538"
+    ],
+    "setup": [
+      "fpga_9af75538"
+    ],
+    "smartnic": [
+      "fpga_9af75538"
+    ],
+    "device": [
+      "fpga_9af75538"
+    ],
+    "pcie": [
+      "fpga_9af75538"
+    ],
+    "tools": [
+      "fpga_9af75538"
+    ],
+    "instance": [
+      "fpga_9af75538"
+    ],
+    "esnet": [
+      "fpga_9af75538"
+    ],
+    "configuration": [
+      "fpga_9af75538"
+    ],
+    "requires": [
+      "fpga_9af75538"
+    ],
+    "management": [
+      "fpga_9af75538"
+    ],
+    "verification": [
+      "fpga_9af75538"
+    ],
+    "knowledge": [
+      "fpga_9af75538"
+    ],
+    "coder": [
+      "fpga_9af75538"
+    ],
+    "xbmgmt": [
+      "fpga_9af75538"
+    ],
+    "grep": [
+      "fpga_9af75538"
+    ],
+    "use": [
+      "fpga_9af75538"
+    ],
+    "administrator": [
+      "fpga_9af75538"
+    ],
+    "complete": [
+      "fpga_9af75538"
+    ],
+    "check": [
+      "fpga_9af75538"
+    ],
+    "administrative": [
+      "fpga_9af75538"
+    ],
+    "access": [
+      "fpga_9af75538"
+    ],
+    "specialized": [
+      "fpga_9af75538"
+    ],
+    "admin": [
+      "fpga_9af75538"
+    ],
+    "source": [
+      "fpga_9af75538"
+    ],
+    "managing": [
+      "fpga_9af75538"
+    ],
+    "environment": [
+      "fpga_9af75538"
+    ],
+    "workflow": [
+      "fpga_9af75538"
+    ],
+    "nic": [
+      "fpga_9af75538"
+    ],
+    "infrastructure": [
+      "fpga_9af75538"
+    ],
+    "software": [
+      "fpga_9af75538"
+    ],
+    "vivado": [
+      "fpga_9af75538"
+    ],
+    "lspci": [
+      "fpga_9af75538"
+    ],
+    "connection": [
+      "fpga_9af75538"
+    ],
+    "opt": [
+      "fpga_9af75538"
+    ],
+    "examine": [
+      "fpga_9af75538"
+    ],
+    "only": [
+      "fpga_9af75538"
+    ],
+    "xilinx": [
+      "fpga_9af75538"
+    ],
+    "alveo": [
+      "fpga_9af75538"
+    ],
+    "nrp": [
+      "fpga_9af75538"
+    ]
+  },
+  "topic_index": {
+    "jobs": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "general": [
+      "fpga_9af75538"
+    ]
+  },
+  "resource_type_index": {
+    "job": [
+      "job_65bf412b",
+      "job_0d9e0eda"
+    ],
+    "fpga": [
+      "fpga_9af75538"
+    ]
+  },
+  "warning_index": {
+    "danger": [
+      "job_65bf412b",
+      "job_0d9e0eda",
+      "fpga_9af75538"
+    ],
+    "warning": [
+      "job_65bf412b",
+      "job_0d9e0eda",
+      "fpga_9af75538"
+    ],
+    "caution": [
+      "job_65bf412b",
+      "job_0d9e0eda",
+      "fpga_9af75538"
+    ],
+    "note": [
+      "job_65bf412b",
+      "job_0d9e0eda",
+      "fpga_9af75538"
+    ]
+  }
+}

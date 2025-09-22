@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: finite-job-example
+  namespace: gsoc
+spec:
+  activeDeadlineSeconds: 1800  # 30 minutes max
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: processor
+        image: ubuntu:20.04
+        command: ["bash", "-c", "echo 'Processing...'; sleep 10; echo 'Done'; exit 0"]
+        resources:
+          limits:
+            memory: "2Gi"
+            cpu: "1"

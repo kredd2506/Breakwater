@@ -1,0 +1,183 @@
+{
+  "fpga": {
+    "keyword": "fpga",
+    "frequency": 1,
+    "pages": [
+      "https://nrp.ai/documentation/admindocs/cluster/fpga/"
+    ],
+    "contexts": [
+      "FPGA flashing and management procedures for Alveo U55C cards.\n                         Administrativ"
+    ],
+    "category": "hardware",
+    "importance_score": 0.5
+  },
+  "smartnic": {
+    "keyword": "smartnic",
+    "frequency": 1,
+    "pages": [
+      "https://nrp.ai/documentation/admindocs/cluster/fpga/"
+    ],
+    "contexts": [
+      "FPGA flashing and management procedures for Alveo U55C cards.\n                         Administrativ"
+    ],
+    "category": "hardware",
+    "importance_score": 0.5
+  },
+  "esnet": {
+    "keyword": "esnet",
+    "frequency": 1,
+    "pages": [
+      "https://nrp.ai/documentation/admindocs/cluster/fpga/"
+    ],
+    "contexts": [
+      "FPGA flashing and management procedures for Alveo U55C cards.\n                         Administrativ"
+    ],
+    "category": "platform",
+    "importance_score": 0.5
+  },
+  "alveo": {
+    "keyword": "alveo",
+    "frequency": 1,
+    "pages": [
+      "https://nrp.ai/documentation/admindocs/cluster/fpga/"
+    ],
+    "contexts": [
+      "FPGA flashing and management procedures for Alveo U55C cards.\n                         Administrativ"
+    ],
+    "category": "hardware",
+    "importance_score": 0.5
+  },
+  "management": {
+    "keyword": "management",
+    "frequency": 1,
+    "pages": [
+      "https://nrp.ai/documentation/admindocs/cluster/fpga/"
+    ],
+    "contexts": [
+      "FPGA flashing and management procedures for Alveo U55C cards.\n                         Administrativ"
+    ],
+    "category": "general",
+    "importance_score": 0.5
+  },
+  "configuration": {
+    "keyword": "configuration",
+    "frequency": 2,
+    "pages": [
+      "https://nrp.ai/documentation/admindocs/cluster/fpga/",
+      "https://nrp.ai/documentation/userguide/storage/"
+    ],
+    "contexts": [
+      "FPGA flashing and management procedures for Alveo U55C cards.\n                         Administrativ"
+    ],
+    "category": "general",
+    "importance_score": 0.5
+  },
+  "gpu": {
+    "keyword": "gpu",
+    "frequency": 1,
+    "pages": [
+      "https://nrp.ai/documentation/userguide/gpu/"
+    ],
+    "contexts": [
+      "GPU resource allocation and management. Kubernetes GPU scheduling.\n                         NVIDIA G"
+    ],
+    "category": "hardware",
+    "importance_score": 0.5
+  },
+  "container": {
+    "keyword": "container",
+    "frequency": 1,
+    "pages": [
+      "https://nrp.ai/documentation/userguide/gpu/"
+    ],
+    "contexts": [
+      "GPU resource allocation and management. Kubernetes GPU scheduling.\n                         NVIDIA G"
+    ],
+    "category": "software",
+    "importance_score": 0.5
+  },
+  "guide": {
+    "keyword": "guide",
+    "frequency": 1,
+    "pages": [
+      "https://nrp.ai/documentation/userguide/gpu/"
+    ],
+    "contexts": [
+      "GPU resource allocation and management. Kubernetes GPU scheduling.\n                         NVIDIA G"
+    ],
+    "category": "user",
+    "importance_score": 0.5
+  },
+  "kubernetes": {
+    "keyword": "kubernetes",
+    "frequency": 1,
+    "pages": [
+      "https://nrp.ai/documentation/userguide/gpu/"
+    ],
+    "contexts": [
+      "GPU resource allocation and management. Kubernetes GPU scheduling.\n                         NVIDIA G"
+    ],
+    "category": "software",
+    "importance_score": 0.5
+  },
+  "storage": {
+    "keyword": "storage",
+    "frequency": 1,
+    "pages": [
+      "https://nrp.ai/documentation/userguide/storage/"
+    ],
+    "contexts": [
+      "Persistent volume configuration. Storage classes and provisioning.\n                         File sys"
+    ],
+    "category": "hardware",
+    "importance_score": 0.5
+  },
+  "persistent": {
+    "keyword": "persistent",
+    "frequency": 1,
+    "pages": [
+      "https://nrp.ai/documentation/userguide/storage/"
+    ],
+    "contexts": [
+      "Persistent volume configuration. Storage classes and provisioning.\n                         File sys"
+    ],
+    "category": "storage",
+    "importance_score": 0.5
+  },
+  "volume": {
+    "keyword": "volume",
+    "frequency": 1,
+    "pages": [
+      "https://nrp.ai/documentation/userguide/storage/"
+    ],
+    "contexts": [
+      "Persistent volume configuration. Storage classes and provisioning.\n                         File sys"
+    ],
+    "category": "storage",
+    "importance_score": 0.5
+  },
+  "backup": {
+    "keyword": "backup",
+    "frequency": 1,
+    "pages": [
+      "https://nrp.ai/documentation/userguide/storage/"
+    ],
+    "contexts": [
+      "Persistent volume configuration. Storage classes and provisioning.\n                         File sys"
+    ],
+    "category": "storage",
+    "importance_score": 0.5
+  },
+  "snapshot": {
+    "keyword": "snapshot",
+    "frequency": 1,
+    "pages": [
+      "https://nrp.ai/documentation/userguide/storage/"
+    ],
+    "contexts": [
+      "Persistent volume configuration. Storage classes and provisioning.\n                         File sys"
+    ],
+    "category": "general",
+    "importance_score": 0.5
+  }
+}

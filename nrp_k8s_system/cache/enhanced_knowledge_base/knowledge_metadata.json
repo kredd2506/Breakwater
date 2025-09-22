@@ -1,0 +1,21 @@
+{
+  "last_updated": "1758418838",
+  "total_templates": 3,
+  "update_history": [
+    {
+      "action": "add_template",
+      "template_id": "job_65bf412b",
+      "timestamp": "1758416025"
+    },
+    {
+      "action": "add_template",
+      "template_id": "job_0d9e0eda",
+      "timestamp": "1758416025"
+    },
+    {
+      "action": "add_template",
+      "template_id": "fpga_9af75538",
+      "timestamp": "1758418838"
+    }
+  ]
+}

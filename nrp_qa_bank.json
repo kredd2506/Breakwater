@@ -1,0 +1,329 @@
+[
+  {
+    "id": "nrp-001",
+    "question": "Should users run sleep in batch jobs on Nautilus, or optimize for short runtime?",
+    "source_hint": "NRP policy/good citizen compute practices",
+    "gold_notes": "Avoid using sleep in batch jobs. Make jobs finish quickly; use proper scheduling primitives. Prefer short-running jobs, use Job/parallelism/completions. Set activeDeadlineSeconds/timeouts rather than sleep.",
+    "required_keywords": [
+      "avoid sleep",
+      "short",
+      "batch",
+      "activeDeadlineSeconds"
+    ],
+    "nice_to_have": [
+      "parallelism",
+      "completions",
+      "backoffLimit",
+      "timeout"
+    ]
+  },
+  {
+    "id": "nrp-002",
+    "question": "How can users request an A100 GPU for their Kubernetes pod?",
+    "source_hint": "A specific GPU resource request scenario.",
+    "gold_notes": "Request GPUs via resources.requests['nvidia.com/gpu']=N and pin model with nodeSelector/nodeAffinity labeling for A100.",
+    "required_keywords": [
+      "nvidia.com/gpu",
+      "nodeSelector",
+      "A100"
+    ],
+    "nice_to_have": [
+      "nodeAffinity",
+      "tolerations",
+      "topology"
+    ]
+  },
+  {
+    "id": "nrp-003",
+    "question": "What\u2019s the best way to request an NVIDIA A10 GPU node when configuring a pod on Nautilus?",
+    "source_hint": "GPU node selection",
+    "gold_notes": "Same as A100: request GPUs and use node labels/affinity that match A10 nodes.",
+    "required_keywords": [
+      "nvidia.com/gpu",
+      "A10",
+      "affinity"
+    ],
+    "nice_to_have": [
+      "nodeSelector",
+      "label"
+    ]
+  },
+  {
+    "id": "nrp-004",
+    "question": "How do users specify multiple GPU types (e.g., A100 and A10) in a multi-GPU job on NRP?",
+    "source_hint": "Scheduling constraints & heterogenous resources",
+    "gold_notes": "K8s cannot request two different GPU models in one container. Use multiple pods/containers or split the job by GPU type; coordinate via a Job/Workflow. If allowing either model, use nodeAffinity with OR terms; but not both types in a single request.",
+    "required_keywords": [
+      "not supported",
+      "single pod",
+      "multiple pods"
+    ],
+    "nice_to_have": [
+      "nodeAffinity",
+      "OR terms",
+      "workflow",
+      "Job",
+      "Argo"
+    ]
+  },
+  {
+    "id": "nrp-005",
+    "question": "How do users launch a GUI-enabled desktop container (GLX or EGL) via Coder on NRP?",
+    "source_hint": "NRP",
+    "gold_notes": "Use a Coder template that selects a GPU-enabled desktop image (GLX/EGL). Start workspace, ensure GPU is requested and DISPLAY/GL vars are handled by image. Access via Coder web UI.",
+    "required_keywords": [
+      "Coder",
+      "workspace",
+      "GPU",
+      "GLX",
+      "EGL"
+    ],
+    "nice_to_have": [
+      "template",
+      "web UI",
+      "desktop"
+    ]
+  },
+  {
+    "id": "nrp-006",
+    "question": "Which container\u2014docker-nvidia-glx-desktop or docker-nvidia-egl-desktop\u2014should users prefer, and why?",
+    "source_hint": "NRP",
+    "gold_notes": "GLX for X11/legacy OpenGL GUI apps; EGL for headless/offscreen or modern contexts; EGL is often more stable on servers.",
+    "required_keywords": [
+      "GLX",
+      "X11",
+      "EGL",
+      "headless"
+    ],
+    "nice_to_have": [
+      "offscreen",
+      "servers"
+    ]
+  },
+  {
+    "id": "nrp-007",
+    "question": "What is the process for exposing a GUI Desktop container via an Ingress and negotiating DNS correctly?",
+    "source_hint": "NRP",
+    "gold_notes": "Create a Service, then an Ingress with host rule and TLS. Add DNS (A/CNAME) to cluster ingress. Ensure path/port mapping matches the desktop app proxy.",
+    "required_keywords": [
+      "Ingress",
+      "Service",
+      "TLS",
+      "DNS"
+    ],
+    "nice_to_have": [
+      "host",
+      "CNAME",
+      "A record"
+    ]
+  },
+  {
+    "id": "nrp-008",
+    "question": "How does a new user log into Nautilus via CILogon and get added to their namespace?",
+    "source_hint": "NRP",
+    "gold_notes": "Use CILogon/OIDC login selecting institution. Namespace admin grants access via RoleBinding to the user\u2019s identity. Then user gets kubectl context/credentials.",
+    "required_keywords": [
+      "CILogon",
+      "OIDC",
+      "RoleBinding",
+      "namespace"
+    ],
+    "nice_to_have": [
+      "kubectl",
+      "context"
+    ]
+  },
+  {
+    "id": "nrp-009",
+    "question": "What steps must a namespace admin follow to invite other users and manage namespace resources?",
+    "source_hint": "NRP",
+    "gold_notes": "Create Role/RoleBinding for users, manage ResourceQuota and LimitRange, optionally NetworkPolicy. Use kubectl to bind identities to roles.",
+    "required_keywords": [
+      "RoleBinding",
+      "Role",
+      "ResourceQuota"
+    ],
+    "nice_to_have": [
+      "LimitRange",
+      "NetworkPolicy",
+      "kubectl"
+    ]
+  },
+  {
+    "id": "nrp-010",
+    "question": "How do users flash an Alveo FPGA via the ESnet SmartNIC workflow on NRP?",
+    "source_hint": "NRP",
+    "gold_notes": "Use provided SmartNIC workflow/job to load bitstreams (xclbin). Run management tools (xbutil/xbmgmt) inside privileged pod; coordinate maintenance window.",
+    "required_keywords": [
+      "bitstream",
+      "xbutil",
+      "xbmgmt",
+      "SmartNIC"
+    ],
+    "nice_to_have": [
+      "xclbin",
+      "privileged",
+      "workflow"
+    ]
+  },
+  {
+    "id": "nrp-011",
+    "question": "What are the prerequisites (hugepages, IOMMU) for running DPDK on FPGA-equipped nodes?",
+    "source_hint": "NRP",
+    "gold_notes": "Enable hugepages on nodes/pods, IOMMU enabled in kernel, use vfio-pci/uio drivers, mount hugepages into pod.",
+    "required_keywords": [
+      "hugepages",
+      "IOMMU",
+      "vfio-pci"
+    ],
+    "nice_to_have": [
+      "uio",
+      "kernel parameters"
+    ]
+  },
+  {
+    "id": "nrp-012",
+    "question": "How do users configure a P4-programmable SmartNIC (e.g., Alveo U55C) using Kubernetes on NRP?",
+    "source_hint": "media.nrp.ai",
+    "gold_notes": "Build P4 to target, package artifacts in ConfigMap/Volume, deploy a pod/daemonset with device access, program the NIC via provided SDK, optionally SR-IOV/VF assignment.",
+    "required_keywords": [
+      "P4",
+      "ConfigMap",
+      "SDK",
+      "device access"
+    ],
+    "nice_to_have": [
+      "SR-IOV",
+      "DaemonSet"
+    ]
+  },
+  {
+    "id": "nrp-013",
+    "question": "How can users access and use Ceph-based S3 object storage within their namespace?",
+    "source_hint": "NRP storage",
+    "gold_notes": "Use Ceph Object Gateway (S3). Get Access/Secret keys, set endpoint URL and region in AWS SDK/CLI, create bucket, use path-style addressing if required.",
+    "required_keywords": [
+      "S3",
+      "endpoint",
+      "access key",
+      "secret key"
+    ],
+    "nice_to_have": [
+      "bucket",
+      "region",
+      "Ceph"
+    ]
+  },
+  {
+    "id": "nrp-014",
+    "question": "What service should users query to check the digital integrity of stored digital objects? (i.e., fixity service.)",
+    "source_hint": "docs.nrp.eosc.cz",
+    "gold_notes": "Use the Fixity service to verify checksums/integrity of stored objects.",
+    "required_keywords": [
+      "Fixity",
+      "checksum",
+      "integrity"
+    ],
+    "nice_to_have": [
+      "verify",
+      "service"
+    ]
+  },
+  {
+    "id": "nrp-015",
+    "question": "How do users run full-text metadata searches using the OpenSearch service provided on NRP?",
+    "source_hint": "NRP search",
+    "gold_notes": "Use OpenSearch endpoint with Query DSL or OpenSearch Dashboards; authenticate with provided creds; specify index and query fields.",
+    "required_keywords": [
+      "OpenSearch",
+      "index",
+      "Query DSL"
+    ],
+    "nice_to_have": [
+      "Dashboards",
+      "full-text"
+    ]
+  },
+  {
+    "id": "nrp-016",
+    "question": "How can users start an LLM inference session via the provided LLM service client on Nautilus?",
+    "source_hint": "media.nrp.ai",
+    "gold_notes": "Use the OpenAI-compatible client: set base_url to the NRP LLM endpoint, include API key/token, pass model name, call /v1/chat/completions or /v1/completions.",
+    "required_keywords": [
+      "OpenAI-compatible",
+      "base_url",
+      "API key",
+      "model"
+    ],
+    "nice_to_have": [
+      "/v1/chat/completions",
+      "client"
+    ]
+  },
+  {
+    "id": "nrp-017",
+    "question": "What steps are involved in fine-tuning an existing LLM (e.g., ClimateGPT) within NRP\u2019s training environment?",
+    "source_hint": "media.nrp.ai",
+    "gold_notes": "Prepare dataset in S3/PVC, use PEFT/LoRA with DeepSpeed/Accelerate on A100 nodes, checkpoint to S3, register model and serve via vLLM.",
+    "required_keywords": [
+      "LoRA",
+      "PEFT",
+      "A100",
+      "checkpoint"
+    ],
+    "nice_to_have": [
+      "DeepSpeed",
+      "S3",
+      "vLLM"
+    ]
+  },
+  {
+    "id": "nrp-018",
+    "question": "How is LLM access integrated into NRP\u2014especially regarding SDSC\u2019s LLM service transition?",
+    "source_hint": "media.nrp.ai / SDSC updates",
+    "gold_notes": "Access is via OpenAI-compatible endpoints; tokens managed by NRP/SDSC with ongoing transition\u2014users should use the new base URL and token distribution mechanism.",
+    "required_keywords": [
+      "OpenAI-compatible",
+      "token",
+      "base URL",
+      "transition"
+    ],
+    "nice_to_have": [
+      "SDSC",
+      "service"
+    ]
+  },
+  {
+    "id": "nrp-019",
+    "question": "How do users leverage Kubernetes Jobs vs. interactive pods in NRP for AI/ML workloads?",
+    "source_hint": "NRP best practices",
+    "gold_notes": "Use Jobs for batch/offline training/inference; use interactive pods or Coder workspaces for dev/debug/visualization. Keep interactive sessions short-lived.",
+    "required_keywords": [
+      "Jobs",
+      "interactive",
+      "batch",
+      "development"
+    ],
+    "nice_to_have": [
+      "Coder",
+      "debug"
+    ]
+  },
+  {
+    "id": "nrp-020",
+    "question": "What is the recommended way to compose systems (e.g., disaggregated GPUs/FPGAs) using GigaIO FabreX on NRP?",
+    "source_hint": "sdsc.edu",
+    "gold_notes": "Use FabreX fabric to compose disaggregated resources; coordinate with admins, request composed nodes; schedule workloads accordingly.",
+    "required_keywords": [
+      "FabreX",
+      "compose",
+      "disaggregated",
+      "admins"
+    ],
+    "nice_to_have": [
+      "GPU",
+      "FPGA",
+      "fabric"
+    ]
+  }
+]

@@ -24,17 +24,18 @@ def init_chat_model(model: str | None = None, **kwargs):
     global _debug_printed
 
     # Read envs (NRP first, then OPENAI as fallback)
-    nrp_api_key = os.environ.get("NRP_API_KEY") or os.environ.get("NRP") or os.environ.get("OPENAI_API_KEY") or "sk-gY3H4d_Xv4Qf2Ig-x5DjFw"
+    nrp_api_key = os.environ.get("NRP_API_KEY") or os.environ.get("NRP") 
     base_url = os.environ.get("NRP_BASE_URL", "https://llm.nrp-nautilus.io/")
-    model = model or os.environ.get("NRP_MODEL", "gemma3")
+    model = model or os.environ.get("NRP_MODEL")
 
     # Normalize /v1
     if not base_url.endswith("/v1"):
         base_url = base_url.rstrip("/") + "/v1"
 
     # Map to OpenAI client expectations too (some libs read only these)
-    os.environ.setdefault("OPENAI_API_KEY", nrp_api_key)
-    os.environ.setdefault("OPENAI_BASE_URL", base_url)
+    if nrp_api_key:
+        os.environ.setdefault("OPENAI_API_KEY", nrp_api_key)
+        os.environ.setdefault("OPENAI_BASE_URL", base_url)
 
     if not nrp_api_key:
         raise RuntimeError(

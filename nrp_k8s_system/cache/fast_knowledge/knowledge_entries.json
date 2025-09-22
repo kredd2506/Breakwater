@@ -1,0 +1,237 @@
+{
+  "know_0_1758145862": {
+    "id": "",
+    "content": "Getting Started with Nautilus Cluster",
+    "topic": "general",
+    "keywords": [],
+    "importance": 0.8,
+    "source_url": "https://nrp.ai/documentation/",
+    "last_updated": "1758145862"
+  },
+  "know_1_1758145862": {
+    "id": "",
+    "content": "Start using the cluster",
+    "topic": "general",
+    "keywords": [],
+    "importance": 0.6,
+    "source_url": "https://nrp.ai/documentation/",
+    "last_updated": "1758145862"
+  },
+  "know_0_1758145863": {
+    "id": "",
+    "content": "A New Way to Manage Resources on the National Research Platform (NRP)",
+    "topic": "general",
+    "keywords": [],
+    "importance": 0.8,
+    "source_url": "https://nrp.ai/documentation/userdocs/start/hierarchy",
+    "last_updated": "1758145863"
+  },
+  "know_1_1758145863": {
+    "id": "",
+    "content": "How It Works: The New Hierarchical System",
+    "topic": "general",
+    "keywords": [],
+    "importance": 0.6,
+    "source_url": "https://nrp.ai/documentation/userdocs/start/hierarchy",
+    "last_updated": "1758145863"
+  },
+  "know_2_1758145863": {
+    "id": "",
+    "content": "Getting Started: Your First Login",
+    "topic": "general",
+    "keywords": [],
+    "importance": 0.6,
+    "source_url": "https://nrp.ai/documentation/userdocs/start/hierarchy",
+    "last_updated": "1758145863"
+  },
+  "know_3_1758145863": {
+    "id": "",
+    "content": "Key Resources and How They\u2019re Managed",
+    "topic": "general",
+    "keywords": [],
+    "importance": 0.6,
+    "source_url": "https://nrp.ai/documentation/userdocs/start/hierarchy",
+    "last_updated": "1758145863"
+  },
+  "know_4_1758145863": {
+    "id": "",
+    "content": "Fair Share Scheduling & Resource Allocation",
+    "topic": "general",
+    "keywords": [],
+    "importance": 0.6,
+    "source_url": "https://nrp.ai/documentation/userdocs/start/hierarchy",
+    "last_updated": "1758145863"
+  },
+  "know_0_1758145864": {
+    "id": "",
+    "content": "Requesting special GPUs",
+    "topic": "gpu",
+    "keywords": [
+      "gpus"
+    ],
+    "importance": 1.0,
+    "source_url": "https://nrp.ai/documentation/userdocs/running/gpu-pods/",
+    "last_updated": "1758145864"
+  },
+  "know_1_1758145864": {
+    "id": "",
+    "content": "Requesting many GPUs",
+    "topic": "gpu",
+    "keywords": [
+      "gpus"
+    ],
+    "importance": 1.0,
+    "source_url": "https://nrp.ai/documentation/userdocs/running/gpu-pods/",
+    "last_updated": "1758145864"
+  },
+  "know_2_1758145864": {
+    "id": "",
+    "content": "Selecting CUDA version",
+    "topic": "gpu",
+    "keywords": [],
+    "importance": 0.8,
+    "source_url": "https://nrp.ai/documentation/userdocs/running/gpu-pods/",
+    "last_updated": "1758145864"
+  },
+  "know_3_1758145864": {
+    "id": "",
+    "content": "Adding Shared Memory (shm)",
+    "topic": "general",
+    "keywords": [],
+    "importance": 0.8,
+    "source_url": "https://nrp.ai/documentation/userdocs/running/gpu-pods/",
+    "last_updated": "1758145864"
+  },
+  "know_4_1758145864": {
+    "id": "",
+    "content": "StorageClass and accessModes mismatch",
+    "topic": "storage",
+    "keywords": [
+      "storageclass"
+    ],
+    "importance": 0.8,
+    "source_url": "https://nrp.ai/documentation/admindocs/storage/volume-mounting",
+    "last_updated": "1758145864"
+  },
+  "know_5_1758145864": {
+    "id": "",
+    "content": "How to reboot a node:",
+    "topic": "general",
+    "keywords": [],
+    "importance": 0.8,
+    "source_url": "https://nrp.ai/documentation/admindocs/storage/volume-mounting",
+    "last_updated": "1758145864"
+  },
+  "know_0_1758145865": {
+    "id": "",
+    "content": "Data sharing and collaboration tools",
+    "topic": "general",
+    "keywords": [],
+    "importance": 0.8,
+    "source_url": "https://nrp.ai/documentation/userdocs/start/resources",
+    "last_updated": "1758145865"
+  },
+  "know_1_1758145865": {
+    "id": "",
+    "content": "Artificial intelligence and LLM",
+    "topic": "general",
+    "keywords": [],
+    "importance": 0.8,
+    "source_url": "https://nrp.ai/documentation/userdocs/start/resources",
+    "last_updated": "1758145865"
+  },
+  "know_2_1758145865": {
+    "id": "",
+    "content": "Kubernetes operators (CRDs)",
+    "topic": "general",
+    "keywords": [
+      "kubernetes"
+    ],
+    "importance": 0.8,
+    "source_url": "https://nrp.ai/documentation/userdocs/start/resources",
+    "last_updated": "1758145865"
+  },
+  "know_0_1758145866": {
+    "id": "",
+    "content": "Calico Network Policies",
+    "topic": "networking",
+    "keywords": [],
+    "importance": 0.8,
+    "source_url": "https://nrp.ai/documentation/admindocs/participating/network",
+    "last_updated": "1758145866"
+  },
+  "know_0_1758145867": {
+    "id": "",
+    "content": "Using my own domain name",
+    "topic": "general",
+    "keywords": [],
+    "importance": 0.8,
+    "source_url": "https://nrp.ai/documentation/userdocs/running/ingress",
+    "last_updated": "1758145867"
+  },
+  "know_1_1758145867": {
+    "id": "",
+    "content": "Auto renewing the certificate",
+    "topic": "general",
+    "keywords": [],
+    "importance": 0.8,
+    "source_url": "https://nrp.ai/documentation/userdocs/running/ingress",
+    "last_updated": "1758145867"
+  },
+  "know_0_1758145868": {
+    "id": "",
+    "content": "Best Practices for File Access in shared filesystems",
+    "topic": "general",
+    "keywords": [],
+    "importance": 0.8,
+    "source_url": "https://nrp.ai/documentation/userdocs/storage/ceph/",
+    "last_updated": "1758145868"
+  },
+  "know_1_1758145868": {
+    "id": "",
+    "content": "Avoiding Write Conflicts in shared filesystems",
+    "topic": "general",
+    "keywords": [],
+    "importance": 0.8,
+    "source_url": "https://nrp.ai/documentation/userdocs/storage/ceph/",
+    "last_updated": "1758145868"
+  },
+  "know_2_1758145868": {
+    "id": "",
+    "content": "Recommended Strategies to Avoid Conflicts:",
+    "topic": "general",
+    "keywords": [],
+    "importance": 0.8,
+    "source_url": "https://nrp.ai/documentation/userdocs/storage/ceph/",
+    "last_updated": "1758145868"
+  },
+  "know_3_1758145868": {
+    "id": "",
+    "content": "Ceph filesystems data use",
+    "topic": "general",
+    "keywords": [],
+    "importance": 0.8,
+    "source_url": "https://nrp.ai/documentation/userdocs/storage/ceph/",
+    "last_updated": "1758145868"
+  },
+  "know_4_1758145868": {
+    "id": "",
+    "content": "Currently available storageClasses:",
+    "topic": "storage",
+    "keywords": [
+      "storageclasses"
+    ],
+    "importance": 0.8,
+    "source_url": "https://nrp.ai/documentation/userdocs/storage/ceph/",
+    "last_updated": "1758145868"
+  },
+  "know_5_1758145868": {
+    "id": "",
+    "content": "UCSD NVMe CephFS filesystem policy",
+    "topic": "general",
+    "keywords": [],
+    "importance": 0.8,
+    "source_url": "https://nrp.ai/documentation/userdocs/storage/ceph/",
+    "last_updated": "1758145868"
+  }
+}

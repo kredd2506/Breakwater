@@ -1,0 +1,237 @@
+NRP Kubernetes Agent - Output Format Specification
+Core Principles
+
+Safety warnings always appear first and prominently
+Clear separation between agent analysis and user actions
+Progressive disclosure based on workflow stage
+Consistent formatting across all response types
+Actionable next steps with explicit approval requirements
+
+Standard Response Template
+┌─ NRP KUBERNETES AGENT RESPONSE ────────────────────────┐
+│ [STAGE INDICATOR] Stage X/3: [Stage Name]              │
+└─────────────────────────────────────────────────────────┘
+
+🔴 CRITICAL WARNINGS (if any)
+[List of blocking issues that prevent progression]
+
+⚠️  IMPORTANT NOTICES (if any)  
+[Policy warnings and restrictions user must understand]
+
+📋 ANALYSIS SUMMARY
+Route: [KNOWLEDGE_QUERY|YAML_GENERATION|CRUD_OPERATION|HYBRID]
+Intent Confidence: [High|Medium|Low]
+Specialists Consulted: [Security, Template, Policy, Documentation, Validation]
+
+[MAIN CONTENT SECTION - varies by stage and route type]
+
+📚 RELATED RESOURCES
+- [Link 1]: [Brief explanation of relevance]
+- [Link 2]: [Brief explanation of relevance]
+
+🎯 NEXT STEPS
+[Clear, numbered actions for user to take]
+
+[USER APPROVAL PROMPT - if progression gate required]
+Stage-Specific Output Formats
+Stage 1: Policy Education Output
+┌─ NRP KUBERNETES AGENT RESPONSE ────────────────────────┐
+│ [STAGE 1/3] Policy Education & Safety Briefing        │
+└─────────────────────────────────────────────────────────┘
+
+⚠️  POLICY REQUIREMENTS FOR [Resource Type]
+- [Policy 1]: [Specific requirement with explanation]
+- [Policy 2]: [Specific requirement with explanation]
+- [Policy 3]: [Specific requirement with explanation]
+
+🚨 CRITICAL RESTRICTIONS
+- [Restriction 1]: [What this prevents and why]
+- [Restriction 2]: [What this prevents and why]
+
+💡 NRP COMPLIANCE ESSENTIALS
+Required Labels:
+  nrp.ai/project: "[project-name]"
+  nrp.ai/environment: "[dev|staging|prod]"
+
+Required Resource Limits:
+  CPU: [limit] | Memory: [limit] | Storage: [limit]
+
+Network Policies:
+  [Specific network restrictions for this resource type]
+
+📋 ANALYSIS SUMMARY
+Route: [Route Type]
+Specialists Consulted: Security, Policy, Documentation
+Risk Assessment: [Low|Medium|High] risk for violations
+
+📚 RELATED RESOURCES  
+- Kubernetes [Resource Type] Documentation: [Why relevant]
+- NRP [Policy Area] Best Practices: [Why relevant]
+
+🎯 UNDERSTANDING CHECK
+To proceed safely, you must understand:
+1. [Key policy point requiring acknowledgment]
+2. [Key restriction requiring acknowledgment]  
+3. [Key compliance requirement requiring acknowledgment]
+
+Type "I understand these requirements" to proceed to template generation.
+Stage 2: YAML Generation Output
+┌─ NRP KUBERNETES AGENT RESPONSE ────────────────────────┐
+│ [STAGE 2/3] Compliant YAML Generation                  │
+└─────────────────────────────────────────────────────────┘
+
+✅ POLICY COMPLIANCE VERIFIED
+All NRP requirements incorporated into generated configuration.
+
+📝 GENERATED YAML CONFIGURATION
+```yaml
+# NRP-Compliant [Resource Type] Configuration
+# Auto-generated with policy enforcement
+# Warnings: [Any specific warnings for this configuration]
+
+apiVersion: [version]
+kind: [ResourceType]
+metadata:
+  name: [name]
+  labels:
+    nrp.ai/project: "[project]"      # Required by NRP Policy
+    nrp.ai/environment: "[env]"      # Required by NRP Policy
+  annotations:
+    nrp.ai/compliance-verified: "true"
+spec:
+  # [Generated specification with policy compliance]
+⚠️  CONFIGURATION WARNINGS
+
+[Warning 1]: [Specific concern and mitigation]
+[Warning 2]: [Specific concern and mitigation]
+
+📋 ANALYSIS SUMMARY
+Template Used: [Best matching template from knowledge base]
+Specialists Consulted: Template, Policy, Security, Validation
+Compliance Score: [XX/100] - [Compliance level explanation]
+📚 RELATED RESOURCES
+
+[Resource Type] Production Guide: [Why this helps]
+NRP Deployment Best Practices: [Why this helps]
+
+🎯 REVIEW AND APPROVAL
+Please review the generated configuration:
+
+Verify the resource specifications meet your needs
+Confirm the NRP policy compliance annotations
+Check the resource limits and security context
+
+Type "okay" to proceed to deployment, or describe changes needed.
+
+### Stage 3: Kubernetes Execution Output
+┌─ NRP KUBERNETES AGENT RESPONSE ────────────────────────┐
+│ [STAGE 3/3] Kubernetes Deployment Execution           │
+└─────────────────────────────────────────────────────────┘
+🔒 FINAL SAFETY VALIDATION
+✅ Security scan: No vulnerabilities detected
+✅ Policy compliance: All NRP requirements satisfied
+✅ Resource validation: Configuration is valid
+✅ Cluster connectivity: Successfully connected to [cluster]
+🚀 DEPLOYMENT RESULTS
+Operation: [CREATE|UPDATE|DELETE] [ResourceType]/[name]
+Namespace: [namespace]
+Status: [SUCCESS|FAILED|PARTIAL]
+Resource Details:
+
+Name: [resource-name]
+Status: [current-status]
+Created: [timestamp]
+Resource Usage: [current-usage]
+
+📋 ANALYSIS SUMMARY
+Confidence Score: [XX]% (Required: 90%+ for execution)
+Specialists Consulted: All five specialists
+Deployment Strategy: [strategy-used]
+📚 MONITORING RESOURCES
+
+Kubernetes Dashboard: [Link to resource view]
+Resource Monitoring: [Link to metrics/logs]
+
+🎯 NEXT STEPS
+
+Monitor deployment status: kubectl get [resource-type] [name]
+Check logs if needed: kubectl logs [pod-name]
+[Any specific monitoring recommendations]
+
+📖 TEMPLATE LEARNING
+This successful deployment pattern has been saved for future use.
+Template ID: [auto-generated-id]
+Reusability Score: [score based on pattern analysis]
+
+## Error and Warning Output Formats
+
+### Blocking Error Format
+🔴 DEPLOYMENT BLOCKED
+Critical Issue: [Specific problem description]
+Policy Violated: [Specific NRP policy reference]
+Risk Level: [CRITICAL|HIGH]
+Required Actions:
+
+[Specific action to resolve]
+[Specific action to resolve]
+
+Cannot proceed until these issues are resolved.
+
+### Warning Format
+⚠️  CONFIGURATION WARNING
+Issue: [Specific concern]
+Impact: [What could happen]
+Recommendation: [How to address]
+You may proceed, but consider addressing this warning.
+
+## Route-Specific Content Variations
+
+### Knowledge Query Output
+📖 KNOWLEDGE RESPONSE
+[Comprehensive answer with NRP context]
+🔍 KEY POLICIES
+[Relevant policies with explanations]
+💡 PRACTICAL EXAMPLES
+[Code snippets or configuration examples]
+⚠️  COMMON PITFALLS
+[Things to avoid with explanations]
+
+### CRUD Operation Output
+⚡ CLUSTER OPERATION RESULTS
+Command Executed: [kubectl command or equivalent]
+Operation Result: [SUCCESS|FAILED|PARTIAL]
+Resource Status:
+[Current state of requested resources]
+Performance Impact:
+[Any cluster performance considerations]
+
+## CLI Command Output Examples
+
+### `nrp-agent ask` Output
+Uses Knowledge Query format with educational focus
+
+### `nrp-agent generate` Output  
+Uses full 3-stage progression (Policy → YAML → Approval)
+
+### `nrp-agent deploy` Output
+Uses Stage 3 execution format with deployment results
+
+### `nrp-agent list` Output
+Uses CRUD operation format with resource listings
+
+## Formatting Rules
+
+1. **Severity Order**: Critical warnings → Important notices → Analysis → Content → Resources → Next steps
+2. **Visual Hierarchy**: Use consistent symbols (🔴⚠️📋📚🎯) for rapid scanning
+3. **Actionable Language**: All next steps use imperative verbs
+4. **Citation Standards**: All policy references include specific NRP documentation links
+5. **Progress Indication**: Always show current stage and total stages
+6. **Approval Gates**: Explicit user confirmation requirements between stages
+
+## Responsive Design Principles
+
+- **Scannable**: Key information easily identifiable with symbols
+- **Progressive**: Information revealed based on user's current needs
+- **Contextual**: Related resources directly relevant to current task
+- **Safe**: Warnings and restrictions prominently displayed
+- **Actionable**: Clear next steps prevent user confusion

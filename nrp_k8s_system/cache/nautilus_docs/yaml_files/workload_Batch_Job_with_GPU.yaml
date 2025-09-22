@@ -1,0 +1,31 @@
+# Batch Job with GPU
+# Source: https://nrp-nautilus.io/docs/kubernetes/
+# Description: Kubernetes Job with GPU resources and time limits for batch processing
+# Category: workload
+# Resource Type: job
+# Tags: batch, job, gpu, resources
+# Complexity: intermediate
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: batch-job-example
+  namespace: gsoc
+spec:
+  activeDeadlineSeconds: 3600
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: worker
+        image: python:3.9
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+            memory: "8Gi"
+            cpu: "4"
+          requests:
+            nvidia.com/gpu: 1
+            memory: "4Gi"
+            cpu: "2"
+        command: ["python", "-c", "print('Starting batch job'); import time; time.sleep(10); print('Job completed successfully')"]

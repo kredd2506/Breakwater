@@ -1,0 +1,84 @@
+{
+  "_comment": "NRP Kubernetes Agent Output Format Configuration",
+  "_instructions": {
+    "symbols": "Customize emoji/symbols used in output",
+    "colors": "ANSI color codes (only used if use_colors is true)",
+    "formatting": "Visual formatting options",
+    "stage_names": "Names for the 3 workflow stages",
+    "specialists": "Available specialist consultants",
+    "compliance_thresholds": "Safety and compliance thresholds",
+    "output_sections": "Control which sections are shown"
+  },
+  "symbols": {
+    "critical_warning": "🔴",
+    "important_notice": "⚠️",
+    "analysis_summary": "📋",
+    "related_resources": "📚",
+    "next_steps": "🎯",
+    "success": "✅",
+    "failure": "❌",
+    "policy_requirements": "⚠️",
+    "critical_restrictions": "🚨",
+    "compliance_essentials": "💡",
+    "understanding_check": "🎯",
+    "yaml_config": "📝",
+    "safety_validation": "🔒",
+    "deployment_results": "🚀",
+    "monitoring": "📚",
+    "template_learning": "📖",
+    "knowledge_response": "📖",
+    "key_policies": "🔍",
+    "practical_examples": "💡",
+    "common_pitfalls": "⚠️",
+    "cluster_operations": "⚡",
+    "blocked_deployment": "🔴"
+  },
+  "colors": {
+    "critical": "\u001b[91m",
+    "warning": "\u001b[93m",
+    "success": "\u001b[92m",
+    "info": "\u001b[94m",
+    "reset": "\u001b[0m"
+  },
+  "formatting": {
+    "header_width": 53,
+    "use_colors": false,
+    "box_chars": {
+      "top_left": "┌",
+      "top_right": "┐",
+      "bottom_left": "└",
+      "bottom_right": "┘",
+      "horizontal": "─",
+      "vertical": "│"
+    }
+  },
+  "stage_names": {
+    "1": "Policy Education & Safety Briefing",
+    "2": "Compliant YAML Generation",
+    "3": "Kubernetes Deployment Execution"
+  },
+  "specialists": [
+    "Security",
+    "Template",
+    "Policy",
+    "Documentation",
+    "Validation"
+  ],
+  "compliance_thresholds": {
+    "minimum_confidence": 90,
+    "minimum_compliance_score": 85,
+    "risk_tolerance": "MEDIUM"
+  },
+  "output_sections": {
+    "always_show": [
+      "header",
+      "analysis_summary",
+      "next_steps"
+    ],
+    "conditional_show": [
+      "warnings",
+      "resources",
+      "approval_prompt"
+    ]
+  }
+}

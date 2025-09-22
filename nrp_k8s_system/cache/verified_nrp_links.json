@@ -1,0 +1,57 @@
+{
+  "verified_links": {
+    "base_documentation": "https://nrp.ai/documentation/",
+    "sections": {
+      "user_guide": {
+        "start": "https://nrp.ai/documentation/start/",
+        "tutorials": "https://nrp.ai/documentation/tutorials/",
+        "running": "https://nrp.ai/documentation/running/",
+        "jupyter": "https://nrp.ai/documentation/jupyter/",
+        "storage": "https://nrp.ai/documentation/storage/",
+        "development": "https://nrp.ai/documentation/development/"
+      },
+      "admin_guide": {
+        "base": "https://nrp.ai/documentation/admin/"
+      }
+    },
+    "external_resources": {
+      "gitlab": "https://gitlab.nrp-nautilus.io/",
+      "matrix_support": "https://matrix.to/"
+    }
+  },
+  "html_patterns": {
+    "yaml_blocks": {
+      "pattern": "<pre data-language=\"yaml\">",
+      "class_pattern": "class=\"expressive code\"",
+      "notes": "YAML examples are in <pre data-language=\"yaml\"> blocks with class expressive code",
+      "extraction_patterns": [
+        "<pre[^>]*data-language=[\"']yaml[\"'][^>]*class=[\"'][^\"']*expressive[^\"']*code[^\"']*[\"'][^>]*>(.*?)</pre>",
+        "<pre[^>]*class=[\"'][^\"']*expressive[^\"']*code[^\"']*[\"'][^>]*data-language=[\"']yaml[\"'][^>]*>(.*?)</pre>",
+        "<pre[^>]*data-language=[\"']yaml[\"'][^>]*>(.*?)</pre>"
+      ],
+      "test_status": "VERIFIED - All patterns working correctly"
+    },
+    "cautions": {
+      "class_pattern": "class=\"caution\"",
+      "complementary_pattern": "class=\"complementary caution\"",
+      "notes": "Cautions use class caution and complementary caution",
+      "extraction_patterns": [
+        "<[^>]*class=[\"'][^\"']*\\bcomplementary\\s+caution\\b[^\"']*[\"'][^>]*>(.*?)</[^>]*>",
+        "<[^>]*class=[\"'][^\"']*\\bcaution\\b[^\"']*[\"'][^>]*>(.*?)</[^>]*>"
+      ],
+      "test_status": "VERIFIED - All patterns working correctly"
+    },
+    "search": {
+      "shortcut": "Ctrl+K",
+      "element": "search input field"
+    }
+  },
+  "extraction_priorities": [
+    "GPU-related pages (A100, V100 specific examples)",
+    "Storage configuration with warnings",
+    "Kubernetes deployment templates",
+    "Best practices with cautions"
+  ],
+  "last_updated": "2025-01-15",
+  "user_reported_links": []
+}

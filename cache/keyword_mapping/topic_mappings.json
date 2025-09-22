@@ -1,0 +1,279 @@
+{
+  "admindocs": {
+    "topic": "admindocs",
+    "related_topics": [
+      "management",
+      "cluster",
+      "fpga",
+      "documentation",
+      "configuration"
+    ],
+    "keywords": [
+      "alveo",
+      "smartnic",
+      "admin",
+      "fpga",
+      "xrt",
+      "vivado"
+    ],
+    "pages": [
+      "https://nrp.ai/documentation/admindocs/cluster/fpga/"
+    ],
+    "parent_topic": null,
+    "child_topics": []
+  },
+  "management": {
+    "topic": "management",
+    "related_topics": [
+      "admindocs",
+      "cluster",
+      "fpga",
+      "documentation",
+      "configuration"
+    ],
+    "keywords": [
+      "alveo",
+      "smartnic",
+      "admin",
+      "fpga",
+      "xrt",
+      "vivado"
+    ],
+    "pages": [
+      "https://nrp.ai/documentation/admindocs/cluster/fpga/"
+    ],
+    "parent_topic": null,
+    "child_topics": []
+  },
+  "fpga": {
+    "topic": "fpga",
+    "related_topics": [
+      "admindocs",
+      "management",
+      "cluster",
+      "documentation",
+      "configuration"
+    ],
+    "keywords": [
+      "alveo",
+      "smartnic",
+      "admin",
+      "fpga",
+      "xrt",
+      "vivado"
+    ],
+    "pages": [
+      "https://nrp.ai/documentation/admindocs/cluster/fpga/"
+    ],
+    "parent_topic": "hardware",
+    "child_topics": []
+  },
+  "cluster": {
+    "topic": "cluster",
+    "related_topics": [
+      "admindocs",
+      "management",
+      "fpga",
+      "documentation",
+      "configuration"
+    ],
+    "keywords": [
+      "alveo",
+      "smartnic",
+      "admin",
+      "fpga",
+      "xrt",
+      "vivado"
+    ],
+    "pages": [
+      "https://nrp.ai/documentation/admindocs/cluster/fpga/"
+    ],
+    "parent_topic": null,
+    "child_topics": []
+  },
+  "documentation": {
+    "topic": "documentation",
+    "related_topics": [
+      "admindocs",
+      "userguide",
+      "computing",
+      "management",
+      "cluster",
+      "configuration",
+      "fpga",
+      "gpu",
+      "guide",
+      "storage"
+    ],
+    "keywords": [
+      "nvidia",
+      "container",
+      "kubernetes",
+      "persistent",
+      "alveo",
+      "filesystem",
+      "smartnic",
+      "resource",
+      "admin",
+      "fpga",
+      "xrt",
+      "volume",
+      "gpu",
+      "backup",
+      "vivado",
+      "storage"
+    ],
+    "pages": [
+      "https://nrp.ai/documentation/admindocs/cluster/fpga/",
+      "https://nrp.ai/documentation/userguide/storage/",
+      "https://nrp.ai/documentation/userguide/gpu/"
+    ],
+    "parent_topic": null,
+    "child_topics": []
+  },
+  "configuration": {
+    "topic": "configuration",
+    "related_topics": [
+      "admindocs",
+      "userguide",
+      "management",
+      "cluster",
+      "fpga",
+      "documentation",
+      "storage"
+    ],
+    "keywords": [
+      "persistent",
+      "alveo",
+      "filesystem",
+      "smartnic",
+      "admin",
+      "fpga",
+      "xrt",
+      "volume",
+      "storage",
+      "backup",
+      "vivado"
+    ],
+    "pages": [
+      "https://nrp.ai/documentation/admindocs/cluster/fpga/",
+      "https://nrp.ai/documentation/userguide/storage/"
+    ],
+    "parent_topic": null,
+    "child_topics": []
+  },
+  "userguide": {
+    "topic": "userguide",
+    "related_topics": [
+      "computing",
+      "documentation",
+      "gpu",
+      "guide",
+      "configuration",
+      "storage"
+    ],
+    "keywords": [
+      "nvidia",
+      "container",
+      "persistent",
+      "filesystem",
+      "resource",
+      "volume",
+      "gpu",
+      "backup",
+      "kubernetes",
+      "storage"
+    ],
+    "pages": [
+      "https://nrp.ai/documentation/userguide/storage/",
+      "https://nrp.ai/documentation/userguide/gpu/"
+    ],
+    "parent_topic": null,
+    "child_topics": []
+  },
+  "computing": {
+    "topic": "computing",
+    "related_topics": [
+      "documentation",
+      "userguide",
+      "guide",
+      "gpu"
+    ],
+    "keywords": [
+      "nvidia",
+      "container",
+      "resource",
+      "gpu",
+      "kubernetes"
+    ],
+    "pages": [
+      "https://nrp.ai/documentation/userguide/gpu/"
+    ],
+    "parent_topic": null,
+    "child_topics": []
+  },
+  "gpu": {
+    "topic": "gpu",
+    "related_topics": [
+      "documentation",
+      "userguide",
+      "computing",
+      "guide"
+    ],
+    "keywords": [
+      "nvidia",
+      "container",
+      "resource",
+      "gpu",
+      "kubernetes"
+    ],
+    "pages": [
+      "https://nrp.ai/documentation/userguide/gpu/"
+    ],
+    "parent_topic": "hardware",
+    "child_topics": []
+  },
+  "guide": {
+    "topic": "guide",
+    "related_topics": [
+      "documentation",
+      "userguide",
+      "computing",
+      "gpu"
+    ],
+    "keywords": [
+      "nvidia",
+      "container",
+      "resource",
+      "gpu",
+      "kubernetes"
+    ],
+    "pages": [
+      "https://nrp.ai/documentation/userguide/gpu/"
+    ],
+    "parent_topic": null,
+    "child_topics": [
+      "userguide"
+    ]
+  },
+  "storage": {
+    "topic": "storage",
+    "related_topics": [
+      "documentation",
+      "userguide",
+      "configuration"
+    ],
+    "keywords": [
+      "persistent",
+      "filesystem",
+      "volume",
+      "storage",
+      "backup"
+    ],
+    "pages": [
+      "https://nrp.ai/documentation/userguide/storage/"
+    ],
+    "parent_topic": "infrastructure",
+    "child_topics": []
+  }
+}

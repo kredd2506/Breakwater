@@ -1,0 +1,44 @@
+{
+  "job_examples": {
+    "optimized_batch_job": {
+      "file": "code/optimized_batch_job.yaml",
+      "title": "Optimized Batch Job",
+      "description": "Example of efficient batch job without excessive sleep",
+      "warnings": [
+        "Avoid long sleep periods",
+        "Set activeDeadlineSeconds"
+      ],
+      "best_practices": [
+        "Optimize for short runtime",
+        "Use appropriate resources"
+      ]
+    },
+    "finite_job_example": {
+      "file": "code/finite_job_example.yaml",
+      "title": "Finite Job Example",
+      "description": "Job with proper timeout and exit conditions",
+      "warnings": [
+        "Jobs should not run indefinitely",
+        "Use timeouts"
+      ],
+      "best_practices": [
+        "Set clear end conditions",
+        "Use activeDeadlineSeconds"
+      ]
+    }
+  },
+  "topics": {
+    "batch_jobs": [
+      "optimized_batch_job",
+      "finite_job_example"
+    ],
+    "runtime_optimization": [
+      "optimized_batch_job"
+    ],
+    "job_policies": [
+      "finite_job_example"
+    ]
+  },
+  "created": "2025-01-15",
+  "last_updated": "2025-01-15"
+}

@@ -1,0 +1,839 @@
+{
+  "discovery_metadata": {
+    "total_discovered_links": 131,
+    "base_url": "https://nrp.ai/documentation/",
+    "organized_sections": 2
+  },
+  "all_discovered_links": [
+    "https://nrp.ai/documentation/userdocs/running/virtualization-windows",
+    "https://nrp.ai/documentation/admindocs/upgrades/rook",
+    "https://nrp.ai/documentation/userdocs/start/hierarchy",
+    "https://nrp.ai/documentation/userdocs/storage/ceph",
+    "https://nrp.ai/documentation/admindocs/perfsonar/install",
+    "https://nrp.ai/documentation/userdocs/start/using-nautilus/",
+    "https://nrp.ai/documentation/admindocs/storage/ceph",
+    "https://nrp.ai/documentation/userdocs/tutorial/basic2",
+    "https://nrp.ai/documentation/userdocs/start/getting-started",
+    "https://nrp.ai/documentation/userdocs/running/monitoring",
+    "https://nrp.ai/documentation/userdocs/jupyter/jupyterhub",
+    "https://nrp.ai/documentation/userdocs/running/jobs/",
+    "https://nrp.ai/documentation/userdocs/jupyter/jupyterhub-service",
+    "https://nrp.ai/documentation/admindocs/cluster/jupyterlab-admin",
+    "https://nrp.ai/documentation/userdocs/fpgas/esnet_running",
+    "https://nrp.ai/documentation/admindocs/cluster/fpga",
+    "https://nrp.ai/documentation/userdocs/storage/purging",
+    "https://nrp.ai/documentation/userdocs/fpgas/esnet_building",
+    "https://nrp.ai/documentation/userdocs/start/using-nautilus",
+    "https://nrp.ai/documentation/userdocs/tutorial/basic/",
+    "https://nrp.ai/documentation/userdocs/running/virtualization-general",
+    "https://nrp.ai/documentation/admindocs/storage/user-pvc-issues",
+    "https://nrp.ai/documentation/userdocs/running/dask-cluster",
+    "https://nrp.ai/documentation/userdocs/storage/ceph-s3",
+    "https://nrp.ai/documentation/admindocs/storage/origin-sync",
+    "https://nrp.ai/documentation/admindocs/upgrades/cert-manager",
+    "https://nrp.ai/documentation/userdocs/storage/ceph/",
+    "https://nrp.ai/documentation/userdocs/storage/cvmfs",
+    "https://nrp.ai/documentation/userdocs/start/resources",
+    "https://nrp.ai/documentation/userdocs/running/virtualization-ubuntu",
+    "https://nrp.ai/documentation/userdocs/tutorial/basic",
+    "https://nrp.ai/documentation/userdocs/running/io-jobs",
+    "https://nrp.ai/documentation/admindocs/fiona/remove",
+    "https://nrp.ai/documentation/userdocs/tutorial/storage",
+    "https://nrp.ai/documentation/userdocs/running/gpu-pods",
+    "https://nrp.ai/documentation/userdocs/fpgas/vivado-vitis",
+    "https://nrp.ai/documentation/admindocs/upgrades/elasticsearch",
+    "https://nrp.ai/documentation/userdocs/networks/fabric",
+    "https://nrp.ai/documentation/userdocs/tutorial/jobs",
+    "https://nrp.ai/documentation/admindocs/cluster/sense-multus",
+    "https://nrp.ai/documentation/userdocs/development/k8s-integration",
+    "https://nrp.ai/documentation/userdocs/running/io-jobs/",
+    "https://nrp.ai/documentation/userdocs/fpgas/esnet",
+    "https://nrp.ai/documentation/admindocs/upgrades/piraeus-operator",
+    "https://nrp.ai/documentation/admindocs/links/software",
+    "https://nrp.ai/documentation/userdocs/storage/linstor",
+    "https://nrp.ai/documentation/userdocs/running/kubernetes",
+    "https://nrp.ai/documentation/userdocs/start/policies",
+    "https://nrp.ai/documentation/admindocs/perfsonar/a2a",
+    "https://nrp.ai/documentation/userdocs/start/glossary",
+    "https://nrp.ai/documentation/userdocs/running/scripts",
+    "https://nrp.ai/documentation/admindocs/nrp/topology",
+    "https://nrp.ai/documentation/userdocs/storage/intro",
+    "https://nrp.ai/documentation/admindocs/upgrades/nextcloud",
+    "https://nrp.ai/documentation/userdocs/jupyter/jupyter-pod/",
+    "https://nrp.ai/documentation/admindocs/fiona/install",
+    "https://nrp.ai/documentation/userdocs/ai/qaic",
+    "https://nrp.ai/documentation/userdocs/running/gpu-pods/",
+    "https://nrp.ai/documentation/userdocs/ai/llm-managed/",
+    "https://nrp.ai/documentation/userdocs/running/cpu-only",
+    "https://nrp.ai/documentation/userdocs/ai/llm-jupyterhub",
+    "https://nrp.ai/documentation/userdocs/tutorial/nrp-software",
+    "https://nrp.ai/documentation/userdocs/development/gitlab",
+    "https://nrp.ai/documentation/userdocs/ai/llm-managed",
+    "https://nrp.ai/documentation/admindocs/participating/new-contributor-guide",
+    "https://nrp.ai/documentation/admindocs/upgrades/kubevirt",
+    "https://nrp.ai/documentation/admindocs/upgrades/intro",
+    "https://nrp.ai/documentation/userdocs/start/getting-started/",
+    "https://nrp.ai/documentation/admindocs/vault/cert",
+    "https://nrp.ai/documentation/userdocs/running/ray-cluster",
+    "https://nrp.ai/documentation/admindocs/upgrades/calico",
+    "https://nrp.ai/documentation/admindocs/cluster/cluster-user-mgmt",
+    "https://nrp.ai/documentation/userdocs/development/private-repos",
+    "https://nrp.ai/documentation/userdocs/coder/coder",
+    "https://nrp.ai/documentation/admindocs/fiona/builds",
+    "https://nrp.ai/documentation/admindocs/upgrades/coder",
+    "https://nrp.ai/documentation/admindocs/upgrades/k8s",
+    "https://nrp.ai/documentation/admindocs/upgrades/prometheus",
+    "https://nrp.ai/documentation/admindocs/upgrades/postgres-operator",
+    "https://nrp.ai/documentation/admindocs/cluster/node-mgmt",
+    "https://nrp.ai/documentation/admindocs/cluster/mig-gpus",
+    "https://nrp.ai/documentation/userdocs/start/resources/",
+    "https://nrp.ai/documentation/userdocs/running/globus-connect",
+    "https://nrp.ai/documentation/admindocs/upgrades/nodes",
+    "https://nrp.ai/documentation/admindocs/storage/broken-drives",
+    "https://nrp.ai/documentation/userdocs/start/support",
+    "https://nrp.ai/documentation/userdocs/storage/jwt-credential",
+    "https://nrp.ai/documentation/userdocs/running/jobs",
+    "https://nrp.ai/documentation/admindocs/storage/ceph-performance",
+    "https://nrp.ai/documentation/userdocs/start/policies/",
+    "https://nrp.ai/documentation/userdocs/jupyter/jupyter-pod",
+    "https://nrp.ai/documentation/userdocs/running/sci-img",
+    "https://nrp.ai/documentation/userdocs/running/special",
+    "https://nrp.ai/documentation/admindocs/links/knowledge-base",
+    "https://nrp.ai/documentation/userdocs/tutorial/images",
+    "https://nrp.ai/documentation/userdocs/running/ingress",
+    "https://nrp.ai/documentation/admindocs/upgrades/jupyterhub",
+    "https://nrp.ai/documentation/userdocs/running/federation",
+    "https://nrp.ai/documentation/admindocs/storage/ceph-s3",
+    "https://nrp.ai/documentation/userdocs/storage/nextcloud",
+    "https://nrp.ai/documentation/admindocs/participating/network",
+    "https://nrp.ai/documentation/admindocs/cluster/ray-operator",
+    "https://nrp.ai/documentation/admindocs/cluster/kubevirt-gpu",
+    "https://nrp.ai/documentation/userdocs/running/sci-img/",
+    "https://nrp.ai/documentation/userdocs/fpgas/esnet_development",
+    "https://nrp.ai/documentation/admindocs/cluster/security-tools",
+    "https://nrp.ai/documentation/userdocs/storage/move-data",
+    "https://nrp.ai/documentation/admindocs/links/vis",
+    "https://nrp.ai/documentation/userdocs/tutorial/scheduling",
+    "https://nrp.ai/documentation/userdocs/running/fast-img-download",
+    "https://nrp.ai/documentation/admindocs/storage/volume-mounting",
+    "https://nrp.ai/documentation/admindocs/cluster/authentik",
+    "https://nrp.ai/documentation/userdocs/coder/deploy",
+    "https://nrp.ai/documentation/userdocs/storage/move-data/",
+    "https://nrp.ai/documentation/userdocs/running/postgres",
+    "https://nrp.ai/documentation/userdocs/running/scheduling",
+    "https://nrp.ai/documentation/userdocs/running/kubeflow",
+    "https://nrp.ai/documentation/admindocs/upgrades/gitlab",
+    "https://nrp.ai/documentation/userdocs/storage/local",
+    "https://nrp.ai/documentation/userdocs/start/faq/",
+    "https://nrp.ai/documentation/userdocs/storage/syncthing",
+    "https://nrp.ai/documentation/admindocs/cluster/cdn-svc",
+    "https://nrp.ai/documentation/userdocs/running/cpu-throttling",
+    "https://nrp.ai/documentation/userdocs/tutorial/docker",
+    "https://nrp.ai/documentation/admindocs/perfsonar/maddash",
+    "https://nrp.ai/documentation/userdocs/tutorial/introduction",
+    "https://nrp.ai/documentation/userdocs/running/long-idle",
+    "https://nrp.ai/documentation/admindocs/links/hardware",
+    "https://nrp.ai/documentation/userdocs/running/gui-desktop",
+    "https://nrp.ai/documentation/userdocs/tutorial/debugging",
+    "https://nrp.ai/documentation/userdocs/start/faq"
+  ],
+  "organized_navigation": {
+    "userdocs": {
+      "running": [
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/virtualization-windows",
+          "path": "running/virtualization-windows",
+          "subsection": "virtualization-windows"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/monitoring",
+          "path": "running/monitoring",
+          "subsection": "monitoring"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/jobs/",
+          "path": "running/jobs",
+          "subsection": "jobs"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/virtualization-general",
+          "path": "running/virtualization-general",
+          "subsection": "virtualization-general"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/dask-cluster",
+          "path": "running/dask-cluster",
+          "subsection": "dask-cluster"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/virtualization-ubuntu",
+          "path": "running/virtualization-ubuntu",
+          "subsection": "virtualization-ubuntu"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/io-jobs",
+          "path": "running/io-jobs",
+          "subsection": "io-jobs"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/gpu-pods",
+          "path": "running/gpu-pods",
+          "subsection": "gpu-pods"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/io-jobs/",
+          "path": "running/io-jobs",
+          "subsection": "io-jobs"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/kubernetes",
+          "path": "running/kubernetes",
+          "subsection": "kubernetes"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/scripts",
+          "path": "running/scripts",
+          "subsection": "scripts"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/gpu-pods/",
+          "path": "running/gpu-pods",
+          "subsection": "gpu-pods"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/cpu-only",
+          "path": "running/cpu-only",
+          "subsection": "cpu-only"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/ray-cluster",
+          "path": "running/ray-cluster",
+          "subsection": "ray-cluster"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/globus-connect",
+          "path": "running/globus-connect",
+          "subsection": "globus-connect"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/jobs",
+          "path": "running/jobs",
+          "subsection": "jobs"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/sci-img",
+          "path": "running/sci-img",
+          "subsection": "sci-img"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/special",
+          "path": "running/special",
+          "subsection": "special"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/ingress",
+          "path": "running/ingress",
+          "subsection": "ingress"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/federation",
+          "path": "running/federation",
+          "subsection": "federation"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/sci-img/",
+          "path": "running/sci-img",
+          "subsection": "sci-img"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/fast-img-download",
+          "path": "running/fast-img-download",
+          "subsection": "fast-img-download"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/postgres",
+          "path": "running/postgres",
+          "subsection": "postgres"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/scheduling",
+          "path": "running/scheduling",
+          "subsection": "scheduling"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/kubeflow",
+          "path": "running/kubeflow",
+          "subsection": "kubeflow"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/cpu-throttling",
+          "path": "running/cpu-throttling",
+          "subsection": "cpu-throttling"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/long-idle",
+          "path": "running/long-idle",
+          "subsection": "long-idle"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/running/gui-desktop",
+          "path": "running/gui-desktop",
+          "subsection": "gui-desktop"
+        }
+      ],
+      "start": [
+        {
+          "url": "https://nrp.ai/documentation/userdocs/start/hierarchy",
+          "path": "start/hierarchy",
+          "subsection": "hierarchy"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/start/using-nautilus/",
+          "path": "start/using-nautilus",
+          "subsection": "using-nautilus"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/start/getting-started",
+          "path": "start/getting-started",
+          "subsection": "getting-started"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/start/using-nautilus",
+          "path": "start/using-nautilus",
+          "subsection": "using-nautilus"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/start/resources",
+          "path": "start/resources",
+          "subsection": "resources"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/start/policies",
+          "path": "start/policies",
+          "subsection": "policies"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/start/glossary",
+          "path": "start/glossary",
+          "subsection": "glossary"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/start/getting-started/",
+          "path": "start/getting-started",
+          "subsection": "getting-started"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/start/resources/",
+          "path": "start/resources",
+          "subsection": "resources"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/start/support",
+          "path": "start/support",
+          "subsection": "support"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/start/policies/",
+          "path": "start/policies",
+          "subsection": "policies"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/start/faq/",
+          "path": "start/faq",
+          "subsection": "faq"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/start/faq",
+          "path": "start/faq",
+          "subsection": "faq"
+        }
+      ],
+      "storage": [
+        {
+          "url": "https://nrp.ai/documentation/userdocs/storage/ceph",
+          "path": "storage/ceph",
+          "subsection": "ceph"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/storage/purging",
+          "path": "storage/purging",
+          "subsection": "purging"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/storage/ceph-s3",
+          "path": "storage/ceph-s3",
+          "subsection": "ceph-s3"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/storage/ceph/",
+          "path": "storage/ceph",
+          "subsection": "ceph"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/storage/cvmfs",
+          "path": "storage/cvmfs",
+          "subsection": "cvmfs"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/storage/linstor",
+          "path": "storage/linstor",
+          "subsection": "linstor"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/storage/intro",
+          "path": "storage/intro",
+          "subsection": "intro"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/storage/jwt-credential",
+          "path": "storage/jwt-credential",
+          "subsection": "jwt-credential"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/storage/nextcloud",
+          "path": "storage/nextcloud",
+          "subsection": "nextcloud"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/storage/move-data",
+          "path": "storage/move-data",
+          "subsection": "move-data"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/storage/move-data/",
+          "path": "storage/move-data",
+          "subsection": "move-data"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/storage/local",
+          "path": "storage/local",
+          "subsection": "local"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/storage/syncthing",
+          "path": "storage/syncthing",
+          "subsection": "syncthing"
+        }
+      ],
+      "tutorial": [
+        {
+          "url": "https://nrp.ai/documentation/userdocs/tutorial/basic2",
+          "path": "tutorial/basic2",
+          "subsection": "basic2"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/tutorial/basic/",
+          "path": "tutorial/basic",
+          "subsection": "basic"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/tutorial/basic",
+          "path": "tutorial/basic",
+          "subsection": "basic"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/tutorial/storage",
+          "path": "tutorial/storage",
+          "subsection": "storage"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/tutorial/jobs",
+          "path": "tutorial/jobs",
+          "subsection": "jobs"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/tutorial/nrp-software",
+          "path": "tutorial/nrp-software",
+          "subsection": "nrp-software"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/tutorial/images",
+          "path": "tutorial/images",
+          "subsection": "images"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/tutorial/scheduling",
+          "path": "tutorial/scheduling",
+          "subsection": "scheduling"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/tutorial/docker",
+          "path": "tutorial/docker",
+          "subsection": "docker"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/tutorial/introduction",
+          "path": "tutorial/introduction",
+          "subsection": "introduction"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/tutorial/debugging",
+          "path": "tutorial/debugging",
+          "subsection": "debugging"
+        }
+      ],
+      "jupyter": [
+        {
+          "url": "https://nrp.ai/documentation/userdocs/jupyter/jupyterhub",
+          "path": "jupyter/jupyterhub",
+          "subsection": "jupyterhub"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/jupyter/jupyterhub-service",
+          "path": "jupyter/jupyterhub-service",
+          "subsection": "jupyterhub-service"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/jupyter/jupyter-pod/",
+          "path": "jupyter/jupyter-pod",
+          "subsection": "jupyter-pod"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/jupyter/jupyter-pod",
+          "path": "jupyter/jupyter-pod",
+          "subsection": "jupyter-pod"
+        }
+      ],
+      "fpgas": [
+        {
+          "url": "https://nrp.ai/documentation/userdocs/fpgas/esnet_running",
+          "path": "fpgas/esnet_running",
+          "subsection": "esnet_running"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/fpgas/esnet_building",
+          "path": "fpgas/esnet_building",
+          "subsection": "esnet_building"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/fpgas/vivado-vitis",
+          "path": "fpgas/vivado-vitis",
+          "subsection": "vivado-vitis"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/fpgas/esnet",
+          "path": "fpgas/esnet",
+          "subsection": "esnet"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/fpgas/esnet_development",
+          "path": "fpgas/esnet_development",
+          "subsection": "esnet_development"
+        }
+      ],
+      "networks": [
+        {
+          "url": "https://nrp.ai/documentation/userdocs/networks/fabric",
+          "path": "networks/fabric",
+          "subsection": "fabric"
+        }
+      ],
+      "development": [
+        {
+          "url": "https://nrp.ai/documentation/userdocs/development/k8s-integration",
+          "path": "development/k8s-integration",
+          "subsection": "k8s-integration"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/development/gitlab",
+          "path": "development/gitlab",
+          "subsection": "gitlab"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/development/private-repos",
+          "path": "development/private-repos",
+          "subsection": "private-repos"
+        }
+      ],
+      "ai": [
+        {
+          "url": "https://nrp.ai/documentation/userdocs/ai/qaic",
+          "path": "ai/qaic",
+          "subsection": "qaic"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/ai/llm-managed/",
+          "path": "ai/llm-managed",
+          "subsection": "llm-managed"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/ai/llm-jupyterhub",
+          "path": "ai/llm-jupyterhub",
+          "subsection": "llm-jupyterhub"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/ai/llm-managed",
+          "path": "ai/llm-managed",
+          "subsection": "llm-managed"
+        }
+      ],
+      "coder": [
+        {
+          "url": "https://nrp.ai/documentation/userdocs/coder/coder",
+          "path": "coder/coder",
+          "subsection": "coder"
+        },
+        {
+          "url": "https://nrp.ai/documentation/userdocs/coder/deploy",
+          "path": "coder/deploy",
+          "subsection": "deploy"
+        }
+      ]
+    },
+    "admindocs": {
+      "upgrades": [
+        {
+          "url": "https://nrp.ai/documentation/admindocs/upgrades/rook",
+          "path": "upgrades/rook",
+          "subsection": "rook"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/upgrades/cert-manager",
+          "path": "upgrades/cert-manager",
+          "subsection": "cert-manager"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/upgrades/elasticsearch",
+          "path": "upgrades/elasticsearch",
+          "subsection": "elasticsearch"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/upgrades/piraeus-operator",
+          "path": "upgrades/piraeus-operator",
+          "subsection": "piraeus-operator"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/upgrades/nextcloud",
+          "path": "upgrades/nextcloud",
+          "subsection": "nextcloud"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/upgrades/kubevirt",
+          "path": "upgrades/kubevirt",
+          "subsection": "kubevirt"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/upgrades/intro",
+          "path": "upgrades/intro",
+          "subsection": "intro"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/upgrades/calico",
+          "path": "upgrades/calico",
+          "subsection": "calico"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/upgrades/coder",
+          "path": "upgrades/coder",
+          "subsection": "coder"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/upgrades/k8s",
+          "path": "upgrades/k8s",
+          "subsection": "k8s"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/upgrades/prometheus",
+          "path": "upgrades/prometheus",
+          "subsection": "prometheus"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/upgrades/postgres-operator",
+          "path": "upgrades/postgres-operator",
+          "subsection": "postgres-operator"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/upgrades/nodes",
+          "path": "upgrades/nodes",
+          "subsection": "nodes"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/upgrades/jupyterhub",
+          "path": "upgrades/jupyterhub",
+          "subsection": "jupyterhub"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/upgrades/gitlab",
+          "path": "upgrades/gitlab",
+          "subsection": "gitlab"
+        }
+      ],
+      "perfsonar": [
+        {
+          "url": "https://nrp.ai/documentation/admindocs/perfsonar/install",
+          "path": "perfsonar/install",
+          "subsection": "install"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/perfsonar/a2a",
+          "path": "perfsonar/a2a",
+          "subsection": "a2a"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/perfsonar/maddash",
+          "path": "perfsonar/maddash",
+          "subsection": "maddash"
+        }
+      ],
+      "storage": [
+        {
+          "url": "https://nrp.ai/documentation/admindocs/storage/ceph",
+          "path": "storage/ceph",
+          "subsection": "ceph"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/storage/user-pvc-issues",
+          "path": "storage/user-pvc-issues",
+          "subsection": "user-pvc-issues"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/storage/origin-sync",
+          "path": "storage/origin-sync",
+          "subsection": "origin-sync"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/storage/broken-drives",
+          "path": "storage/broken-drives",
+          "subsection": "broken-drives"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/storage/ceph-performance",
+          "path": "storage/ceph-performance",
+          "subsection": "ceph-performance"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/storage/ceph-s3",
+          "path": "storage/ceph-s3",
+          "subsection": "ceph-s3"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/storage/volume-mounting",
+          "path": "storage/volume-mounting",
+          "subsection": "volume-mounting"
+        }
+      ],
+      "cluster": [
+        {
+          "url": "https://nrp.ai/documentation/admindocs/cluster/jupyterlab-admin",
+          "path": "cluster/jupyterlab-admin",
+          "subsection": "jupyterlab-admin"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/cluster/fpga",
+          "path": "cluster/fpga",
+          "subsection": "fpga"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/cluster/sense-multus",
+          "path": "cluster/sense-multus",
+          "subsection": "sense-multus"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/cluster/cluster-user-mgmt",
+          "path": "cluster/cluster-user-mgmt",
+          "subsection": "cluster-user-mgmt"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/cluster/node-mgmt",
+          "path": "cluster/node-mgmt",
+          "subsection": "node-mgmt"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/cluster/mig-gpus",
+          "path": "cluster/mig-gpus",
+          "subsection": "mig-gpus"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/cluster/ray-operator",
+          "path": "cluster/ray-operator",
+          "subsection": "ray-operator"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/cluster/kubevirt-gpu",
+          "path": "cluster/kubevirt-gpu",
+          "subsection": "kubevirt-gpu"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/cluster/security-tools",
+          "path": "cluster/security-tools",
+          "subsection": "security-tools"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/cluster/authentik",
+          "path": "cluster/authentik",
+          "subsection": "authentik"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/cluster/cdn-svc",
+          "path": "cluster/cdn-svc",
+          "subsection": "cdn-svc"
+        }
+      ],
+      "fiona": [
+        {
+          "url": "https://nrp.ai/documentation/admindocs/fiona/remove",
+          "path": "fiona/remove",
+          "subsection": "remove"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/fiona/install",
+          "path": "fiona/install",
+          "subsection": "install"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/fiona/builds",
+          "path": "fiona/builds",
+          "subsection": "builds"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://nrp.ai/documentation/admindocs/links/software",
+          "path": "links/software",
+          "subsection": "software"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/links/knowledge-base",
+          "path": "links/knowledge-base",
+          "subsection": "knowledge-base"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/links/vis",
+          "path": "links/vis",
+          "subsection": "vis"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/links/hardware",
+          "path": "links/hardware",
+          "subsection": "hardware"
+        }
+      ],
+      "nrp": [
+        {
+          "url": "https://nrp.ai/documentation/admindocs/nrp/topology",
+          "path": "nrp/topology",
+          "subsection": "topology"
+        }
+      ],
+      "participating": [
+        {
+          "url": "https://nrp.ai/documentation/admindocs/participating/new-contributor-guide",
+          "path": "participating/new-contributor-guide",
+          "subsection": "new-contributor-guide"
+        },
+        {
+          "url": "https://nrp.ai/documentation/admindocs/participating/network",
+          "path": "participating/network",
+          "subsection": "network"
+        }
+      ],
+      "vault": [
+        {
+          "url": "https://nrp.ai/documentation/admindocs/vault/cert",
+          "path": "vault/cert",
+          "subsection": "cert"
+        }
+      ]
+    }
+  }
+}

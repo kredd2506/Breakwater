@@ -1,0 +1,20 @@
+How to Test the Server:
+
+  🔧 Easy Testing Instructions:
+
+  1. Start the Fixed Server:
+  cd "D:\Gsoc Gitlab\ocean\breakwater\mcp"
+  python ultimate_fastmcp_server.py
+  1. The server now runs on port 8021 with all our fixes!
+  2. Test the Fixes:
+  cd "D:\Gsoc Gitlab\ocean\breakwater\mcp"
+  python simple_test.py
+
+  🔍 What You'll See if Fixes Work:
+  - ✅ LLM Sampling: Large response with fallback content (not "Client does not support sampling")
+  - ✅ Configuration Generator: No parameter validation errors
+  - ✅ All 6 tools available including sampling tools
+
+  ⚠️ What You'll See if Server Needs Restart:
+  - ❌ LLM Sampling: "Client does not support sampling" error
+  - ❌ Configuration Generator: "Unexpected keyword argument" errors

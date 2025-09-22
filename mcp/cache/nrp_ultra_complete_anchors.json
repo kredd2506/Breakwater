@@ -1,0 +1,2221 @@
+{
+  "metadata": {
+    "total_pages": 115,
+    "total_anchors": 1386,
+    "failed_urls": [],
+    "scraped_urls": [
+      "https://nrp.ai/documentation/userdocs/ai/llm-managed",
+      "https://nrp.ai/documentation/userdocs/start/faq",
+      "https://nrp.ai/documentation/userdocs/storage/nextcloud",
+      "https://nrp.ai/documentation/userdocs/running/special",
+      "https://nrp.ai/documentation/admindocs/storage/ceph-performance",
+      "https://nrp.ai/documentation/admindocs/upgrades/k8s",
+      "https://nrp.ai/documentation/admindocs/cluster/security-tools",
+      "https://nrp.ai/documentation/userdocs/development/gitlab",
+      "https://nrp.ai/documentation/admindocs/cluster/node-mgmt",
+      "https://nrp.ai/documentation/userdocs/start/resources",
+      "https://nrp.ai/documentation/admindocs/storage/ceph",
+      "https://nrp.ai/documentation/admindocs/storage/user-pvc-issues",
+      "https://nrp.ai/documentation/userdocs/tutorial/basic2",
+      "https://nrp.ai/documentation/admindocs/upgrades/kubevirt",
+      "https://nrp.ai/documentation/userdocs/running/postgres",
+      "https://nrp.ai/documentation/userdocs/running/virtualization-windows",
+      "https://nrp.ai/documentation/userdocs/running/gui-desktop",
+      "https://nrp.ai/documentation/userdocs/ai/llm-jupyterhub",
+      "https://nrp.ai/documentation/userdocs/storage/ceph-s3",
+      "https://nrp.ai/documentation/userdocs/start/resources/",
+      "https://nrp.ai/documentation/admindocs/cluster/mig-gpus",
+      "https://nrp.ai/documentation/admindocs/cluster/ray-operator",
+      "https://nrp.ai/documentation/userdocs/fpgas/esnet_running",
+      "https://nrp.ai/documentation/userdocs/tutorial/images",
+      "https://nrp.ai/documentation/admindocs/cluster/cluster-user-mgmt",
+      "https://nrp.ai/documentation/userdocs/running/fast-img-download",
+      "https://nrp.ai/documentation/userdocs/fpgas/esnet",
+      "https://nrp.ai/documentation/userdocs/running/long-idle",
+      "https://nrp.ai/documentation/userdocs/storage/ceph",
+      "https://nrp.ai/documentation/admindocs/fiona/builds",
+      "https://nrp.ai/documentation/userdocs/fpgas/vivado-vitis",
+      "https://nrp.ai/documentation/userdocs/jupyter/jupyter-pod/",
+      "https://nrp.ai/documentation/userdocs/running/jobs/",
+      "https://nrp.ai/documentation/userdocs/ai/qaic",
+      "https://nrp.ai/documentation/userdocs/storage/syncthing",
+      "https://nrp.ai/documentation/admindocs/upgrades/gitlab",
+      "https://nrp.ai/documentation/userdocs/start/support",
+      "https://nrp.ai/documentation/userdocs/running/globus-connect",
+      "https://nrp.ai/documentation/userdocs/running/scripts",
+      "https://nrp.ai/documentation/userdocs/running/gpu-pods/",
+      "https://nrp.ai/documentation/admindocs/upgrades/jupyterhub",
+      "https://nrp.ai/documentation/admindocs/upgrades/piraeus-operator",
+      "https://nrp.ai/documentation/userdocs/start/policies",
+      "https://nrp.ai/documentation/userdocs/running/io-jobs/",
+      "https://nrp.ai/documentation/admindocs/storage/origin-sync",
+      "https://nrp.ai/documentation/admindocs/upgrades/coder",
+      "https://nrp.ai/documentation/userdocs/running/virtualization-general",
+      "https://nrp.ai/documentation/admindocs/participating/network",
+      "https://nrp.ai/documentation/admindocs/storage/broken-drives",
+      "https://nrp.ai/documentation/userdocs/running/dask-cluster",
+      "https://nrp.ai/documentation/userdocs/running/kubernetes",
+      "https://nrp.ai/documentation/admindocs/links/software",
+      "https://nrp.ai/documentation/userdocs/running/cpu-only",
+      "https://nrp.ai/documentation/userdocs/jupyter/jupyter-pod",
+      "https://nrp.ai/documentation/userdocs/running/monitoring",
+      "https://nrp.ai/documentation/admindocs/vault/cert",
+      "https://nrp.ai/documentation/userdocs/coder/deploy",
+      "https://nrp.ai/documentation/userdocs/running/io-jobs",
+      "https://nrp.ai/documentation/userdocs/tutorial/nrp-software",
+      "https://nrp.ai/documentation/userdocs/storage/purging",
+      "https://nrp.ai/documentation/admindocs/upgrades/elasticsearch",
+      "https://nrp.ai/documentation/userdocs/coder/coder",
+      "https://nrp.ai/documentation/admindocs/storage/ceph-s3",
+      "https://nrp.ai/documentation/admindocs/participating/new-contributor-guide",
+      "https://nrp.ai/documentation/admindocs/fiona/install",
+      "https://nrp.ai/documentation/admindocs/upgrades/calico",
+      "https://nrp.ai/documentation/userdocs/start/getting-started",
+      "https://nrp.ai/documentation/admindocs/cluster/sense-multus",
+      "https://nrp.ai/documentation/admindocs/perfsonar/a2a",
+      "https://nrp.ai/documentation/userdocs/running/scheduling",
+      "https://nrp.ai/documentation/userdocs/jupyter/jupyterhub",
+      "https://nrp.ai/documentation/admindocs/upgrades/postgres-operator",
+      "https://nrp.ai/documentation/userdocs/jupyter/jupyterhub-service",
+      "https://nrp.ai/documentation/userdocs/running/cpu-throttling",
+      "https://nrp.ai/documentation/userdocs/start/using-nautilus/",
+      "https://nrp.ai/documentation/userdocs/tutorial/introduction",
+      "https://nrp.ai/documentation/userdocs/ai/llm-managed/",
+      "https://nrp.ai/documentation/userdocs/running/jobs",
+      "https://nrp.ai/documentation/userdocs/running/sci-img",
+      "https://nrp.ai/documentation/admindocs/upgrades/nextcloud",
+      "https://nrp.ai/documentation/userdocs/start/policies/",
+      "https://nrp.ai/documentation/userdocs/start/using-nautilus",
+      "https://nrp.ai/documentation/userdocs/running/ingress",
+      "https://nrp.ai/documentation/admindocs/upgrades/cert-manager",
+      "https://nrp.ai/documentation/userdocs/storage/ceph/",
+      "https://nrp.ai/documentation/userdocs/start/hierarchy",
+      "https://nrp.ai/documentation/userdocs/fpgas/esnet_development",
+      "https://nrp.ai/documentation/admindocs/upgrades/prometheus",
+      "https://nrp.ai/documentation/userdocs/storage/move-data/",
+      "https://nrp.ai/documentation/admindocs/cluster/kubevirt-gpu",
+      "https://nrp.ai/documentation/admindocs/upgrades/intro",
+      "https://nrp.ai/documentation/admindocs/upgrades/rook",
+      "https://nrp.ai/documentation/userdocs/start/getting-started/",
+      "https://nrp.ai/documentation/userdocs/tutorial/storage",
+      "https://nrp.ai/documentation/userdocs/storage/linstor",
+      "https://nrp.ai/documentation/admindocs/cluster/jupyterlab-admin",
+      "https://nrp.ai/documentation/admindocs/cluster/fpga",
+      "https://nrp.ai/documentation/userdocs/start/glossary",
+      "https://nrp.ai/documentation/admindocs/fiona/remove",
+      "https://nrp.ai/documentation/admindocs/perfsonar/maddash",
+      "https://nrp.ai/documentation/userdocs/tutorial/basic/",
+      "https://nrp.ai/documentation/userdocs/running/gpu-pods",
+      "https://nrp.ai/documentation/admindocs/storage/volume-mounting",
+      "https://nrp.ai/documentation/userdocs/running/kubeflow",
+      "https://nrp.ai/documentation/userdocs/storage/intro",
+      "https://nrp.ai/documentation/userdocs/storage/local",
+      "https://nrp.ai/documentation/admindocs/links/vis",
+      "https://nrp.ai/documentation/userdocs/storage/cvmfs",
+      "https://nrp.ai/documentation/admindocs/nrp/topology",
+      "https://nrp.ai/documentation/userdocs/running/sci-img/",
+      "https://nrp.ai/documentation/userdocs/fpgas/esnet_building",
+      "https://nrp.ai/documentation/userdocs/start/faq/",
+      "https://nrp.ai/documentation/userdocs/running/ray-cluster",
+      "https://nrp.ai/documentation/userdocs/networks/fabric",
+      "https://nrp.ai/documentation/userdocs/storage/move-data",
+      "https://nrp.ai/documentation/userdocs/running/virtualization-ubuntu",
+      "https://nrp.ai/documentation/userdocs/tutorial/scheduling",
+      "https://nrp.ai/documentation/admindocs/cluster/authentik",
+      "https://nrp.ai/documentation/userdocs/tutorial/basic",
+      "https://nrp.ai/documentation/admindocs/links/knowledge-base",
+      "https://nrp.ai/documentation/userdocs/development/k8s-integration",
+      "https://nrp.ai/documentation/admindocs/cluster/cdn-svc",
+      "https://nrp.ai/documentation/admindocs/upgrades/nodes",
+      "https://nrp.ai/documentation/admindocs/perfsonar/install",
+      "https://nrp.ai/documentation/userdocs/tutorial/jobs",
+      "https://nrp.ai/documentation/userdocs/storage/jwt-credential",
+      "https://nrp.ai/documentation/userdocs/development/private-repos",
+      "https://nrp.ai/documentation/admindocs/links/hardware",
+      "https://nrp.ai/documentation/userdocs/tutorial/docker",
+      "https://nrp.ai/documentation/userdocs/running/federation",
+      "https://nrp.ai/documentation/userdocs/tutorial/debugging"
+    ],
+    "discovery_total": 131,
+    "coverage_percentage": 100.0,
+    "scraping_timestamp": "2025-09-21 21:16:23"
+  },
+  "pages": {
+    "running_cpu_throttling": {
+      "url": "https://nrp.ai/documentation/userdocs/running/cpu-throttling",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "storage_cvmfs": {
+      "url": "https://nrp.ai/documentation/userdocs/storage/cvmfs",
+      "anchors": [
+        "_top",
+        "existing-subpaths",
+        "observablehq-plot-1a8ef9e9",
+        "osdf-origins",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "using-osg-caches-and-origins-data-via-cvmfs"
+      ],
+      "anchor_count": 11
+    },
+    "start_resources": {
+      "url": "https://nrp.ai/documentation/userdocs/start/resources/",
+      "anchors": [
+        "_top",
+        "artificial-intelligence-and-llm",
+        "computations",
+        "compute",
+        "data-sharing-and-collaboration-tools",
+        "databases",
+        "kubernetes-operators-crds",
+        "network-monitoring",
+        "others",
+        "others-1",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 16
+    },
+    "ai_llm_jupyterhub": {
+      "url": "https://nrp.ai/documentation/userdocs/ai/llm-jupyterhub",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "storage_ceph": {
+      "url": "https://nrp.ai/documentation/userdocs/storage/ceph/",
+      "anchors": [
+        "_top",
+        "avoiding-write-conflicts-in-shared-filesystems",
+        "best-practices-for-file-access-in-shared-filesystems",
+        "ceph-filesystems-data-use",
+        "currently-available-storageclasses",
+        "observablehq-plot-087dc8ea",
+        "recommended-strategies-to-avoid-conflicts",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "ucsd-nvme-cephfs-filesystem-policy"
+      ],
+      "anchor_count": 14
+    },
+    "running_sci_img": {
+      "url": "https://nrp.ai/documentation/userdocs/running/sci-img/",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "perfsonar_install": {
+      "url": "https://nrp.ai/documentation/admindocs/perfsonar/install",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "running_special": {
+      "url": "https://nrp.ai/documentation/userdocs/running/special",
+      "anchors": [
+        "_top",
+        "all-taints",
+        "other-taints",
+        "reservations",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "taint-name-mappings-from-old-to-new-system",
+        "theme-icons"
+      ],
+      "anchor_count": 11
+    },
+    "running_cpu_only": {
+      "url": "https://nrp.ai/documentation/userdocs/running/cpu-only",
+      "anchors": [
+        "_top",
+        "running-large-cpu-only-jobs",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 8
+    },
+    "tutorial_docker": {
+      "url": "https://nrp.ai/documentation/userdocs/tutorial/docker",
+      "anchors": [
+        "_top",
+        "building-image",
+        "docker-and-nautilus",
+        "exporting-image",
+        "installing-docker",
+        "introduction",
+        "prerequisites",
+        "running-image",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 14
+    },
+    "tutorial_nrp_software": {
+      "url": "https://nrp.ai/documentation/userdocs/tutorial/nrp-software",
+      "anchors": [
+        "1-put-installation-instructions-in-a-dockerfile",
+        "2-build-the-image",
+        "3-push-the-image-to-a-container-registry",
+        "_top",
+        "accessing-unpacked-container-images",
+        "creating-a-pvc-volume-with-the-spec-storageclassname-cvmfs",
+        "creating-data-container-images",
+        "distributing-container-images-on-cvmfs",
+        "learning-objectives",
+        "mount-the-cvmfs-pvc-in-customized-jupyterhub-deployment",
+        "option-1-mount-the-entire-cvmfs",
+        "option-2-mount-the-nrp-softwareopensciencegridorg-repo-specifically",
+        "prerequisites",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "using-the-cvmfs-pvc-in-pods"
+      ],
+      "anchor_count": 20
+    },
+    "running_virtualization_ubuntu": {
+      "url": "https://nrp.ai/documentation/userdocs/running/virtualization-ubuntu",
+      "anchors": [
+        "_top",
+        "example-of-an-ubuntu-vm-with-large-local-disk-on-linstor",
+        "fixing-the-network-issue",
+        "running-the-ubuntu-live-vm",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "using-linux-gui"
+      ],
+      "anchor_count": 11
+    },
+    "links_knowledge_base": {
+      "url": "https://nrp.ai/documentation/admindocs/links/knowledge-base",
+      "anchors": [
+        "_top",
+        "docs-blogs-and-other-links",
+        "get-involved-in-nrp",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 9
+    },
+    "ai_llm_managed": {
+      "url": "https://nrp.ai/documentation/userdocs/ai/llm-managed/",
+      "anchors": [
+        "_top",
+        "api-access-to-llms-via-envoy",
+        "api-access-to-llms-via-litellm",
+        "available-models",
+        "bashcurl",
+        "chat-interfaces",
+        "example-python-code",
+        "examples",
+        "python-code",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 15
+    },
+    "perfsonar_maddash": {
+      "url": "https://nrp.ai/documentation/admindocs/perfsonar/maddash",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "workshop-materials"
+      ],
+      "anchor_count": 8
+    },
+    "tutorial_basic": {
+      "url": "https://nrp.ai/documentation/userdocs/tutorial/basic/",
+      "anchors": [
+        "_top",
+        "a-simple-yaml-file",
+        "cleaning-up",
+        "creating-yaml-files-dynamically",
+        "deployment-1",
+        "explore-the-system",
+        "launch-a-simple-pod",
+        "learning-objectives",
+        "lets-examine-the-pods-networking",
+        "lets-transform-our-pod-into-a-deployment",
+        "list-cluster-nodes",
+        "list-deployments",
+        "list-pods",
+        "list-processes-running-in-your-namespace",
+        "list-services",
+        "looking-at-pod1yaml-again",
+        "next-steps",
+        "pod1",
+        "prerequisites",
+        "setup-your-first-pod-with-yaml",
+        "shutdown-the-originall",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "testing-statelessness",
+        "testing-statelessness-with-deployments",
+        "theme-icons"
+      ],
+      "anchor_count": 29
+    },
+    "tutorial_images": {
+      "url": "https://nrp.ai/documentation/userdocs/tutorial/images",
+      "anchors": [
+        "_top",
+        "changing-an-existing-image",
+        "extending-an-existing-image",
+        "finding-container-images-and-building-your-own",
+        "images",
+        "learning-objectives",
+        "prerequisites",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "the-end",
+        "theme-icons"
+      ],
+      "anchor_count": 14
+    },
+    "running_io_jobs": {
+      "url": "https://nrp.ai/documentation/userdocs/running/io-jobs/",
+      "anchors": [
+        "_top",
+        "adjust-ephemeral-size-to-your-data-volume-otherwise-pod-can-be-killed-by-kubernetes",
+        "large-dataset-sampling-strategies-that-work-and-issues-to-watch-out-for",
+        "ram-disk",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 10
+    },
+    "tutorial_introduction": {
+      "url": "https://nrp.ai/documentation/userdocs/tutorial/introduction",
+      "anchors": [
+        "-what-is-nautilus",
+        "_top",
+        "but-how-much-does-it-cost",
+        "getting-help",
+        "nautilusIntroduction",
+        "now-lets-get-started",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "steps-to-successful-nautilus-use",
+        "theme-icons",
+        "what-if-i-dont-think-i-have-time-to-learn-a-bunch-of-new-skills",
+        "why-use-nautilus"
+      ],
+      "anchor_count": 15
+    },
+    "development_gitlab": {
+      "url": "https://nrp.ai/documentation/userdocs/development/gitlab",
+      "anchors": [
+        "_top",
+        "build-better-containers",
+        "cloud-ide",
+        "multiarch-builds",
+        "other-development-information",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "step-1-create-a-git-repo",
+        "step-2-use-containers-registry",
+        "step-3-continuous-integration-automation",
+        "theme-icons",
+        "use-s3-to-store-large-files-collections-and-access-those-during-builds",
+        "using-the-sysbox-provided-docker"
+      ],
+      "anchor_count": 16
+    },
+    "start_using_nautilus": {
+      "url": "https://nrp.ai/documentation/userdocs/start/using-nautilus",
+      "anchors": [
+        "_top",
+        "coder-platform",
+        "container-images",
+        "how-to-use-the-cluster",
+        "jupyterhub-platform",
+        "kubernetes",
+        "kubernetes-concepts",
+        "namespace",
+        "pod-job-and-deployment",
+        "resource-allocation",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "storage",
+        "system-load",
+        "theme-icons"
+      ],
+      "anchor_count": 18
+    },
+    "participating_new_contributor_guide": {
+      "url": "https://nrp.ai/documentation/admindocs/participating/new-contributor-guide",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "running_long_idle": {
+      "url": "https://nrp.ai/documentation/userdocs/running/long-idle",
+      "anchors": [
+        "_top",
+        "quickly-stopping-and-starting-the-pod",
+        "running-an-idle-deployment",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 9
+    },
+    "running_ingress": {
+      "url": "https://nrp.ai/documentation/userdocs/running/ingress",
+      "anchors": [
+        "_top",
+        "auto-renewing-the-certificate",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "using-my-own-domain-name"
+      ],
+      "anchor_count": 9
+    },
+    "upgrades_jupyterhub": {
+      "url": "https://nrp.ai/documentation/admindocs/upgrades/jupyterhub",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "updating-external-images-definitions"
+      ],
+      "anchor_count": 8
+    },
+    "fiona_remove": {
+      "url": "https://nrp.ai/documentation/admindocs/fiona/remove",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "links_hardware": {
+      "url": "https://nrp.ai/documentation/admindocs/links/hardware",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "running_gpu_pods": {
+      "url": "https://nrp.ai/documentation/userdocs/running/gpu-pods/",
+      "anchors": [
+        "_top",
+        "adding-shared-memory-shm",
+        "choosing-gpu-type",
+        "observablehq-chart-35acf314",
+        "requesting-many-gpus",
+        "requesting-special-gpus",
+        "running-gpu-pods",
+        "selecting-cuda-version",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 14
+    },
+    "upgrades_kubevirt": {
+      "url": "https://nrp.ai/documentation/admindocs/upgrades/kubevirt",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "running_federation": {
+      "url": "https://nrp.ai/documentation/userdocs/running/federation",
+      "anchors": [
+        "_top",
+        "before-start",
+        "check-if-the-proxy-and-delegate-pods-are-running-on-source-and-target-cluster-respectively",
+        "check-if-the-virual-node-is-up",
+        "create-a-config-file-named-config_sa-that-includes-the-token-emitted-for-the-service-account-that-you-just-created",
+        "create-a-service-account-in-nautilus-cluster-for-your-cluster-to-access",
+        "create-a-source-object-in-the-same-namespace-use-the-same-service-account-name-you-used-in-the-previous-step",
+        "create-a-target-object-referencing-the-secret-we-just-created",
+        "create-the-secret-holding-credentials-to-access-target-cluster",
+        "establishing-cluster-federation-from-your-cluster-to-nautilus-cluster-via-admiralty",
+        "label-the-namespace-as-being-federated",
+        "on-nautilus-cluster-target",
+        "on-your-cluster-source",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "try-to-run-a-federated-pod-by-adding-the-annotation"
+      ],
+      "anchor_count": 20
+    },
+    "fpgas_vivado_vitis": {
+      "url": "https://nrp.ai/documentation/userdocs/fpgas/vivado-vitis",
+      "anchors": [
+        "_top",
+        "overview",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "steps",
+        "theme-icons",
+        "using-fpgas-with-vivado-and-vitis-on-coder",
+        "workflow"
+      ],
+      "anchor_count": 11
+    },
+    "tutorial_basic2": {
+      "url": "https://nrp.ai/documentation/userdocs/tutorial/basic2",
+      "anchors": [
+        "_top",
+        "a-container-that-has-curl",
+        "check-your-web-servers-are-running-and-get-their-ip-addresses",
+        "exposing-public-services",
+        "horizontal-scaling",
+        "ingressyaml",
+        "launch-the-deployment",
+        "learning-objectives",
+        "lets-build-a-pod-to-examine-our-deployment",
+        "lets-launch-multiple-web-servers",
+        "load-balancing",
+        "prerequisites",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "svc2yaml",
+        "theme-icons"
+      ],
+      "anchor_count": 19
+    },
+    "start_getting_started": {
+      "url": "https://nrp.ai/documentation/userdocs/start/getting-started/",
+      "anchors": [
+        "_top",
+        "cluster-access-via-kubectl",
+        "get-access-and-log-in",
+        "get-access-and-log-in-deprecated",
+        "gui-tools-for-kubernetes",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "updating-namespace-membership",
+        "use-the-cluster"
+      ],
+      "anchor_count": 13
+    },
+    "running_gui_desktop": {
+      "url": "https://nrp.ai/documentation/userdocs/running/gui-desktop",
+      "anchors": [
+        "_top",
+        "conclusion",
+        "container-customization",
+        "container-start",
+        "customization",
+        "dns-setup",
+        "exposing-the-container",
+        "gpu-accelerated-selkies",
+        "gpu-resource-request",
+        "gpu-vs-cpu-encoding",
+        "hardware-encoding",
+        "performance-considerations",
+        "reproducibility-in-containers",
+        "secret-generation",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "usage"
+      ],
+      "anchor_count": 21
+    },
+    "storage_ceph_s3": {
+      "url": "https://nrp.ai/documentation/userdocs/storage/ceph-s3",
+      "anchors": [
+        "_top",
+        "access",
+        "ceph-filesystems-data-use",
+        "credentials",
+        "delete-buckets-after-deleting-all-data",
+        "delete-data",
+        "delete-data-from-buckets",
+        "example",
+        "give-multiple-users-full-access-to-the-bucket",
+        "host-a-file-for-public-download",
+        "observablehq-plot-087dc8ea",
+        "s3-cookbook",
+        "s3-regions-settings",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "step-1-upload-the-file-to-your-bucket",
+        "step-2-set-the-bucket-policy-for-public-access",
+        "step-3-set-public-access-control-on-a-specific-object",
+        "step-4-verify-public-access",
+        "theme-icons",
+        "uploading-files",
+        "using-cyberduck",
+        "using-rclone",
+        "using-s3cmd",
+        "using-the-aws-cli",
+        "using-the-aws-s3-tool"
+      ],
+      "anchor_count": 29
+    },
+    "tutorial_debugging": {
+      "url": "https://nrp.ai/documentation/userdocs/tutorial/debugging",
+      "anchors": [
+        "_top",
+        "debugging",
+        "implement-error-logging",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "step-by-step-diagnosis-of-errors-in-kubernetes",
+        "theme-icons"
+      ],
+      "anchor_count": 10
+    },
+    "upgrades_intro": {
+      "url": "https://nrp.ai/documentation/admindocs/upgrades/intro",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "upgrades_elasticsearch": {
+      "url": "https://nrp.ai/documentation/admindocs/upgrades/elasticsearch",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "storage_nextcloud": {
+      "url": "https://nrp.ai/documentation/userdocs/storage/nextcloud",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "using-nextcloud-from-shell"
+      ],
+      "anchor_count": 8
+    },
+    "start_faq": {
+      "url": "https://nrp.ai/documentation/userdocs/start/faq/",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "networks_fabric": {
+      "url": "https://nrp.ai/documentation/userdocs/networks/fabric",
+      "anchors": [
+        "1-prerequisites",
+        "2-fabric-setup",
+        "21-install-dependencies",
+        "22-configure-fabric-environment",
+        "23-create-the-fabric-ucsd-slice",
+        "24-configure-the-interface",
+        "3-kubernetes-setup",
+        "31-configure-kubernetes-client",
+        "32-create-pod-with-vlan-attachment",
+        "4-connectivity-test",
+        "41-configure-ip-address-on-pod",
+        "42-test-from-nautilus-to-fabric",
+        "43-test-from-fabric-to-nautilus",
+        "5-interactive-access",
+        "51-ssh-into-fabric-node",
+        "52-kubectl-access-to-the-nautilus-pod",
+        "6-cleanup",
+        "_top",
+        "seamless-experimentation-across-fabric-and-nautilus",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 25
+    },
+    "participating_network": {
+      "url": "https://nrp.ai/documentation/admindocs/participating/network",
+      "anchors": [
+        "_top",
+        "calico-network-policies",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 8
+    },
+    "vault_cert": {
+      "url": "https://nrp.ai/documentation/admindocs/vault/cert",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "using-cert-manager-to-generate-a-certificate-from-vault-nsi-example"
+      ],
+      "anchor_count": 8
+    },
+    "running_monitoring": {
+      "url": "https://nrp.ai/documentation/userdocs/running/monitoring",
+      "anchors": [
+        "_top",
+        "cometml",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "tensorboard",
+        "theme-icons"
+      ],
+      "anchor_count": 9
+    },
+    "running_ray_cluster": {
+      "url": "https://nrp.ai/documentation/userdocs/running/ray-cluster",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "tutorial_jobs": {
+      "url": "https://nrp.ai/documentation/userdocs/tutorial/jobs",
+      "anchors": [
+        "_top",
+        "learning-objectives",
+        "prerequisites",
+        "running-batch-jobs",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "the-end",
+        "theme-icons"
+      ],
+      "anchor_count": 11
+    },
+    "cluster_ray_operator": {
+      "url": "https://nrp.ai/documentation/admindocs/cluster/ray-operator",
+      "anchors": [
+        "_top",
+        "allow-other-namespaces-to-create-ray-resources",
+        "cleaning-up-kuberay-operator",
+        "deploying-the-kuberay-operator",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 10
+    },
+    "jupyter_jupyterhub": {
+      "url": "https://nrp.ai/documentation/userdocs/jupyter/jupyterhub",
+      "anchors": [
+        "_top",
+        "adding-images-to-your-configuration",
+        "adding-your-own-container-image",
+        "admin-users",
+        "allowed-users",
+        "allowing-custom-anaconda-environments",
+        "authentication",
+        "automatic-deployment",
+        "basic-culling-setup",
+        "building-and-pushing-your-image",
+        "configuration",
+        "create-the-namespace",
+        "creating-custom-container-images",
+        "culling-configuration",
+        "culling-parameters",
+        "customization",
+        "documentation",
+        "extending-existing-images",
+        "good-practices",
+        "initial-setup",
+        "install-helm-and-download-the-helm-chart",
+        "limit-access-to-your-university",
+        "limit-who-has-access",
+        "option-1-extend-existing-images",
+        "option-2-build-from-scratch",
+        "register-cilogon-application",
+        "shared-storage",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "understanding-the-values-template",
+        "use-git",
+        "verification",
+        "why-deploy-your-own-jupyterhub"
+      ],
+      "anchor_count": 37
+    },
+    "cluster_sense_multus": {
+      "url": "https://nrp.ai/documentation/admindocs/cluster/sense-multus",
+      "anchors": [
+        "_top",
+        "create-a-new-instance-from-the--button-in-the-bottom-right-corner",
+        "fill-in-the-fields-specifying-the-configuration-for-the-l2-path-you-want-you-can-view-and-search-for-uris-in-the-visualization-tab",
+        "select-the-service-profile-you-want-these-will-be-provided-and-already-populated-by-the-esnet-sense-team",
+        "specify-an-alias-for-the-instance-name",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "step-1-create-the-sense-path",
+        "step-1a-extra-using-the-api",
+        "step-2-configure-the-node",
+        "step-3-create-a-multus-networkattachmentdefinition",
+        "step-4-create-a-pod",
+        "step-5-verify-connectivity",
+        "theme-icons",
+        "you-can-view-the-status-failuresuccess-and-logs-after-hitting-submit"
+      ],
+      "anchor_count": 18
+    },
+    "upgrades_calico": {
+      "url": "https://nrp.ai/documentation/admindocs/upgrades/calico",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "upgrading-calico"
+      ],
+      "anchor_count": 8
+    },
+    "cluster_kubevirt_gpu": {
+      "url": "https://nrp.ai/documentation/admindocs/cluster/kubevirt-gpu",
+      "anchors": [
+        "_top",
+        "conclusion",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "step-1-cordon-and-drain-the-node",
+        "step-10-install-driverctl",
+        "step-11-bind-the-gpu-to-vfio-pci",
+        "step-12-check-if-the-devices-are-bound-to-vfio-pci",
+        "step-13-verify-daemonset-for-gpu-management",
+        "step-14-add-the-gpu-resource-name-to-kubevirt",
+        "step-15-restart-the-daemonset-pod",
+        "step-2-label-the-node",
+        "step-3-ssh-into-the-node",
+        "step-4-record-installed-nvidia-driver-names",
+        "step-5-uninstall-all-nvidia-drivers",
+        "step-6-enable-iommu-and-shut-down-the-node",
+        "step-7-enable-iommu-in-bios",
+        "step-8-start-the-node-back-up",
+        "step-9-verify-driver-removal",
+        "theme-icons"
+      ],
+      "anchor_count": 23
+    },
+    "development_k8s_integration": {
+      "url": "https://nrp.ai/documentation/userdocs/development/k8s-integration",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "cluster_cluster_user_mgmt": {
+      "url": "https://nrp.ai/documentation/admindocs/cluster/cluster-user-mgmt",
+      "anchors": [
+        "_top",
+        "add-a-user-to-a-namespace",
+        "demote-an-admin-to-user",
+        "managing-user-roles",
+        "promote-a-user-to-admin",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 11
+    },
+    "development_private_repos": {
+      "url": "https://nrp.ai/documentation/userdocs/development/private-repos",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "fpgas_esnet_development": {
+      "url": "https://nrp.ai/documentation/userdocs/fpgas/esnet_development",
+      "anchors": [
+        "_top",
+        "development-notebook-13-writing-and-testing-a-p4-program",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "step-1-set-up-environment",
+        "step-2-clone-the-reposirtory",
+        "step-3-p4-experiments",
+        "step-4-control-plane-table-entries",
+        "technical-information-for-reproducing-this-experiment-in-a-different-environment",
+        "test-environment",
+        "theme-icons"
+      ],
+      "anchor_count": 14
+    },
+    "fpgas_esnet": {
+      "url": "https://nrp.ai/documentation/userdocs/fpgas/esnet",
+      "anchors": [
+        "_top",
+        "esnet-smartnic-tools-on-coder",
+        "overview-of-the-esnet-smartnic-framework",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "workflows"
+      ],
+      "anchor_count": 10
+    },
+    "running_jobs": {
+      "url": "https://nrp.ai/documentation/userdocs/running/jobs",
+      "anchors": [
+        "_top",
+        "ai:tabler:brand-gitlab",
+        "fair-queueing",
+        "logs",
+        "private-repo",
+        "pulling-code-from-git",
+        "retries",
+        "running-several-bash-commands",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 14
+    },
+    "cluster_security_tools": {
+      "url": "https://nrp.ai/documentation/admindocs/cluster/security-tools",
+      "anchors": [
+        "1-authentik-administration-interface",
+        "1-ipmi-port-scanner",
+        "2-elastic-syslog-dashboard",
+        "2-jupyterhub-security-scanner",
+        "3-falcosidekick-ui",
+        "_top",
+        "applications",
+        "dashboards",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 14
+    },
+    "coder_coder": {
+      "url": "https://nrp.ai/documentation/userdocs/coder/coder",
+      "anchors": [
+        "1-general-template",
+        "2-selkies",
+        "3-cudapytorchtensorflow",
+        "4-u55c-fpga-vitis-workflow",
+        "5-esnet-fpga-smartnics",
+        "6-other-environments",
+        "_top",
+        "coder-cli",
+        "coder-environment-documentation",
+        "git-integration",
+        "overview",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "workspace-management",
+        "workspace-templates"
+      ],
+      "anchor_count": 19
+    },
+    "jupyter_jupyterhub_service": {
+      "url": "https://nrp.ai/documentation/userdocs/jupyter/jupyterhub-service",
+      "anchors": [
+        "_top",
+        "available-images",
+        "jupyterhub-on-nautilus",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 9
+    },
+    "fiona_builds": {
+      "url": "https://nrp.ai/documentation/admindocs/fiona/builds",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "storage_move_data": {
+      "url": "https://nrp.ai/documentation/userdocs/storage/move-data/",
+      "anchors": [
+        "_top",
+        "inside-the-cluster",
+        "into-the-cluster",
+        "kubectl-cp-command",
+        "pulling-data-from-inside-the-pod",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "using-s3-object-storage-provided-by-the-cluster",
+        "using-secrets",
+        "using-the-nextcloud-instance"
+      ],
+      "anchor_count": 14
+    },
+    "links_software": {
+      "url": "https://nrp.ai/documentation/admindocs/links/software",
+      "anchors": [
+        "_top",
+        "ai-and-related",
+        "esnet-software",
+        "for-dtns",
+        "multi-cluster-orchestrators",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 11
+    },
+    "upgrades_piraeus_operator": {
+      "url": "https://nrp.ai/documentation/admindocs/upgrades/piraeus-operator",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "upgrades_coder": {
+      "url": "https://nrp.ai/documentation/admindocs/upgrades/coder",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "upgrading-coder"
+      ],
+      "anchor_count": 8
+    },
+    "upgrades_rook": {
+      "url": "https://nrp.ai/documentation/admindocs/upgrades/rook",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "upgrading-ceph"
+      ],
+      "anchor_count": 8
+    },
+    "links_vis": {
+      "url": "https://nrp.ai/documentation/admindocs/links/vis",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "upgrades_k8s": {
+      "url": "https://nrp.ai/documentation/admindocs/upgrades/k8s",
+      "anchors": [
+        "_top",
+        "kubernetes-upgrades",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 8
+    },
+    "cluster_jupyterlab_admin": {
+      "url": "https://nrp.ai/documentation/admindocs/cluster/jupyterlab-admin",
+      "anchors": [
+        "_top",
+        "adding-a-user-to-jupyterlab",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 8
+    },
+    "running_kubernetes": {
+      "url": "https://nrp.ai/documentation/userdocs/running/kubernetes",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "storage_linstor": {
+      "url": "https://nrp.ai/documentation/userdocs/storage/linstor",
+      "anchors": [
+        "_top",
+        "currently-available-storage-classes",
+        "linstor-storage-pools-data-use",
+        "observablehq-plot-93570ad6",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 10
+    },
+    "fpgas_esnet_running": {
+      "url": "https://nrp.ai/documentation/userdocs/fpgas/esnet_running",
+      "anchors": [
+        "_top",
+        "advanced-usage-of-the-pktgen-dpdk-application",
+        "appendix-a-sn-cli-and-pktgen-options-and-commands",
+        "attach-logical-input-ports-to-pipelines",
+        "bulk-changes-of-rules-using-a-p4bm-simulator-rules-file",
+        "configuring-the-smartnic-platform-ingressegressbypass-switch-port-remapping-functions-with-the-sw-subcommand",
+        "connect-input-ports-to-output-ports-in-the-bypass-path",
+        "display-the-current-configuration-status",
+        "displaying-device-information-with-the-dev-subcommand",
+        "inserting-a-new-rule-into-a-table",
+        "inspecting-and-configuring-the-cmac-100g-interfaces-with-the-cmac-subcommand",
+        "inspecting-and-configuring-the-pcie-queue-dma-qdma-block-with-the-qdma-subcommand",
+        "inspecting-packet-counters-in-the-smartnic-platform-with-the-probe-subcommand",
+        "inspecting-the-pipeline-structure-with-the-info-subcommand",
+        "override-user-application-output-port-decisions-and-redirect-to-an-alternate-port",
+        "remaprename-physical-input-ports-to-logical-input-ports",
+        "removing-previously-inserted-rules",
+        "running-notebook-33-running-smartnic-logic-on-the-fpga",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "step-1-acquiring-the-artifcats",
+        "step-2-setting-up-docker",
+        "step-3-prep-the-esnet-smartnic-fw-repo",
+        "step-4-building-the-docker-image",
+        "step-5-configuring-the-environment-for-the-stack",
+        "step-6-running-dpdk",
+        "stopping-the-runtime-environment",
+        "test-environment",
+        "theme-icons",
+        "troubleshooting-the-pktgen-dpdk-application",
+        "updating-an-existing-rule-within-a-table",
+        "using-the-smartnic-dpdk-container",
+        "using-the-sn-cli-tool",
+        "using-the-sn-p4-cli-tool"
+      ],
+      "anchor_count": 37
+    },
+    "tutorial_scheduling": {
+      "url": "https://nrp.ai/documentation/userdocs/tutorial/scheduling",
+      "anchors": [
+        "_top",
+        "explore-the-system",
+        "learning-objectives",
+        "optional-section-reserved-nodes-and-taints-using-tolerations",
+        "preferences-in-pods",
+        "prerequisites",
+        "requirements-in-pods",
+        "scheduling",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "the-end",
+        "theme-icons",
+        "using-geographical-topology",
+        "validating-requirements"
+      ],
+      "anchor_count": 17
+    },
+    "running_fast_img_download": {
+      "url": "https://nrp.ai/documentation/userdocs/running/fast-img-download",
+      "anchors": [
+        "_top",
+        "spegel-image-cache",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 8
+    },
+    "upgrades_prometheus": {
+      "url": "https://nrp.ai/documentation/admindocs/upgrades/prometheus",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "upgrading-prometheus-and-grafana"
+      ],
+      "anchor_count": 8
+    },
+    "cluster_fpga": {
+      "url": "https://nrp.ai/documentation/admindocs/cluster/fpga",
+      "anchors": [
+        "_top",
+        "examining-fpgas-with-xrt",
+        "flashing",
+        "overview",
+        "pcie-availability",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "usb-jtag-availability",
+        "when-flashing-is-needed"
+      ],
+      "anchor_count": 13
+    },
+    "start_policies": {
+      "url": "https://nrp.ai/documentation/userdocs/start/policies/",
+      "anchors": [
+        "_top",
+        "acceptable-use-policy",
+        "batch-jobs",
+        "data-purging",
+        "interactive-use-6-hours-max-runtime",
+        "long-running-idle-pods",
+        "requesting-gpus",
+        "resource-allocation",
+        "resource-usage-violations",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "workloads-purging-2-weeks-max-runtime"
+      ],
+      "anchor_count": 16
+    },
+    "upgrades_postgres_operator": {
+      "url": "https://nrp.ai/documentation/admindocs/upgrades/postgres-operator",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "upgrading-zalando-postgres-operator"
+      ],
+      "anchor_count": 8
+    },
+    "storage_purging": {
+      "url": "https://nrp.ai/documentation/userdocs/storage/purging",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "storage_volume_mounting": {
+      "url": "https://nrp.ai/documentation/admindocs/storage/volume-mounting",
+      "anchors": [
+        "1-check-for-rbd-lock",
+        "2-identify-the-node-by-ip",
+        "3-remove-the-lock-only-if-safe",
+        "4-retry-pod-or-pvc",
+        "_top",
+        "errors-in-ceph-clusters",
+        "how-to-reboot-a-node",
+        "mount-failed-for-pvc-already-exists",
+        "multi-attach-error",
+        "permission-denied-error",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "storageclass-and-accessmodes-mismatch",
+        "theme-icons"
+      ],
+      "anchor_count": 17
+    },
+    "cluster_node_mgmt": {
+      "url": "https://nrp.ai/documentation/admindocs/cluster/node-mgmt",
+      "anchors": [
+        "_top",
+        "key-considerations",
+        "prerequisites",
+        "reboot-a-node-due-to-gpu-failure",
+        "rebooting-a-node",
+        "recycling-a-node",
+        "special-instruction-to-reboot-ceph-nodes",
+        "special-instructions-to-reboot-ceph-nodes",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 14
+    },
+    "fpgas_esnet_building": {
+      "url": "https://nrp.ai/documentation/userdocs/fpgas/esnet_building",
+      "anchors": [
+        "_top",
+        "building-notebook-13-building-artifacts--bitstream-from-p4-logic",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "step-1-set-up-environment",
+        "step-2-configure-the-makefile",
+        "step-3-build-the-artifacts",
+        "test-environment",
+        "theme-icons"
+      ],
+      "anchor_count": 12
+    },
+    "start_glossary": {
+      "url": "https://nrp.ai/documentation/userdocs/start/glossary",
+      "anchors": [
+        "GUI",
+        "Kubernetes",
+        "_top",
+        "artificialIntelligence",
+        "command",
+        "commandLineInterface",
+        "cuda",
+        "deployment",
+        "directory",
+        "forceDelete",
+        "graphicalUserInterface",
+        "initContainer",
+        "job",
+        "kubernetes",
+        "machineLearning",
+        "namespace",
+        "nautilus",
+        "nautilus-glossary",
+        "orchestration",
+        "persistentVolumeClaim",
+        "pod",
+        "pods",
+        "service",
+        "shell",
+        "softwareContainer",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "unix"
+      ],
+      "anchor_count": 32
+    },
+    "perfsonar_a2a": {
+      "url": "https://nrp.ai/documentation/admindocs/perfsonar/a2a",
+      "anchors": [
+        "_top",
+        "all-to-all-maddash",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 8
+    },
+    "cluster_authentik": {
+      "url": "https://nrp.ai/documentation/admindocs/cluster/authentik",
+      "anchors": [
+        "_top",
+        "authorization-flow",
+        "overview",
+        "prerequisites",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "step-1-create-an-application",
+        "step-2-configure-jupyterhub-example",
+        "step-3-configure-bindings-filters--policies",
+        "step-4-create-an-expression-policy-optional",
+        "step-5-bind-the-policy-to-your-application-optional",
+        "theme-icons"
+      ],
+      "anchor_count": 15
+    },
+    "cluster_mig_gpus": {
+      "url": "https://nrp.ai/documentation/admindocs/cluster/mig-gpus",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "coder_deploy": {
+      "url": "https://nrp.ai/documentation/userdocs/coder/deploy",
+      "anchors": [
+        "1-choose-your-project-name",
+        "10-add-custom-templates",
+        "2-create-the-namespace",
+        "3-install-helm-and-download-the-coder-helm-chart",
+        "4-set-up-postgresql",
+        "5-create-the-postgresql-secret",
+        "6-install-coder-with-helm",
+        "7-configure-your-deployment-valuesyaml",
+        "8-deploy-coder",
+        "9-log-in-to-coder",
+        "_top",
+        "guide-to-deploying-your-own-coder-instance-on-nautilus",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 18
+    },
+    "running_scripts": {
+      "url": "https://nrp.ai/documentation/userdocs/running/scripts",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "running_globus_connect": {
+      "url": "https://nrp.ai/documentation/userdocs/running/globus-connect",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "running_postgres": {
+      "url": "https://nrp.ai/documentation/userdocs/running/postgres",
+      "anchors": [
+        "1-deploying-a-postgresql-cluster",
+        "2-accessing-the-postgresql-cluster",
+        "3-scaling-the-postgresql-cluster",
+        "4-choosing-the-storage-for-the-cluster",
+        "4-monitoring-the-cluster",
+        "_top",
+        "apply-the-cluster-manifest",
+        "example-postgres-clusteryaml",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "using-zalando-postgres-operator-in-kubernetes"
+      ],
+      "anchor_count": 15
+    },
+    "nrp_topology": {
+      "url": "https://nrp.ai/documentation/admindocs/nrp/topology",
+      "anchors": [
+        "_top",
+        "current-nrp-nodes-topology",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 8
+    },
+    "running_virtualization_general": {
+      "url": "https://nrp.ai/documentation/userdocs/running/virtualization-general",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "storage",
+        "theme-icons",
+        "using-gpus-in-vms"
+      ],
+      "anchor_count": 9
+    },
+    "upgrades_nodes": {
+      "url": "https://nrp.ai/documentation/admindocs/upgrades/nodes",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "upgrade-above-tasks-at-once",
+        "upgrade-all-packages",
+        "upgrade-compute-nodes",
+        "upgrade-gpu-driver",
+        "upgrade-kubernetes",
+        "upgrade-ubuntu-release"
+      ],
+      "anchor_count": 13
+    },
+    "storage_intro": {
+      "url": "https://nrp.ai/documentation/userdocs/storage/intro",
+      "anchors": [
+        "_top",
+        "cleaning-up",
+        "creating-and-mounting-the-pvc",
+        "how-to-choose-which-filesystem-to-use",
+        "observablehq-plot-af1b9af6",
+        "posix-volumes",
+        "provided-filesystems",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "using-the-right-region-for-your-pod",
+        "volumes-expanding"
+      ],
+      "anchor_count": 15
+    },
+    "storage_user_pvc_issues": {
+      "url": "https://nrp.ai/documentation/admindocs/storage/user-pvc-issues",
+      "anchors": [
+        "_top",
+        "fixing-xfs-corruption-in-rook-ceph-rbd-volumes",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "tab-0",
+        "tab-1",
+        "tab-panel-0",
+        "tab-panel-1",
+        "theme-icons"
+      ],
+      "anchor_count": 12
+    },
+    "storage_broken_drives": {
+      "url": "https://nrp.ai/documentation/admindocs/storage/broken-drives",
+      "anchors": [
+        "_top",
+        "list-of-broken-drives-in-the-cluster-by-prometheus-monitoring",
+        "observablehq-b-080dd118",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 9
+    },
+    "running_scheduling": {
+      "url": "https://nrp.ai/documentation/userdocs/running/scheduling",
+      "anchors": [
+        "_top",
+        "general-layout",
+        "interactive-use",
+        "scheduling-inside-a-namespace",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "tldr",
+        "yunikorn-scheduler"
+      ],
+      "anchor_count": 12
+    },
+    "upgrades_nextcloud": {
+      "url": "https://nrp.ai/documentation/admindocs/upgrades/nextcloud",
+      "anchors": [
+        "_top",
+        "before-upgrading",
+        "deployment-upgrade",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "upgrading-nextcloud",
+        "upgrading-nginx"
+      ],
+      "anchor_count": 11
+    },
+    "running_kubeflow": {
+      "url": "https://nrp.ai/documentation/userdocs/running/kubeflow",
+      "anchors": [
+        "_top",
+        "key-concepts",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "submitting-a-training-job",
+        "theme-icons"
+      ],
+      "anchor_count": 9
+    },
+    "jupyter_jupyter_pod": {
+      "url": "https://nrp.ai/documentation/userdocs/jupyter/jupyter-pod",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "step-1-set-context",
+        "step-2-create-tensorflow-pod",
+        "step-3-run-jupyter-notebook",
+        "step-4-tear-down",
+        "step-by-step-tensorflow-with-jupyter",
+        "step1",
+        "step2",
+        "step3",
+        "step4",
+        "theme-icons"
+      ],
+      "anchor_count": 16
+    },
+    "running_dask_cluster": {
+      "url": "https://nrp.ai/documentation/userdocs/running/dask-cluster",
+      "anchors": [
+        "_top",
+        "running-a-dask-cluster-in-your-namespace",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 8
+    },
+    "start_support": {
+      "url": "https://nrp.ai/documentation/userdocs/start/support",
+      "anchors": [
+        "_top",
+        "before-you-ask",
+        "checking-pod-logs",
+        "checking-pod-status",
+        "essential-information-to-provide",
+        "examples-of-good-questions",
+        "gathering-information-with-kubectl",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "tips-for-asking-questions",
+        "what-to-expect-without-essential-information"
+      ],
+      "anchor_count": 15
+    },
+    "upgrades_gitlab": {
+      "url": "https://nrp.ai/documentation/admindocs/upgrades/gitlab",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "upgrading-gitlab"
+      ],
+      "anchor_count": 8
+    },
+    "fiona_install": {
+      "url": "https://nrp.ai/documentation/admindocs/fiona/install",
+      "anchors": [
+        "_top",
+        "cluster-firewall",
+        "labels-added-by-ansible",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "steps-for-nrp-administrators",
+        "theme-icons",
+        "to-install-or-reinstall-a-new-node"
+      ],
+      "anchor_count": 11
+    },
+    "storage_jwt_credential": {
+      "url": "https://nrp.ai/documentation/userdocs/storage/jwt-credential",
+      "anchors": [
+        "_top",
+        "creating-a-jwt",
+        "mounting-the-credential",
+        "requirements",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 10
+    },
+    "storage_local": {
+      "url": "https://nrp.ai/documentation/userdocs/storage/local",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "storage_origin_sync": {
+      "url": "https://nrp.ai/documentation/admindocs/storage/origin-sync",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "syncing-user-data-to-an-origin",
+        "theme-icons"
+      ],
+      "anchor_count": 8
+    },
+    "ai_qaic": {
+      "url": "https://nrp.ai/documentation/userdocs/ai/qaic",
+      "anchors": [
+        "_top",
+        "additional-resources",
+        "example-yaml-configuration",
+        "in-house-docker-image-with-vllm-support",
+        "overview",
+        "qualcomm-cloud-ai-100-ultra-documentation",
+        "resource-allocation-in-kubernetes",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 13
+    },
+    "running_virtualization_windows": {
+      "url": "https://nrp.ai/documentation/userdocs/running/virtualization-windows",
+      "anchors": [
+        "_top",
+        "adding-virtvnc",
+        "creating-a-windows-11-vm-install-image-from-existing-image",
+        "our-main-example",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 10
+    },
+    "tutorial_storage": {
+      "url": "https://nrp.ai/documentation/userdocs/tutorial/storage",
+      "anchors": [
+        "_top",
+        "cleaning-up",
+        "create-an-emptydir",
+        "creating-a-persistent-volume-claim",
+        "end",
+        "exploring-storageclasses",
+        "learning-objectives",
+        "prerequisites",
+        "pvcyaml",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "start-the-deployment",
+        "storage",
+        "storage-types",
+        "strg1yaml",
+        "theme-icons"
+      ],
+      "anchor_count": 19
+    },
+    "storage_ceph_performance": {
+      "url": "https://nrp.ai/documentation/admindocs/storage/ceph-performance",
+      "anchors": [
+        "_top",
+        "ceph-performance",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 8
+    },
+    "storage_syncthing": {
+      "url": "https://nrp.ai/documentation/userdocs/storage/syncthing",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 7
+    },
+    "cluster_cdn_svc": {
+      "url": "https://nrp.ai/documentation/admindocs/cluster/cdn-svc",
+      "anchors": [
+        "_top",
+        "pod-affinities-and-anti-affinities",
+        "service-topology-awareness",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 9
+    },
+    "start_hierarchy": {
+      "url": "https://nrp.ai/documentation/userdocs/start/hierarchy",
+      "anchors": [
+        "_top",
+        "fair-share-scheduling--resource-allocation",
+        "getting-started-your-first-login",
+        "group-administrators",
+        "how-it-works-the-new-hierarchical-system",
+        "key-resources-and-how-theyre-managed",
+        "kubernetes-compute",
+        "other-resources",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons"
+      ],
+      "anchor_count": 14
+    },
+    "upgrades_cert_manager": {
+      "url": "https://nrp.ai/documentation/admindocs/upgrades/cert-manager",
+      "anchors": [
+        "_top",
+        "starlight__mobile-toc",
+        "starlight__on-this-page",
+        "starlight__on-this-page--mobile",
+        "starlight__search",
+        "starlight__sidebar",
+        "theme-icons",
+        "upgrading-cert-manager"
+      ],
+      "anchor_count": 8
+    }
+  }
+}

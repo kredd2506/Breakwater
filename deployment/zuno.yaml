@@ -1,0 +1,296 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: bw-pvc
+spec:
+  storageClassName: rook-ceph-block
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bw-dep
+  labels:
+    k8s-app: bw
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: bw
+  template:
+    metadata:
+      labels:
+        k8s-app: bw
+    spec:
+      containers:
+        - name: bw
+          image: ubuntu
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: DEBIAN_FRONTEND
+              value: noninteractive
+            - name: PIP_DISABLE_PIP_VERSION_CHECK
+              value: "1"
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: 8Gi
+              cpu: 2
+            requests:
+              memory: 4Gi
+              cpu: 1
+          volumeMounts:
+            - name: bw-vol
+              mountPath: /data
+          command: ["bash", "-lc"]
+          args:
+            - |
+              set -euxo pipefail
+
+              # Install system dependencies
+              apt-get update
+              apt-get install -y --no-install-recommends \
+                vim python3 python3-pip python3-venv ca-certificates curl git \
+                build-essential libffi-dev libssl-dev
+              rm -rf /var/lib/apt/lists/*
+
+              # Create Python virtual environment
+              python3 -m venv /opt/venv
+              source /opt/venv/bin/activate
+
+              # Install NRP K8s System dependencies
+              /opt/venv/bin/pip install --no-cache-dir \
+                flask==2.3.3 \
+                langchain-openai>=0.1.0 \
+                openai>=1.0.0 \
+                python-dotenv>=1.0.0 \
+                kubernetes>=20.0.0 \
+                requests>=2.28.0 \
+                beautifulsoup4>=4.11.0 \
+                tldextract>=3.4.0 \
+                pydantic>=2.0.0 \
+                urllib3>=1.26.0 \
+                langgraph>=0.1.0 \
+                typing-extensions>=4.5.0 \
+                numpy>=1.21.0 \
+                scikit-learn>=1.1.0 \
+                tabulate>=0.9.0
+
+              # Create directories
+              mkdir -p /app /data /nrp_k8s_system
+
+              # Download and setup NRP K8s System
+              cd /
+              git clone https://github.com/your-repo/breakwater.git /tmp/breakwater || true
+              if [ -d "/tmp/breakwater/nrp_k8s_system" ]; then
+                cp -r /tmp/breakwater/nrp_k8s_system/* /nrp_k8s_system/
+              fi
+
+              # Create simple Flask UI for MCP system
+              cat > /app/app.py << 'EOF'
+              import os
+              import sys
+              sys.path.append('/nrp_k8s_system')
+
+              from flask import Flask, render_template_string, request, jsonify
+              import subprocess
+              import json
+
+              app = Flask(__name__)
+
+              # HTML template for the UI
+              HTML_TEMPLATE = '''
+              <!DOCTYPE html>
+              <html>
+              <head>
+                  <title>NRP K8s System - MCP Interface</title>
+                  <style>
+                      body { font-family: Arial, sans-serif; margin: 40px; background-color: #f5f5f5; }
+                      .container { max-width: 1200px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+                      h1 { color: #333; text-align: center; }
+                      .input-section { margin: 20px 0; }
+                      textarea { width: 100%; height: 100px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+                      button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+                      button:hover { background: #0056b3; }
+                      .output { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px; padding: 15px; margin: 20px 0; min-height: 200px; }
+                      .examples { margin: 20px 0; }
+                      .example { background: #e9ecef; padding: 10px; margin: 5px 0; border-radius: 3px; cursor: pointer; }
+                      .example:hover { background: #dee2e6; }
+                  </style>
+              </head>
+              <body>
+                  <div class="container">
+                      <h1>NRP K8s System - MCP Interface</h1>
+                      <p>Intelligent routing system combining NRP LLM with Kubernetes operations</p>
+
+                      <div class="input-section">
+                          <textarea id="userInput" placeholder="Enter your command or query here...
+              Examples:
+              - List my pods
+              - How do I request GPUs?
+              - Show me my deployments
+              - What is a persistent volume?"></textarea>
+                          <br><br>
+                          <button onclick="processQuery()">Submit Query</button>
+                          <button onclick="clearOutput()">Clear</button>
+                      </div>
+
+                      <div class="examples">
+                          <h3>Quick Examples:</h3>
+                          <div class="example" onclick="setQuery('list my pods')">🔍 List my pods</div>
+                          <div class="example" onclick="setQuery('How do I request GPUs?')">💡 How do I request GPUs?</div>
+                          <div class="example" onclick="setQuery('show deployments in gsoc namespace')">📦 Show deployments</div>
+                          <div class="example" onclick="setQuery('What is a service mesh?')">❓ What is a service mesh?</div>
+                      </div>
+
+                      <div id="output" class="output">
+                          <strong>Output will appear here...</strong>
+                      </div>
+                  </div>
+
+                  <script>
+                      function setQuery(query) {
+                          document.getElementById('userInput').value = query;
+                      }
+
+                      function clearOutput() {
+                          document.getElementById('output').innerHTML = '<strong>Output cleared...</strong>';
+                      }
+
+                      async function processQuery() {
+                          const input = document.getElementById('userInput').value;
+                          const outputDiv = document.getElementById('output');
+
+                          if (!input.trim()) {
+                              outputDiv.innerHTML = '<strong style="color: red;">Please enter a query!</strong>';
+                              return;
+                          }
+
+                          outputDiv.innerHTML = '<strong>Processing your request...</strong>';
+
+                          try {
+                              const response = await fetch('/process', {
+                                  method: 'POST',
+                                  headers: {
+                                      'Content-Type': 'application/json',
+                                  },
+                                  body: JSON.stringify({query: input})
+                              });
+
+                              const result = await response.json();
+                              outputDiv.innerHTML = '<pre>' + JSON.stringify(result, null, 2) + '</pre>';
+                          } catch (error) {
+                              outputDiv.innerHTML = '<strong style="color: red;">Error: ' + error.message + '</strong>';
+                          }
+                      }
+                  </script>
+              </body>
+              </html>
+              '''
+
+              @app.route('/')
+              def index():
+                  return render_template_string(HTML_TEMPLATE)
+
+              @app.route('/process', methods=['POST'])
+              def process_query():
+                  try:
+                      data = request.get_json()
+                      query = data.get('query', '')
+
+                      # Try to run the intelligent router
+                      try:
+                          result = subprocess.run([
+                              '/opt/venv/bin/python', '-m', 'nrp_k8s_system.intelligent_router', query
+                          ], capture_output=True, text=True, timeout=30, cwd='/nrp_k8s_system')
+
+                          return jsonify({
+                              'status': 'success',
+                              'query': query,
+                              'output': result.stdout,
+                              'error': result.stderr if result.stderr else None,
+                              'return_code': result.returncode
+                          })
+                      except subprocess.TimeoutExpired:
+                          return jsonify({
+                              'status': 'timeout',
+                              'query': query,
+                              'error': 'Query timed out after 30 seconds'
+                          })
+                      except Exception as e:
+                          return jsonify({
+                              'status': 'error',
+                              'query': query,
+                              'error': f'Failed to execute: {str(e)}',
+                              'fallback': 'MCP system not fully initialized yet'
+                          })
+                  except Exception as e:
+                      return jsonify({
+                          'status': 'error',
+                          'error': f'Request processing failed: {str(e)}'
+                      })
+
+              @app.route('/health')
+              def health():
+                  return jsonify({'status': 'healthy', 'service': 'NRP K8s System MCP Interface'})
+
+              if __name__ == "__main__":
+                  app.run(host="0.0.0.0", port=80, debug=True)
+              EOF
+
+              # Set up environment variables
+              echo "mounted $(date -Iseconds)" > /data/.mounted
+              export PYTHONUNBUFFERED=1
+              export PYTHONPATH="/nrp_k8s_system:$PYTHONPATH"
+
+              # Start the Flask application
+              echo "Starting NRP K8s System MCP Interface..."
+              echo "Flask version: $(/opt/venv/bin/python -c 'import flask;print(flask.__version__)')"
+              echo "Available at: http://bw.nrp-nautilus.io"
+
+              exec /opt/venv/bin/python /app/app.py
+      volumes:
+        - name: bw-vol
+          persistentVolumeClaim:
+            claimName: bw-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bw-svc
+  labels:
+    k8s-app: bw-svc
+spec:
+  selector:
+    k8s-app: bw
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bw-ingress
+spec:
+  ingressClassName: haproxy
+  rules:
+    - host: bw.nrp-nautilus.io
+      http:
+        paths:
+          - backend:
+              service:
+                name: bw-svc
+                port:
+                  number: 80
+            path: /
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - bw.nrp-nautilus.io

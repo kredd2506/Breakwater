@@ -1,0 +1,255 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ss-sa
+  namespace: gsoc
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: jupyter-manager
+  namespace: gsoc
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "services", "secrets", "configmaps", "persistentvolumeclaims", "events"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+
+  - apiGroups: ["apps"]
+    resources: ["deployments", "deployments/scale", "replicasets", "statefulsets", "daemonsets"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+  - apiGroups: ["networking.k8s.io"]
+    resources: ["ingresses"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: jupyter-manager-binding
+  namespace: gsoc
+subjects:
+  - kind: ServiceAccount
+    name: ss-sa
+    namespace: gsoc
+roleRef:
+  kind: Role
+  name: jupyter-manager
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: bw-pvc
+  namespace: gsoc
+spec:
+  storageClassName: rook-ceph-block
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bw-dep
+  namespace: gsoc
+  labels:
+    k8s-app: bw
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: bw
+  template:
+    metadata:
+      labels:
+        k8s-app: bw
+    spec:
+      serviceAccountName: ss-sa
+      containers:
+        - name: bw
+          image: ubuntu
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: DEBIAN_FRONTEND
+              value: noninteractive
+            - name: NRP_API_KEY
+              value: "QmKTZlW0ck0XO1rvu7SpDiDs3bnOqKoM"
+            - name: NRP_BASE_URL
+              value: "https://ellm.nrp-nautilus.io/v1"
+            - name: NRP_MODEL
+              value: "glm-v"
+            - name: OPENAI_API_KEY
+              value: "QmKTZlW0ck0XO1rvu7SpDiDs3bnOqKoM"
+          ports:
+            - containerPort: 80
+            - containerPort: 8024
+          resources:
+            limits:
+              memory: 8Gi
+              cpu: 2
+            requests:
+              memory: 4Gi
+              cpu: 1
+          volumeMounts:
+            - name: bw-vol
+              mountPath: /data
+          command: ["bash", "-c"]
+          args:
+            - |
+              set -ex
+              apt-get update
+              apt-get install -y python3 python3-pip python3-venv git curl build-essential
+              rm -rf /var/lib/apt/lists/*
+
+              python3 -m venv /opt/venv
+              source /opt/venv/bin/activate
+
+              pip install gradio langchain-openai openai python-dotenv kubernetes requests beautifulsoup4 tldextract pydantic fastmcp
+
+              mkdir -p /app /data
+              git clone -b MCP https://gitlab.nrp-nautilus.io/mreddy10/breakwater.git /app/breakwater
+
+              cd /app/breakwater/mcp
+              echo "Starting FastMCP server from Git repository..."
+              /opt/venv/bin/python ultimate_fastmcp_server.py &
+              FASTMCP_PID=$!
+
+              sleep 15
+
+              echo "Testing FastMCP server startup..."
+              /opt/venv/bin/python -c "
+              import requests
+              import time
+              for i in range(10):
+                  try:
+                      response = requests.get('http://127.0.0.1:8024/mcp', timeout=2)
+                      print(f'FastMCP health check: {response.status_code}')
+                      break
+                  except:
+                      print(f'FastMCP not ready, attempt {i+1}/10')
+                      time.sleep(2)
+              "
+
+              echo "Starting lightweight streaming chatbot..."
+              cd /app/breakwater/mcp
+              export PYTHONPATH="/app/breakwater/mcp:/app/breakwater:$PYTHONPATH"
+
+              # Create simple streaming chatbot using existing architecture
+              cat > streaming_chatbot.py << 'CHATBOT_EOF'
+              import gradio as gr
+              import asyncio
+              import sys
+              from pathlib import Path
+
+              sys.path.insert(0, str(Path(__file__).parent))
+
+              async def chat_stream(message, history):
+                  try:
+                      from your_interactive_session import InteractiveNRPSession
+                      session = InteractiveNRPSession()
+
+                      intent = await session.classify_intent(message)
+                      response = f"Intent: {intent}\n\n"
+                      yield response
+
+                      if intent == "COMMAND":
+                          response += "Processing K8s command...\n"
+                          yield response
+                          result = await session.process_k8s_command(message)
+                          response += f"```\n{result}\n```"
+                      elif intent == "QUESTION":
+                          response += "Searching documentation...\n"
+                          yield response
+                          result = await session.ask_question(message)
+                          response += result
+                      else:
+                          response += "Ready for your next query!"
+
+                      yield response
+                  except Exception as e:
+                      yield f"Error: {str(e)}"
+
+              def chat_wrapper(message, history):
+                  loop = asyncio.new_event_loop()
+                  asyncio.set_event_loop(loop)
+                  try:
+                      async_gen = chat_stream(message, history)
+                      async def collect_responses():
+                          responses = []
+                          async for response in async_gen:
+                              responses.append(response)
+                          return responses
+                      responses = loop.run_until_complete(collect_responses())
+                      for response in responses:
+                          yield response
+                  finally:
+                      loop.close()
+
+              demo = gr.ChatInterface(
+                  chat_wrapper,
+                  title="NRP K8s MCP Assistant",
+                  type="messages",
+                  examples=["list my pods", "How do I request A100 GPU?", "show deployments"]
+              )
+
+              demo.launch(server_name="0.0.0.0", server_port=80, share=False)
+              CHATBOT_EOF
+
+              /opt/venv/bin/python streaming_chatbot.py
+      volumes:
+        - name: bw-vol
+          persistentVolumeClaim:
+            claimName: bw-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bw-svc
+  namespace: gsoc
+  labels:
+    k8s-app: bw-svc
+spec:
+  selector:
+    k8s-app: bw
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 80
+    - name: fastmcp
+      port: 8024
+      protocol: TCP
+      targetPort: 8024
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bw-ingress
+  namespace: gsoc
+spec:
+  ingressClassName: haproxy
+  rules:
+    - host: bw.nrp-nautilus.io
+      http:
+        paths:
+          - backend:
+              service:
+                name: bw-svc
+                port:
+                  number: 80
+            path: /
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - bw.nrp-nautilus.io

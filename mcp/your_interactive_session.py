@@ -24,8 +24,8 @@ class InteractiveNRPSession:
         try:
             classification_prompt = f'''Analyze this user input and classify the intent as one of these categories:
 
-QUESTION: User wants information, explanation, or documentation about NRP Nautilus, Kubernetes, or related topics
-COMMAND: User wants to perform a Kubernetes operation (list, get, describe, create, delete resources)
+QUESTION: User wants information, explanation, documentation, examples, or tutorials about NRP Nautilus, Kubernetes, or related topics
+COMMAND: User wants to perform a live Kubernetes operation (list actual resources, get running pods, describe existing deployments, create/delete real resources)
 QUIT: User wants to exit or stop
 
 User input: "{user_input}"
@@ -34,11 +34,13 @@ Respond with ONLY the category name (QUESTION, COMMAND, or QUIT) and nothing els
 
 Examples:
 "How do I request GPUs?" -> QUESTION
+"Show me YAML example for A100 GPU" -> QUESTION
+"Give me pod template" -> QUESTION
+"What is persistent storage?" -> QUESTION
 "List my pods" -> COMMAND
 "Get cluster info" -> COMMAND
-"What is persistent storage?" -> QUESTION
-"exit" -> QUIT
-"describe pod myapp" -> COMMAND'''
+"Describe pod myapp" -> COMMAND
+"exit" -> QUIT'''
 
             response = await self.glm_client.chat.completions.create(
                 model=os.getenv("NRP_MODEL", "glm-v"),
@@ -57,7 +59,8 @@ Examples:
                 user_lower = user_input.lower()
                 if any(word in user_lower for word in ['quit', 'exit', 'stop', 'bye']):
                     intent = 'QUIT'
-                elif any(word in user_lower for word in ['list', 'get', 'describe', 'create', 'delete', 'kubectl', 'show me']):
+                # CRITICAL: Only classify as COMMAND for actual K8s operations, NOT documentation requests
+                elif any(phrase in user_lower for phrase in ['list my pods', 'list pods', 'get pods', 'describe pod', 'delete pod', 'create pod', 'kubectl']) and not any(doc_word in user_lower for doc_word in ['example', 'yaml', 'template', 'how to', 'show me']):
                     intent = 'COMMAND'
                 else:
                     intent = 'QUESTION'
@@ -70,7 +73,8 @@ Examples:
             user_lower = user_input.lower()
             if any(word in user_lower for word in ['quit', 'exit', 'stop', 'bye']):
                 return 'QUIT'
-            elif any(word in user_lower for word in ['list', 'get', 'describe', 'create', 'delete', 'kubectl', 'show me']):
+            # CRITICAL: Only classify as COMMAND for actual K8s operations, NOT documentation requests
+            elif any(phrase in user_lower for phrase in ['list my pods', 'list pods', 'get pods', 'describe pod', 'delete pod', 'create pod', 'kubectl']) and not any(doc_word in user_lower for doc_word in ['example', 'yaml', 'template', 'how to', 'show me']):
                 return 'COMMAND'
             else:
                 return 'QUESTION'
@@ -86,7 +90,7 @@ Examples:
             if any(gpu in question.lower() for gpu in ['a100', 'h100', 'v100', 'rtx4090']):
                 enhanced_question = question + " special GPU type specific"
 
-            async with Client("http://localhost:8024/mcp") as client:
+            async with Client("http://localhost:8025/mcp") as client:
                 # Use the ultra-comprehensive anchor database directly
                 link_result = await client.call_tool("intelligent_k8s_query", {
                     "params": {"query": enhanced_question, "context": "Interactive session with infogent architecture"}
@@ -161,7 +165,7 @@ Make your response comprehensive yet practical, focusing on actionable guidance.
         print("-" * 40)
 
         try:
-            async with Client("http://localhost:8024/mcp") as client:
+            async with Client("http://localhost:8025/mcp") as client:
                 # Use intelligent_k8s_query for command processing
                 result = await client.call_tool("intelligent_k8s_query", {
                     "params": {"query": user_input, "context": "K8s command execution"}
@@ -176,7 +180,7 @@ Make your response comprehensive yet practical, focusing on actionable guidance.
         print("-" * 40)
 
         try:
-            async with Client("http://localhost:8024/mcp") as client:
+            async with Client("http://localhost:8025/mcp") as client:
                 result = await client.call_tool(operation, params)
                 print(result.data)
         except Exception as e:

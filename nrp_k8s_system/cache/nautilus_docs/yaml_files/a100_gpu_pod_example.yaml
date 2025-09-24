@@ -1,0 +1,33 @@
+# A100 GPU Pod Example
+# Source: https://nrp.ai/documentation/userdocs/running/gpu-pods/#requesting-special-gpus
+# Description: Kubernetes Pod with specific A100 GPU allocation
+# Category: workload
+# Resource Type: pod
+# Tags: gpu, a100, special-gpu, nvidia
+# Complexity: intermediate
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: a100-gpu-pod
+  namespace: gsoc
+spec:
+  containers:
+  - name: pytorch-a100
+    image: pytorch/pytorch:latest
+    resources:
+      limits:
+        nvidia.com/a100: 1
+        memory: "16Gi"
+        cpu: "8"
+      requests:
+        nvidia.com/a100: 1
+        memory: "8Gi"
+        cpu: "4"
+    command: ["python", "-c", "import torch; print(f'CUDA available: {torch.cuda.is_available()}'); print(f'GPU count: {torch.cuda.device_count()}'); print(f'GPU name: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"No GPU\"}')"]
+  # For Grace Hopper nodes with A100s, add ARM64 toleration
+  tolerations:
+  - key: "nautilus.io/arm64"
+    operator: "Exists"
+    effect: "NoSchedule"
+  restartPolicy: Never

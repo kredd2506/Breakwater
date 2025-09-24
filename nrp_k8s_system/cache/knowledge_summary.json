@@ -1,0 +1,20 @@
+{
+  "total_interactions": 14,
+  "most_requested_topics": {
+    "pods": 5,
+    "yaml": 3,
+    "gpu": 2,
+    "storage": 2,
+    "general": 2
+  },
+  "resource_update_frequency": {
+    "pods": "today",
+    "gpu": "today",
+    "yaml": "today",
+    "storage": "today",
+    "general": "today",
+    "networking": "today"
+  },
+  "success_rate": 0.35714285714285715,
+  "last_summary_update": "2025-09-23T18:31:38.659751"
+}

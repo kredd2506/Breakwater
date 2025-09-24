@@ -1,0 +1,22 @@
+Should users run sleep in batch jobs on Nautilus, or optimize for short runtime?(According to NRP, avoid using sleep—make jobs run fast.) NRP
+How can users request an A100 GPU for their Kubernetes pod?(A specific GPU resource request scenario.)
+What’s the best way to request an NVIDIA A10 GPU node when configuring a pod on Nautilus?
+How do users specify multiple GPU types (e.g., A100 and A10) in a multi-GPU job on NRP?
+
+How do users launch a GUI-enabled desktop container (GLX or EGL) via Coder on NRP? NRP
+Which container—docker-nvidia-glx-desktop or docker-nvidia-egl-desktop—should users preferred, and why? NRP
+What is the process for exposing a GUI Desktop container via an Ingress and negotiate DNS correctly? NRP
+How does a new user log into Nautilus via CILogon and get added to their namespace? NRP
+What steps must a namespace admin follow to invite other users and manage namespace resources? NRP
+
+How do users flash an Alveo FPGA via the ESnet SmartNIC workflow on NRP? NRP
+What are the prerequisites (hugepages, IOMMU) for running DPDK on FPGA-equipped nodes? NRP
+How do users configure a P4-programmable SmartNIC (e.g., Alveo U55C) using Kubernetes on NRP? media.nrp.ai
+How can users access and use Ceph-based S3 object storage within their namespace?
+What service should users query to check the digital integrity of stored digital objects? (i.e., fixity service.) docs.nrp.eosc.cz
+How do users run full-text metadata searches using the OpenSearch service provided on NRP?
+How can users start an LLM inference session via the provided LLM service client on Nautilus? media.nrp.ai
+What steps are involved in fine-tuning an existing LLM (e.g., ClimateGPT) within NRP’s training environment? media.nrp.ai
+How is LLM access integrated into NRP—especially regarding SDSC’s LLM service transition?
+How do users leverage Kubernetes Jobs vs. interactive pods in NRP for AI/ML workloads?
+What is the recommended way to compose systems (e.g., disaggregated GPUs/FPGAs) using GigaIO FabreX on NRP? sdsc.edu with a 

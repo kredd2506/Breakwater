@@ -29,6 +29,22 @@
     "complexity": "intermediate"
   },
   {
+    "title": "A100 GPU Pod Example",
+    "description": "Kubernetes Pod with specific A100 GPU allocation and ARM64 toleration",
+    "yaml_content": "apiVersion: v1\nkind: Pod\nmetadata:\n  name: a100-gpu-pod\n  namespace: gsoc\nspec:\n  containers:\n  - name: pytorch-a100\n    image: pytorch/pytorch:latest\n    resources:\n      limits:\n        nvidia.com/a100: 1\n        memory: \"16Gi\"\n        cpu: \"8\"\n      requests:\n        nvidia.com/a100: 1\n        memory: \"8Gi\"\n        cpu: \"4\"\n    command: [\"python\", \"-c\", \"import torch; print(f'CUDA available: {torch.cuda.is_available()}'); print(f'GPU count: {torch.cuda.device_count()}'); print(f'GPU name: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \\\"No GPU\\\"}')\"]\n  tolerations:\n  - key: \"nautilus.io/arm64\"\n    operator: \"Exists\"\n    effect: \"NoSchedule\"\n  restartPolicy: Never",
+    "source_url": "https://nrp.ai/documentation/userdocs/running/gpu-pods/#requesting-special-gpus",
+    "category": "workload",
+    "tags": [
+      "gpu",
+      "a100",
+      "special-gpu",
+      "nvidia",
+      "arm64"
+    ],
+    "resource_type": "pod",
+    "complexity": "intermediate"
+  },
+  {
     "title": "Persistent Volume Claim",
     "description": "PVC for persistent data storage with CephFS",
     "yaml_content": "apiVersion: v1\nkind: PersistentVolumeClaim\nmetadata:\n  name: data-pvc-example\n  namespace: gsoc\nspec:\n  accessModes:\n    - ReadWriteOnce\n  resources:\n    requests:\n      storage: 50Gi\n  storageClassName: rook-cephfs",

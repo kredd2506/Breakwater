@@ -1,0 +1,42 @@
+{
+  "a100_config_1": {
+    "original_yaml": "apiVersion: v1kind: Podmetadata:  name: gpu-pod-examplespec:  containers:  - name: gpu-container    image: tensorflow/tensorflow:latest-gpu    command: [\"sleep\", \"infinity\"]    resources:      limits:        nvidia.com/a100: 1      requests:        nvidia.com/a100: 1",
+    "fixed_yaml": "apiVersion: v1kind: Podmetadata:  name: gpu-pod-examplespec:  containers:  - name: gpu-container    image: tensorflow/tensorflow:latest-gpu    command: [\"sleep\", \"infinity\"]    resources:      limits:        nvidia.com/a100: 1      requests:        nvidia.com/a100: 1",
+    "source_page": "running_gpu_pods",
+    "source_url": "https://nrp.ai/documentation/userdocs/running/gpu-pods",
+    "detected_patterns": [
+      "nvidia\\.com/a100[:\\s]*\\d+",
+      "a100[:\\s]*\\d+",
+      "A100"
+    ]
+  },
+  "a100_config_2": {
+    "original_yaml": "apiVersion: v1kind: Podmetadata:  name: gpu-pod-examplespec:  containers:  - name: gpu-container    image: tensorflow/tensorflow:latest-gpu    command: [\"sleep\", \"infinity\"]    resources:      limits:        nvidia.com/a100: 1      requests:        nvidia.com/a100: 1",
+    "fixed_yaml": "apiVersion: v1kind: Podmetadata:  name: gpu-pod-examplespec:  containers:  - name: gpu-container    image: tensorflow/tensorflow:latest-gpu    command: [\"sleep\", \"infinity\"]    resources:      limits:        nvidia.com/a100: 1      requests:        nvidia.com/a100: 1",
+    "source_page": "running_gpu_pods",
+    "source_url": "https://nrp.ai/documentation/userdocs/running/gpu-pods",
+    "detected_patterns": [
+      "nvidia\\.com/a100[:\\s]*\\d+",
+      "a100[:\\s]*\\d+",
+      "A100"
+    ]
+  },
+  "a100_config_3": {
+    "original_yaml": "permittedHostDevices:  pciHostDevices:    - externalResourceProvider: true      pciVendorSelector: 10de:2236      resourceName: nvidia.com/GA102GL_A10    - externalResourceProvider: true      pciVendorSelector: 10de:20b5      resourceName: nvidia.com/GA100_A100_PCIE_80GB    - externalResourceProvider: true      pciVendorSelector: 10de:1e30      resourceName: nvidia.com/TU102GL_QUADRO_RTX_6000_8000",
+    "fixed_yaml": "permittedHostDevices:  pciHostDevices:    - externalResourceProvider: true      pciVendorSelector: 10de:2236      resourceName: nvidia.com/GA102GL_A10    - externalResourceProvider: true      pciVendorSelector: 10de:20b5      resourceName: nvidia.com/GA100_A100_PCIE_80GB    - externalResourceProvider: true      pciVendorSelector: 10de:1e30      resourceName: nvidia.com/TU102GL_QUADRO_RTX_6000_8000",
+    "source_page": "cluster_kubevirt_gpu",
+    "source_url": "https://nrp.ai/documentation/admindocs/cluster/kubevirt-gpu",
+    "detected_patterns": [
+      "A100"
+    ]
+  },
+  "a100_config_4": {
+    "original_yaml": "permittedHostDevices:  pciHostDevices:    - externalResourceProvider: true      pciVendorSelector: 10de:2236      resourceName: nvidia.com/GA102GL_A10    - externalResourceProvider: true      pciVendorSelector: 10de:20b5      resourceName: nvidia.com/GA100_A100_PCIE_80GB    - externalResourceProvider: true      pciVendorSelector: 10de:1e30      resourceName: nvidia.com/TU102GL_QUADRO_RTX_6000_8000",
+    "fixed_yaml": "permittedHostDevices:  pciHostDevices:    - externalResourceProvider: true      pciVendorSelector: 10de:2236      resourceName: nvidia.com/GA102GL_A10    - externalResourceProvider: true      pciVendorSelector: 10de:20b5      resourceName: nvidia.com/GA100_A100_PCIE_80GB    - externalResourceProvider: true      pciVendorSelector: 10de:1e30      resourceName: nvidia.com/TU102GL_QUADRO_RTX_6000_8000",
+    "source_page": "cluster_kubevirt_gpu",
+    "source_url": "https://nrp.ai/documentation/admindocs/cluster/kubevirt-gpu",
+    "detected_patterns": [
+      "A100"
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "resource_updates": {},
+  "query_patterns": {
+    "pods": {
+      "count": 5,
+      "success_rate": 0.6,
+      "common_intents": {
+        "COMMAND": 5
+      },
+      "last_query": "2025-09-23T18:31:26.255647"
+    },
+    "gpu": {
+      "count": 2,
+      "success_rate": 0.5,
+      "common_intents": {
+        "QUESTION": 2
+      },
+      "last_query": "2025-09-23T18:31:32.485862"
+    },
+    "yaml": {
+      "count": 3,
+      "success_rate": 0.3333333333333333,
+      "common_intents": {
+        "QUESTION": 3
+      },
+      "last_query": "2025-09-23T18:31:36.599055"
+    },
+    "storage": {
+      "count": 2,
+      "success_rate": 0.5,
+      "common_intents": {
+        "QUESTION": 2
+      },
+      "last_query": "2025-09-23T18:31:34.543871"
+    },
+    "general": {
+      "count": 2,
+      "success_rate": 0.0,
+      "common_intents": {
+        "COMMAND": 2
+      },
+      "last_query": "2025-09-23T18:31:30.400495"
+    },
+    "networking": {
+      "count": 2,
+      "success_rate": 0.0,
+      "common_intents": {
+        "COMMAND": 1,
+        "QUESTION": 1
+      },
+      "last_query": "2025-09-23T18:31:38.657752"
+    }
+  },
+  "successful_responses": {
+    "pods": 3,
+    "gpu": 1,
+    "yaml": 1,
+    "storage": 1
+  },
+  "failed_queries": {
+    "general": 2,
+    "pods": 2,
+    "networking": 2,
+    "gpu": 1,
+    "storage": 1,
+    "yaml": 2
+  }
+}

@@ -111,6 +111,57 @@ except Exception as e:
     glm_client = None
     GLM_V_AVAILABLE = False
 
+# Helper Functions for Direct K8s Operations (to avoid tool-calling-tool issues)
+async def direct_k8s_list_pods(namespace="gsoc"):
+    """Directly list pods using K8s Python client"""
+    try:
+        v1 = client.CoreV1Api()
+        pods = v1.list_namespaced_pod(namespace=namespace)
+
+        result = f"Pods in '{namespace}' namespace:\n"
+        for pod in pods.items:
+            status = pod.status.phase
+            name = pod.metadata.name
+            result += f"  - {name}: {status}\n"
+
+        return result
+    except Exception as e:
+        return f"Error listing pods: {str(e)}"
+
+async def direct_k8s_list_deployments(namespace="gsoc"):
+    """Directly list deployments using K8s Python client"""
+    try:
+        apps_v1 = client.AppsV1Api()
+        deployments = apps_v1.list_namespaced_deployment(namespace=namespace)
+
+        result = f"Deployments in '{namespace}' namespace:\n"
+        for dep in deployments.items:
+            name = dep.metadata.name
+            ready = dep.status.ready_replicas or 0
+            replicas = dep.spec.replicas or 0
+            result += f"  - {name}: {ready}/{replicas} ready\n"
+
+        return result
+    except Exception as e:
+        return f"Error listing deployments: {str(e)}"
+
+async def direct_k8s_list_services(namespace="gsoc"):
+    """Directly list services using K8s Python client"""
+    try:
+        v1 = client.CoreV1Api()
+        services = v1.list_namespaced_service(namespace=namespace)
+
+        result = f"Services in '{namespace}' namespace:\n"
+        for svc in services.items:
+            name = svc.metadata.name
+            svc_type = svc.spec.type
+            cluster_ip = svc.spec.cluster_ip
+            result += f"  - {name}: {svc_type} ({cluster_ip})\n"
+
+        return result
+    except Exception as e:
+        return f"Error listing services: {str(e)}"
+
 # Initialize FastMCP server
 mcp = FastMCP("Ultimate FastMCP NRP.ai Server")
 
@@ -2174,20 +2225,26 @@ async def intelligent_k8s_query(ctx: Context, params: QueryParams) -> str:
     try:
         await progress.report_percentage(40, message="Classifying intent")
 
-        # Simple intent classification
+        # CRITICAL: Improved intent classification to distinguish documentation from commands
         query_lower = params.query.lower()
 
-        if any(cmd in query_lower for cmd in ["list", "show", "get", "find"]):
+        # Check for documentation keywords first (higher priority)
+        if any(doc_word in query_lower for doc_word in ["example", "yaml", "template", "how to", "syntax", "nvidia.com/a100"]):
+            intent = "EXPLANATION"
+        elif any(cmd in query_lower for cmd in ["list my", "list pods", "get pods", "find pods"]) and not any(doc_word in query_lower for doc_word in ["example", "yaml", "template"]):
             intent = "COMMAND"
             if "pod" in query_lower:
                 await progress.report_percentage(70, message="Executing pod listing")
-                result = await k8s_list_resources(ctx, "pods")
+                pods = list_pods(CURRENT_NAMESPACE)
+                result = f"Pods in '{CURRENT_NAMESPACE}' namespace:\n" + "\n".join([f"  - {pod}" for pod in pods])
             elif "deployment" in query_lower:
                 await progress.report_percentage(70, message="Executing deployment listing")
-                result = await k8s_list_resources(ctx, "deployments")
+                deployments = list_deployments(CURRENT_NAMESPACE)
+                result = f"Deployments in '{CURRENT_NAMESPACE}' namespace:\n" + "\n".join([f"  - {deploy}" for deploy in deployments])
             elif "service" in query_lower:
                 await progress.report_percentage(70, message="Executing service listing")
-                result = await k8s_list_resources(ctx, "services")
+                services = list_services(CURRENT_NAMESPACE)
+                result = f"Services in '{CURRENT_NAMESPACE}' namespace:\n" + "\n".join([f"  - {svc}" for svc in services])
             else:
                 result = "Please specify what you want to list (pods, deployments, services, etc.)"
 
@@ -2693,6 +2750,6 @@ if __name__ == "__main__":
     print(f"Current Namespace: {CURRENT_NAMESPACE}")
     if GLM_V_AVAILABLE:
         print(f"GLM-4.5V Features: 65,536 tokens, multimodal (vision, video), tool calling")
-    print(f"\nServer will be available at: http://127.0.0.1:8024/mcp")
+    print(f"\nServer will be available at: http://127.0.0.1:8025/mcp")
 
-    mcp.run(transport="http", port=8024)
+    mcp.run(transport="http", port=8025)

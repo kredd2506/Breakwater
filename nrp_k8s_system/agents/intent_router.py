@@ -145,8 +145,16 @@ Respond with JSON only:
             },
             IntentType.QUESTION: {
                 'keywords': ['how', 'what', 'why', 'when', 'where', 'explain', 'help',
-                           'best practice', 'guide', 'tutorial', 'documentation'],
-                'patterns': [r'\b(how|what|why|when|where)\b', r'\b(explain|help|guide)\b']
+                           'best practice', 'guide', 'tutorial', 'documentation', 'how do i',
+                           'how to', 'shared memory', 'shm'],
+                'patterns': [
+                    r'\bhow\s+do\s+i\b',  # "How do I..." gets highest priority
+                    r'\bhow\s+to\b',      # "How to..." also high priority
+                    r'\b(how|what|why|when|where)\b',
+                    r'\b(explain|help|guide)\b',
+                    r'shared\s+memory',   # Specific shared memory questions
+                    r'\bshm\b'            # Shared memory abbreviation
+                ]
             }
         }
 
@@ -167,11 +175,15 @@ Respond with JSON only:
             # Pattern matching (weighted higher)
             for pattern in config['patterns']:
                 if re.search(pattern, input_lower):
-                    # Give extra weight to k8s command patterns
+                    # Give extra weight to specific pattern types
                     if intent_type == IntentType.COMMAND and any(cmd in pattern for cmd in ['describe', 'get', 'delete', 'list']):
                         score += 5  # Strong k8s command indicator
+                    elif intent_type == IntentType.QUESTION and pattern in [r'\bhow\s+do\s+i\b', r'\bhow\s+to\b']:
+                        score += 4  # Strong documentation question indicator
+                    elif intent_type == IntentType.QUESTION and pattern in [r'shared\s+memory', r'\bshm\b']:
+                        score += 3  # Specific documentation topic
                     else:
-                        score += 2
+                        score += 2  # Standard pattern match
                     keywords.append(f"pattern:{pattern}")
 
             scores[intent_type] = score

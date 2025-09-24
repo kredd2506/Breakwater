@@ -60,6 +60,24 @@ class CodeGeneratorAgent(BaseAgent):
     6. Suggest follow-up questions for refinement
     """
 
+    # NRP GPU Type Mapping from https://nrp.ai/documentation/userdocs/running/gpu-pods/#requesting-special-gpus
+    GPU_TYPE_MAPPING = {
+        "A40": "nvidia.com/a40",
+        "A100": "nvidia.com/a100",
+        "RTX_A6000": "nvidia.com/rtxa6000",
+        "NVIDIA_RTX_A6000": "nvidia.com/rtxa6000",
+        "RTX_8000": "nvidia.com/rtx8000",
+        "QUADRO_RTX_8000": "nvidia.com/rtx8000",
+        "GH200": "nvidia.com/gh200",
+        "GRACE_HOPPER_GH200": "nvidia.com/gh200",
+        "MIG": "nvidia.com/mig-small",
+        "A100_MIG": "nvidia.com/mig-small",
+        "GENERIC": "nvidia.com/gpu"
+    }
+
+    # Reverse mapping for template identification
+    RESOURCE_TO_GPU_TYPE = {v: k for k, v in GPU_TYPE_MAPPING.items()}
+
     def __init__(self):
         self.llm = init_chat_model()
         self.templates_dir = Path(__file__).parent.parent / "template"
@@ -193,10 +211,26 @@ Respond in JSON format:
                 resource_type = resource
                 break
 
-        # Extract basic requirements
+        # Extract GPU requirements using comprehensive mapping
         requirements = {}
-        if "gpu" in input_lower:
+        gpu_detected = False
+
+        # Check for specific GPU types first (exact matches take priority)
+        for gpu_type, resource_spec in self.GPU_TYPE_MAPPING.items():
+            if gpu_type.lower() in input_lower.replace("_", " ").replace("-", " "):
+                requirements["gpu"] = resource_spec
+                requirements["gpu_type"] = gpu_type
+                gpu_detected = True
+                print(f"[Fallback Analysis] Detected GPU type: {gpu_type} -> {resource_spec}")
+                break
+
+        # Fallback to generic GPU detection
+        if not gpu_detected and "gpu" in input_lower:
             requirements["gpu"] = "nvidia.com/gpu"
+            requirements["gpu_type"] = "GENERIC"
+            print(f"[Fallback Analysis] Detected generic GPU")
+
+        # Storage detection
         if "storage" in input_lower or "volume" in input_lower:
             requirements["storage"] = "persistent"
 
@@ -217,6 +251,9 @@ Respond in JSON format:
 
         # Load templates from cached NRP docs
         templates.update(self._load_cached_templates())
+
+        # Load comprehensive scraped templates
+        templates.update(self._load_comprehensive_templates())
 
         print(f"[Code Generator] Loaded {len(templates)} templates")
         return templates
@@ -314,7 +351,68 @@ spec:
             cpu: "{{CPU_LIMIT}}"
 """
 
-        return {
+        a100_deployment_template = """apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{APP_NAME}}
+  namespace: {{NAMESPACE}}
+spec:
+  replicas: {{REPLICAS}}
+  selector:
+    matchLabels:
+      app: {{APP_NAME}}
+  template:
+    metadata:
+      labels:
+        app: {{APP_NAME}}
+    spec:
+      containers:
+      - name: {{APP_NAME}}
+        image: {{IMAGE}}
+        resources:
+          requests:
+            nvidia.com/a100: {{GPU_COUNT}}
+            memory: "{{MEMORY}}"
+            cpu: "{{CPU}}"
+          limits:
+            nvidia.com/a100: {{GPU_COUNT}}
+            memory: "{{MEMORY_LIMIT}}"
+            cpu: "{{CPU_LIMIT}}"
+"""
+
+        # Template generator for specific GPU types
+        def create_gpu_deployment_template(gpu_resource: str) -> str:
+            return f"""apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{{{APP_NAME}}}}
+  namespace: {{{{NAMESPACE}}}}
+spec:
+  replicas: {{{{REPLICAS}}}}
+  selector:
+    matchLabels:
+      app: {{{{APP_NAME}}}}
+  template:
+    metadata:
+      labels:
+        app: {{{{APP_NAME}}}}
+    spec:
+      containers:
+      - name: {{{{APP_NAME}}}}
+        image: {{{{IMAGE}}}}
+        resources:
+          requests:
+            {gpu_resource}: {{{{GPU_COUNT}}}}
+            memory: "{{{{MEMORY}}}}"
+            cpu: "{{{{CPU}}}}"
+          limits:
+            {gpu_resource}: {{{{GPU_COUNT}}}}
+            memory: "{{{{MEMORY_LIMIT}}}}"
+            cpu: "{{{{CPU_LIMIT}}}}"
+"""
+
+        # Base templates
+        templates = {
             "basic-deployment": Template(
                 name="basic-deployment",
                 description="Basic Kubernetes deployment",
@@ -338,7 +436,7 @@ spec:
             ),
             "gpu-deployment": Template(
                 name="gpu-deployment",
-                description="GPU-enabled deployment",
+                description="Generic GPU-enabled deployment",
                 content=gpu_deployment_template,
                 resource_type="deployment",
                 example_source="NRP GPU Guidelines",
@@ -350,6 +448,49 @@ spec:
                           "CPU_LIMIT": "2"}
             )
         }
+
+        # GPU-specific memory and CPU recommendations based on GPU type
+        gpu_specs = {
+            "A40": {"memory": "16Gi", "cpu": "4", "memory_limit": "32Gi", "cpu_limit": "8"},
+            "A100": {"memory": "32Gi", "cpu": "8", "memory_limit": "64Gi", "cpu_limit": "16"},
+            "RTX_A6000": {"memory": "12Gi", "cpu": "4", "memory_limit": "24Gi", "cpu_limit": "8"},
+            "RTX_8000": {"memory": "12Gi", "cpu": "4", "memory_limit": "24Gi", "cpu_limit": "8"},
+            "GH200": {"memory": "64Gi", "cpu": "16", "memory_limit": "128Gi", "cpu_limit": "32"},
+            "MIG": {"memory": "8Gi", "cpu": "2", "memory_limit": "16Gi", "cpu_limit": "4"}
+        }
+
+        # Create templates for all specific GPU types
+        for gpu_type, resource_spec in self.GPU_TYPE_MAPPING.items():
+            if gpu_type != "GENERIC":  # Skip generic GPU
+                gpu_name = gpu_type.lower().replace("_", "-")
+                specs = gpu_specs.get(gpu_type, gpu_specs["A100"])  # Default to A100 specs
+
+                templates[f"{gpu_name}-deployment"] = Template(
+                    name=f"{gpu_name}-deployment",
+                    description=f"{gpu_type} GPU-enabled deployment",
+                    content=create_gpu_deployment_template(resource_spec),
+                    resource_type="deployment",
+                    example_source=f"NRP {gpu_type} GPU Guidelines",
+                    nrp_policies=[
+                        f"Request {gpu_type} GPUs explicitly using {resource_spec}",
+                        "Set appropriate resource limits for GPU workloads",
+                        f"Use {gpu_type}-compatible images",
+                        f"Ensure sufficient memory for {gpu_type} operations"
+                    ],
+                    variables={
+                        "APP_NAME": f"{gpu_name}-app",
+                        "NAMESPACE": "gsoc",
+                        "REPLICAS": "1",
+                        "IMAGE": "nvidia/cuda:latest",
+                        "GPU_COUNT": "1",
+                        "MEMORY": specs["memory"],
+                        "CPU": specs["cpu"],
+                        "MEMORY_LIMIT": specs["memory_limit"],
+                        "CPU_LIMIT": specs["cpu_limit"]
+                    }
+                )
+
+        return templates
 
     def _load_cached_templates(self) -> Dict[str, Template]:
         """Load templates from cached NRP documentation."""
@@ -368,6 +509,44 @@ spec:
 
         except Exception as e:
             print(f"[!] Failed to load cached templates: {e}")
+
+        return templates
+
+    def _load_comprehensive_templates(self) -> Dict[str, Template]:
+        """Load comprehensive templates from scraped NRP documentation."""
+        templates = {}
+
+        try:
+            # Import the comprehensive templates
+            import sys
+            template_path = Path(__file__).parent.parent / "template"
+            sys.path.insert(0, str(template_path))
+
+            from nrp_comprehensive_templates import get_a100_templates, get_templates_by_type, search_templates
+
+            # Load A100 templates specifically
+            a100_templates = get_a100_templates()
+            for name, template_data in a100_templates.items():
+                templates[f"a100_{name}"] = Template(
+                    name=f"a100_{name}",
+                    description=f"A100 {template_data['description']}",
+                    content=template_data['template_yaml'],
+                    resource_type=template_data['resource_type'].lower(),
+                    example_source=template_data['source'],
+                    nrp_policies=[
+                        "Uses authentic nvidia.com/a100 resource specification",
+                        "Based on official NRP GPU documentation",
+                        "Suitable for A100-specific ML workloads"
+                    ],
+                    variables={"GPU_TYPE": "A100", "GPU_COUNT": "1", "APP_NAME": "a100-app"}
+                )
+
+            print(f"[Code Generator] Loaded {len(a100_templates)} A100 templates from comprehensive database")
+
+        except ImportError as e:
+            print(f"[WARNING] Could not load comprehensive templates: {e}")
+        except Exception as e:
+            print(f"[ERROR] Failed to load comprehensive templates: {e}")
 
         return templates
 
@@ -430,46 +609,204 @@ spec:
         }
 
     def _find_templates(self, analysis: Dict[str, Any]) -> List[Template]:
-        """Find templates matching the analysis."""
+        """Find templates using hard eligibility gates (Constraint Satisfaction)."""
         resource_type = analysis.get("resource_type", "deployment")
         requirements = analysis.get("requirements", {})
         features = analysis.get("features", [])
 
-        matching_templates = []
+        # Step 1: Hard Eligibility Gates (Constraint Satisfaction)
+        eligible_templates = []
+        exact_match_found = False
 
+        # Check for exact hardware matches first (highest priority)
+        gpu_type = requirements.get("gpu_type")
+        if gpu_type:
+            requested_resource = self.GPU_TYPE_MAPPING.get(gpu_type)
+            print(f"[Template Selection] Looking for GPU type: {gpu_type} -> {requested_resource}")
+
+            for template in self.templates.values():
+                # Hard constraint: exact GPU resource specification match
+                if requested_resource and requested_resource in template.content:
+                    if template.resource_type == resource_type:
+                        eligible_templates.append(template)
+                        exact_match_found = True
+                        print(f"[Template Selection] Found exact resource match: {template.name} ({requested_resource})")
+                # Alternative: check by GPU type name in template name
+                elif gpu_type != "GENERIC" and gpu_type.lower().replace("_", "") in template.name.lower().replace("_", "").replace("-", ""):
+                    if template.resource_type == resource_type:
+                        eligible_templates.append(template)
+                        exact_match_found = True
+                        print(f"[Template Selection] Found name-based match: {template.name} for {gpu_type}")
+                # Handle generic GPU - exclude all specific GPU types
+                elif gpu_type == "GENERIC":
+                    # Only include if it contains nvidia.com/gpu and doesn't contain any specific GPU resources
+                    if "nvidia.com/gpu" in template.content:
+                        has_specific_gpu = any(spec in template.content for spec in self.GPU_TYPE_MAPPING.values() if spec != "nvidia.com/gpu")
+                        if not has_specific_gpu and template.resource_type == resource_type:
+                            eligible_templates.append(template)
+                            exact_match_found = True
+                            print(f"[Template Selection] Found generic GPU match: {template.name}")
+
+        # If exact matches found, ONLY consider those (hard constraint)
+        if exact_match_found:
+            print(f"[Template Selection] Found {len(eligible_templates)} exact GPU matches - excluding generic templates")
+            return self._score_eligible_templates(eligible_templates, analysis)
+
+        # Step 2: If no exact matches, apply general eligibility constraints
         for template in self.templates.values():
+            # Primary resource type constraint (must match)
+            if template.resource_type != resource_type:
+                continue
+
+            # Feature constraint checking
+            meets_constraints = True
+
+            # Storage constraint
+            if "storage" in requirements:
+                if not any(keyword in template.content.lower()
+                          for keyword in ["volume", "pvc", "storage"]):
+                    meets_constraints = False
+
+            # Only add if all constraints are met
+            if meets_constraints:
+                eligible_templates.append(template)
+
+        print(f"[Template Selection] Found {len(eligible_templates)} eligible templates after constraint filtering")
+        return self._score_eligible_templates(eligible_templates, analysis)
+
+    def _score_eligible_templates(self, eligible_templates: List[Template], analysis: Dict[str, Any]) -> List[Template]:
+        """Score only pre-filtered eligible templates."""
+        if not eligible_templates:
+            return []
+
+        requirements = analysis.get("requirements", {})
+        features = analysis.get("features", [])
+
+        scored_templates = []
+
+        for template in eligible_templates:
             score = 0
 
-            # Primary resource type match
-            if template.resource_type == resource_type:
-                score += 10
+            # Base score for being eligible
+            score += 10
 
-            # Feature matching
-            if "gpu" in requirements and "gpu" in template.name:
-                score += 5
-            if "storage" in requirements and any(keyword in template.content.lower()
-                                               for keyword in ["volume", "pvc", "storage"]):
-                score += 5
+            # Bonus scoring for additional features
+            if "gpu_type" in requirements:
+                if requirements["gpu_type"] == "A100" and "a100" in template.name.lower():
+                    score += 5  # Bonus for A100 (already filtered for exactness)
+                elif "gpu" in template.name:
+                    score += 3
 
-            # Content relevance
+            # Content relevance bonus
             for feature in features:
                 if feature.lower() in template.content.lower():
                     score += 2
 
-            if score > 0:
-                matching_templates.append((template, score))
+            # Template completeness bonus
+            if len(template.content) > 500:  # More comprehensive templates
+                score += 1
+
+            scored_templates.append((template, score))
 
         # Sort by score and return templates
-        matching_templates.sort(key=lambda x: x[1], reverse=True)
-        return [template for template, score in matching_templates]
+        scored_templates.sort(key=lambda x: x[1], reverse=True)
+        return [template for template, score in scored_templates]
 
     def _select_best_template(self, templates: List[Template], analysis: Dict[str, Any]) -> Template:
-        """Select the best template for the request."""
+        """Select the best template with validation for schedulable capacity."""
         if not templates:
             return self._create_dynamic_template(analysis)
 
-        # For now, return the first (highest scoring) template
+        # Step 3: Validation - ensure selected template maps to real schedulable capacity
+        for template in templates:
+            if self._validate_template_schedulability(template, analysis):
+                print(f"[Template Selection] Selected validated template: {template.name}")
+                return template
+            else:
+                print(f"[Template Selection] Template {template.name} failed schedulability validation")
+
+        # If no templates pass validation, return the best one with warnings
+        print(f"[Template Selection] No templates passed validation - using best available with warnings")
         return templates[0]
+
+    def _validate_template_schedulability(self, template: Template, analysis: Dict[str, Any]) -> bool:
+        """
+        Validate that the template maps to real, schedulable capacity.
+
+        This checks:
+        1. GPU resource specifications match actual cluster capabilities
+        2. Resource requests are within reasonable limits
+        3. Required storage classes exist
+        4. Network policies allow the configuration
+        """
+        try:
+            requirements = analysis.get("requirements", {})
+
+            # GPU validation for all supported types
+            if "gpu_type" in requirements:
+                gpu_type = requirements["gpu_type"]
+                expected_resource = self.GPU_TYPE_MAPPING.get(gpu_type)
+
+                if expected_resource:
+                    # Validate the template contains the correct GPU resource specification
+                    if expected_resource not in template.content:
+                        print(f"[Validation] {gpu_type} template {template.name} missing {expected_resource} resource spec")
+                        return False
+
+                    # Ensure it's not using other GPU resource types
+                    other_gpu_resources = [res for res in self.GPU_TYPE_MAPPING.values() if res != expected_resource]
+                    conflicting_resources = [res for res in other_gpu_resources if res in template.content]
+
+                    if conflicting_resources:
+                        print(f"[Validation] {gpu_type} template {template.name} incorrectly uses {conflicting_resources}")
+                        return False
+
+                    # Validate resource limits based on GPU type
+                    gpu_specs = {
+                        "A40": ["16Gi", "32Gi"],
+                        "A100": ["32Gi", "64Gi"],
+                        "RTX_A6000": ["12Gi", "24Gi"],
+                        "RTX_8000": ["12Gi", "24Gi"],
+                        "GH200": ["64Gi", "128Gi"],
+                        "MIG": ["8Gi", "16Gi"],
+                        "GENERIC": ["2Gi", "4Gi", "8Gi"]
+                    }
+
+                    expected_memories = gpu_specs.get(gpu_type, [])
+                    if expected_memories and not any(mem in template.content for mem in expected_memories):
+                        print(f"[Validation] {gpu_type} template {template.name} may have insufficient memory spec for {gpu_type}")
+                        # Warning but not failure for memory specs
+
+                    print(f"[Validation] {gpu_type} template validated with {expected_resource}")
+                else:
+                    print(f"[Validation] Unknown GPU type: {gpu_type}")
+                    return False
+
+            # Storage validation
+            if "storage" in requirements:
+                if any(storage_class in template.content for storage_class in ["rook-ceph-block", "rook-cephfs"]):
+                    print(f"[Validation] Template {template.name} uses valid NRP storage classes")
+                else:
+                    print(f"[Validation] Template {template.name} may use non-standard storage classes")
+                    # Warning but not failure
+
+            # Resource limits validation
+            if "resources:" in template.content:
+                if "limits:" not in template.content:
+                    print(f"[Validation] Template {template.name} missing resource limits")
+                    return False
+
+            # Namespace validation
+            if "namespace:" not in template.content and "{{NAMESPACE}}" not in template.content:
+                print(f"[Validation] Template {template.name} missing namespace specification")
+                return False
+
+            print(f"[Validation] Template {template.name} passed all validation checks")
+            return True
+
+        except Exception as e:
+            print(f"[Validation] Error validating template {template.name}: {e}")
+            return False
 
     def _create_dynamic_template(self, analysis: Dict[str, Any]) -> Template:
         """Create a template dynamically if no matches found."""

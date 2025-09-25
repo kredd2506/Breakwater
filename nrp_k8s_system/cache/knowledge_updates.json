@@ -2,53 +2,53 @@
   "resource_updates": {},
   "query_patterns": {
     "pods": {
-      "count": 5,
-      "success_rate": 0.6,
-      "common_intents": {
-        "COMMAND": 5
-      },
-      "last_query": "2025-09-23T18:31:26.255647"
-    },
-    "gpu": {
-      "count": 2,
-      "success_rate": 0.5,
-      "common_intents": {
-        "QUESTION": 2
-      },
-      "last_query": "2025-09-23T18:31:32.485862"
-    },
-    "yaml": {
-      "count": 3,
+      "count": 9,
       "success_rate": 0.3333333333333333,
       "common_intents": {
-        "QUESTION": 3
+        "COMMAND": 9
       },
-      "last_query": "2025-09-23T18:31:36.599055"
+      "last_query": "2025-09-24T10:18:28.388011"
+    },
+    "gpu": {
+      "count": 4,
+      "success_rate": 0.25,
+      "common_intents": {
+        "QUESTION": 4
+      },
+      "last_query": "2025-09-24T10:18:34.580249"
+    },
+    "yaml": {
+      "count": 7,
+      "success_rate": 0.14285714285714285,
+      "common_intents": {
+        "QUESTION": 7
+      },
+      "last_query": "2025-09-24T10:18:38.701763"
     },
     "storage": {
-      "count": 2,
-      "success_rate": 0.5,
+      "count": 4,
+      "success_rate": 0.25,
       "common_intents": {
-        "QUESTION": 2
+        "QUESTION": 4
       },
-      "last_query": "2025-09-23T18:31:34.543871"
+      "last_query": "2025-09-24T10:18:36.647712"
     },
     "general": {
-      "count": 2,
+      "count": 4,
       "success_rate": 0.0,
       "common_intents": {
-        "COMMAND": 2
+        "COMMAND": 4
       },
-      "last_query": "2025-09-23T18:31:30.400495"
+      "last_query": "2025-09-24T10:18:32.503411"
     },
     "networking": {
-      "count": 2,
+      "count": 6,
       "success_rate": 0.0,
       "common_intents": {
-        "COMMAND": 1,
-        "QUESTION": 1
+        "COMMAND": 3,
+        "QUESTION": 3
       },
-      "last_query": "2025-09-23T18:31:38.657752"
+      "last_query": "2025-09-24T10:18:40.762661"
     }
   },
   "successful_responses": {
@@ -58,11 +58,11 @@
     "storage": 1
   },
   "failed_queries": {
-    "general": 2,
-    "pods": 2,
-    "networking": 2,
-    "gpu": 1,
-    "storage": 1,
-    "yaml": 2
+    "general": 4,
+    "pods": 6,
+    "networking": 6,
+    "gpu": 3,
+    "storage": 3,
+    "yaml": 6
   }
 }

@@ -83,8 +83,8 @@
       "job_65bf412b"
     ],
     "template": [
-      "fpga_9af75538",
       "job_65bf412b",
+      "fpga_9af75538",
       "job_0d9e0eda"
     ],
     "example": [
@@ -127,8 +127,8 @@
       "job_65bf412b"
     ],
     "runtime": [
-      "fpga_9af75538",
       "job_65bf412b",
+      "fpga_9af75538",
       "job_0d9e0eda"
     ],
     "memory": [
@@ -401,23 +401,23 @@
   },
   "warning_index": {
     "danger": [
-      "fpga_9af75538",
       "job_65bf412b",
+      "fpga_9af75538",
       "job_0d9e0eda"
     ],
     "warning": [
-      "fpga_9af75538",
       "job_65bf412b",
+      "fpga_9af75538",
       "job_0d9e0eda"
     ],
     "caution": [
-      "fpga_9af75538",
       "job_65bf412b",
+      "fpga_9af75538",
       "job_0d9e0eda"
     ],
     "note": [
-      "fpga_9af75538",
       "job_65bf412b",
+      "fpga_9af75538",
       "job_0d9e0eda"
     ]
   }

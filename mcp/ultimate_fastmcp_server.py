@@ -99,13 +99,13 @@ try:
 
     from openai import AsyncOpenAI
 
-    # Initialize GLM-V client for comprehensive explanations
+    # Initialize DeepSeek-R1 client for comprehensive explanations
     glm_client = AsyncOpenAI(
-        api_key=os.getenv("NRP_API_KEY"),
-        base_url=os.getenv("NRP_BASE_URL", "https://ellm.nrp-nautilus.io/v1")
+        api_key="60giG4L3xNAMC1FT2f2ivYnExpHYA1fD",
+        base_url="https://ellm.nrp-nautilus.io/v1"
     )
     GLM_V_AVAILABLE = True
-    print(f"[OK] GLM-4.5V multimodal client initialized: {os.getenv('NRP_MODEL', 'glm-v')}")
+    print(f"[OK] DeepSeek-R1 client initialized with working credentials")
 except Exception as e:
     print(f"Warning: Could not initialize GLM-V client: {e}")
     glm_client = None
@@ -2231,12 +2231,30 @@ async def intelligent_k8s_query(ctx: Context, params: QueryParams) -> str:
         # Check for documentation keywords first (higher priority)
         if any(doc_word in query_lower for doc_word in ["example", "yaml", "template", "how to", "syntax", "nvidia.com/a100"]):
             intent = "EXPLANATION"
-        elif any(cmd in query_lower for cmd in ["list my", "list pods", "get pods", "find pods"]) and not any(doc_word in query_lower for doc_word in ["example", "yaml", "template"]):
+        elif any(cmd in query_lower for cmd in ["list my", "list pods", "get pods", "find pods", "describe pods", "describe the pods"]) and not any(doc_word in query_lower for doc_word in ["example", "yaml", "template"]):
             intent = "COMMAND"
             if "pod" in query_lower:
-                await progress.report_percentage(70, message="Executing pod listing")
-                pods = list_pods(CURRENT_NAMESPACE)
-                result = f"Pods in '{CURRENT_NAMESPACE}' namespace:\n" + "\n".join([f"  - {pod}" for pod in pods])
+                if any(desc_word in query_lower for desc_word in ["describe", "detail", "information about"]):
+                    await progress.report_percentage(70, message="Describing pods with details")
+                    try:
+                        pods = list_pods(CURRENT_NAMESPACE)
+                        if pods:
+                            detailed_info = []
+                            for pod in pods[:5]:  # Limit to first 5 pods for safety
+                                try:
+                                    pod_details = describe_pod(pod)
+                                    detailed_info.append(f"Pod: {pod}\n{pod_details[:200]}...\n")
+                                except Exception as e:
+                                    detailed_info.append(f"Pod: {pod} - Error getting details: {str(e)}\n")
+                            result = f"Detailed description of pods in '{CURRENT_NAMESPACE}' namespace:\n" + "\n".join(detailed_info)
+                        else:
+                            result = f"No pods found in '{CURRENT_NAMESPACE}' namespace"
+                    except Exception as e:
+                        result = f"Error describing pods: {str(e)}"
+                else:
+                    await progress.report_percentage(70, message="Executing pod listing")
+                    pods = list_pods(CURRENT_NAMESPACE)
+                    result = f"Pods in '{CURRENT_NAMESPACE}' namespace:\n" + "\n".join([f"  - {pod}" for pod in pods])
             elif "deployment" in query_lower:
                 await progress.report_percentage(70, message="Executing deployment listing")
                 deployments = list_deployments(CURRENT_NAMESPACE)
@@ -2287,7 +2305,7 @@ Respond with JSON:
 }}"""
 
                         nav_response = await glm_client.chat.completions.create(
-                            model=os.getenv("NRP_MODEL", "glm-v"),
+                            model="deepseek-r1",
                             messages=[
                                 {"role": "system", "content": "Navigator agent: Analyze queries and respond with JSON only."},
                                 {"role": "user", "content": navigation_prompt}
@@ -2402,7 +2420,7 @@ QUALITY STANDARDS:
 Generate a response that represents the pinnacle of our Navigator-Extractor-Aggregator architecture."""
 
                             response = await glm_client.chat.completions.create(
-                                model=os.getenv("NRP_MODEL", "glm-v"),
+                                model="deepseek-r1",
                                 messages=[
                                     {"role": "system", "content": "You are an expert NRP Nautilus Kubernetes platform specialist with deep knowledge of all NRP documentation, policies, and best practices. Provide comprehensive, actionable explanations."},
                                     {"role": "user", "content": explanation_prompt}

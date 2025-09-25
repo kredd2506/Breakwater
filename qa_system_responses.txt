@@ -1,0 +1,792 @@
+[INFO] SERPER set? True | BING set? True
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.429005 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.948868 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.375916 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.765461 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.471773 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.777871 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.466340 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.882279 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[!] Failed to initialize GLM-V client: 1 validation error for ChatOpenAI
+model
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+[nrp_init] base_url=https://ellm.nrp-nautilus.io/v1  api_key=QmKT…qKoM  model=glm-v
+[Intent Router] GLM-V not available, using fallback (gemma3)
+[*] Using fallback templates (nautilus_template disabled)
+NRP Comprehensive Template Database loaded: 262 templates
+A100 GPU templates available: 5
+[Code Generator] Loaded 5 A100 templates from comprehensive database
+[Code Generator] Loaded 18 templates
+[Orchestrator] Initialized with 4 agents
+COMPREHENSIVE NRP QA SYSTEM TEST
+================================================================================
+Loading questions from: D:\Gsoc Gitlab\ocean\breakwater\mcp\tests\QA.txt
+Loaded 20 questions
+Starting test at: 2025-09-23 20:42:07
+
+================================================================================
+PROCESSING QUESTION 1
+================================================================================
+Q: Should users run sleep in batch jobs on Nautilus, or optimize for short runtime?(According to
+================================================================================
+[Orchestrator] Processing: Should users run sleep in batch jobs on Nautilus, or optimize for short runtime?According to
+[Intent Router]
+Intent: unclear
+Confidence: unclear
+Routing to: Clarification needed
+Reasoning: No clear intent indicators found
+
+SUCCESS: True
+RESPONSE LENGTH: 399 characters
+DURATION: 0.00 seconds
+NRP SPECIFIC: True
+SOURCE CITATIONS: 0
+
+RESPONSE PREVIEW:
+--------------------------------------------------
+I'm not sure what you'd like to do. Please specify:
+
+**For Information/Questions:**
+- "How do I request GPUs on NRP?"
+- "What are the storage options?"
+- "Explain Kubernetes networking"
+
+**For Code/Templates:**
+- "Create a GPU deployment YAML"
+- "Show me ingress template"
+- "Generate service configu...
+--------------------------------------------------
+
+================================================================================
+PROCESSING QUESTION 2
+================================================================================
+Q: How can users request an A100 GPU for their Kubernetes pod?(A specific GPU resource request scenario.)
+================================================================================
+[Orchestrator] Processing: How can users request an A100 GPU for their Kubernetes pod?A specific GPU resource request scenario.
+[Intent Router]
+Intent: question
+Confidence: low
+Routing to: INFOGENT Agent (information gathering)
+Reasoning: Matched 3 indicators: how, pattern:\b(how|what|why|when|where)\b
+[Fast INFOGENT] Processing: How can users request an A100 GPU for their Kubernetes pod?A specific GPU resource request scenario.
+[Fast INFOGENT] Found 10 knowledge base results
+[!] Fast response generation failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+
+SUCCESS: True
+RESPONSE LENGTH: 604 characters
+DURATION: 2.13 seconds
+NRP SPECIFIC: True
+SOURCE CITATIONS: 3
+
+RESPONSE PREVIEW:
+--------------------------------------------------
+# How can users request an A100 GPU for their Kubernetes pod?A specific GPU resource request scenario.
+
+## Available Templates
+
+### On this page
+**Resource Type:** unknown
+
+### On this page
+**Resource Type:** unknown
+
+### On this page
+**Resource Type:** unknown
+
+
+**Sources:** https://nrp.ai/document...
+--------------------------------------------------
+
+================================================================================
+PROCESSING QUESTION 3
+================================================================================
+Q: What’s the best way to request an NVIDIA A10 GPU node when configuring a pod on Nautilus?
+================================================================================
+[Orchestrator] Processing: What’s the best way to request an NVIDIA A10 GPU node when configuring a pod on Nautilus?
+[Intent Router]
+Intent: question
+Confidence: low
+Routing to: INFOGENT Agent (information gathering)
+Reasoning: Matched 4 indicators: what, when, pattern:\b(how|what|why|when|where)\b
+[Fast INFOGENT] Processing: What’s the best way to request an NVIDIA A10 GPU node when configuring a pod on Nautilus?
+[Fast INFOGENT] Found 10 knowledge base results
+[!] Fast response generation failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+
+SUCCESS: True
+RESPONSE LENGTH: 593 characters
+DURATION: 1.55 seconds
+NRP SPECIFIC: True
+SOURCE CITATIONS: 3
+
+RESPONSE PREVIEW:
+--------------------------------------------------
+# What’s the best way to request an NVIDIA A10 GPU node when configuring a pod on Nautilus?
+
+## Available Templates
+
+### On this page
+**Resource Type:** unknown
+
+### On this page
+**Resource Type:** unknown
+
+### On this page
+**Resource Type:** unknown
+
+
+**Sources:** https://nrp.ai/documentation/userd...
+--------------------------------------------------
+
+================================================================================
+PROCESSING QUESTION 4
+================================================================================
+Q: How do users specify multiple GPU types (e.g., A100 and A10) in a multi-GPU job on
+================================================================================
+[Orchestrator] Processing: How do users specify multiple GPU types e.g., A100 and A10 in a multi-GPU job on
+[Intent Router]
+Intent: question
+Confidence: low
+Routing to: INFOGENT Agent (information gathering)
+Reasoning: Matched 3 indicators: how, pattern:\b(how|what|why|when|where)\b
+[Fast INFOGENT] Processing: How do users specify multiple GPU types e.g., A100 and A10 in a multi-GPU job on
+[Fast INFOGENT] Found 10 knowledge base results
+[!] Fast response generation failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+
+SUCCESS: True
+RESPONSE LENGTH: 584 characters
+DURATION: 1.71 seconds
+NRP SPECIFIC: True
+SOURCE CITATIONS: 3
+
+RESPONSE PREVIEW:
+--------------------------------------------------
+# How do users specify multiple GPU types e.g., A100 and A10 in a multi-GPU job on
+
+## Available Templates
+
+### On this page
+**Resource Type:** unknown
+
+### On this page
+**Resource Type:** unknown
+
+### On this page
+**Resource Type:** unknown
+
+
+**Sources:** https://nrp.ai/documentation/userdocs/runni...
+--------------------------------------------------
+
+================================================================================
+PROCESSING QUESTION 6
+================================================================================
+Q: How do users launch a GUI-enabled desktop container (GLX or EGL) via Coder on
+================================================================================
+[Orchestrator] Processing: How do users launch a GUI-enabled desktop container GLX or EGL via Coder on
+[Intent Router]
+Intent: question
+Confidence: low
+Routing to: INFOGENT Agent (information gathering)
+Reasoning: Matched 3 indicators: how, pattern:\b(how|what|why|when|where)\b
+[Fast INFOGENT] Processing: How do users launch a GUI-enabled desktop container GLX or EGL via Coder on
+[Fast INFOGENT] Found 0 knowledge base results
+[Fast INFOGENT] Insufficient knowledge, falling back to fresh extraction
+[Fast INFOGENT] Falling back to real-time NRP documentation search for: How do users launch a GUI-enabled desktop container GLX or EGL via Coder on
+[Fast INFOGENT] Targeting NRP documentation: https://nrp.ai/documentation/userdocs/running/gui-desktop/#performance-considerations
+[!] LLM response generation failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.404415 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.872633 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.485181 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.754155 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Using Serper search provider
+[INFO] Loaded 4 templates from knowledge base
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.488453 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.959896 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Using Serper search provider
+[INFO] Loaded 4 templates from knowledge base
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.427395 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.986253 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+
+
+SUCCESS: True
+RESPONSE LENGTH: 2707 characters
+DURATION: 1.72 seconds
+NRP SPECIFIC: True
+SOURCE CITATIONS: 2
+
+RESPONSE PREVIEW:
+--------------------------------------------------
+
+# GPU vs CPU Encoding Performance Considerations
+
+When deciding between GPU and CPU encoding, several performance trade-offs affect which option is more suitable:
+
+## GPU Encoding (nvh264enc)
+- **CPU Usage**: Significantly lower CPU utilization due to hardware acceleration
+- **Performance**: Superi...
+--------------------------------------------------
+
+================================================================================
+PROCESSING QUESTION 7
+================================================================================
+Q: Which container—docker-nvidia-glx-desktop or docker-nvidia-egl-desktop—should users preferred, and why?
+================================================================================
+[Orchestrator] Processing: Which container—docker-nvidia-glx-desktop or docker-nvidia-egl-desktop—should users preferred, and why?
+[Intent Router]
+Intent: question
+Confidence: low
+Routing to: INFOGENT Agent (information gathering)
+Reasoning: Matched 3 indicators: why, pattern:\b(how|what|why|when|where)\b
+[Fast INFOGENT] Processing: Which container—docker-nvidia-glx-desktop or docker-nvidia-egl-desktop—should users preferred, and why?
+[Fast INFOGENT] Found 0 knowledge base results
+[Fast INFOGENT] Insufficient knowledge, falling back to fresh extraction
+[Fast INFOGENT] Falling back to real-time NRP documentation search for: Which container—docker-nvidia-glx-desktop or docker-nvidia-egl-desktop—should users preferred, and why?
+[Fast INFOGENT] Targeting NRP documentation: https://nrp.ai/documentation/userdocs/running/gui-desktop/#performance-considerations
+[!] LLM response generation failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+
+SUCCESS: True
+RESPONSE LENGTH: 2707 characters
+DURATION: 1.65 seconds
+NRP SPECIFIC: True
+SOURCE CITATIONS: 2
+
+RESPONSE PREVIEW:
+--------------------------------------------------
+
+# GPU vs CPU Encoding Performance Considerations
+
+When deciding between GPU and CPU encoding, several performance trade-offs affect which option is more suitable:
+
+## GPU Encoding (nvh264enc)
+- **CPU Usage**: Significantly lower CPU utilization due to hardware acceleration
+- **Performance**: Superi...
+--------------------------------------------------
+
+================================================================================
+PROCESSING QUESTION 8
+================================================================================
+Q: What is the process for exposing a GUI Desktop container via an Ingress and negotiate DNS correctly?
+================================================================================
+[Orchestrator] Processing: What is the process for exposing a GUI Desktop container via an Ingress and negotiate DNS correctly?
+[Intent Router]
+Intent: question
+Confidence: low
+Routing to: INFOGENT Agent (information gathering)
+Reasoning: Matched 3 indicators: what, pattern:\b(how|what|why|when|where)\b
+[Fast INFOGENT] Processing: What is the process for exposing a GUI Desktop container via an Ingress and negotiate DNS correctly?
+[Fast INFOGENT] Found 0 knowledge base results
+[Fast INFOGENT] Insufficient knowledge, falling back to fresh extraction
+[Fast INFOGENT] Falling back to real-time NRP documentation search for: What is the process for exposing a GUI Desktop container via an Ingress and negotiate DNS correctly?
+[Fast INFOGENT] Targeting NRP documentation: https://nrp.ai/documentation/userdocs/running/gui-desktop/#performance-considerations
+[!] LLM response generation failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+
+SUCCESS: True
+RESPONSE LENGTH: 2707 characters
+DURATION: 1.68 seconds
+NRP SPECIFIC: True
+SOURCE CITATIONS: 2
+
+RESPONSE PREVIEW:
+--------------------------------------------------
+
+# GPU vs CPU Encoding Performance Considerations
+
+When deciding between GPU and CPU encoding, several performance trade-offs affect which option is more suitable:
+
+## GPU Encoding (nvh264enc)
+- **CPU Usage**: Significantly lower CPU utilization due to hardware acceleration
+- **Performance**: Superi...
+--------------------------------------------------
+
+================================================================================
+PROCESSING QUESTION 9
+================================================================================
+Q: How does a new user log into Nautilus via CILogon and get added to their namespace?
+================================================================================
+[Orchestrator] Processing: How does a new user log into Nautilus via CILogon and get added to their namespace?
+[Intent Router]
+Intent: question
+Confidence: low
+Routing to: INFOGENT Agent (information gathering)
+Reasoning: Matched 3 indicators: how, pattern:\b(how|what|why|when|where)\b
+[Fast INFOGENT] Processing: How does a new user log into Nautilus via CILogon and get added to their namespace?
+[Fast INFOGENT] Found 0 knowledge base results
+[Fast INFOGENT] Insufficient knowledge, falling back to fresh extraction
+[Fast INFOGENT] Falling back to real-time NRP documentation search for: How does a new user log into Nautilus via CILogon and get added to their namespace?
+[Fast INFOGENT] Real-time search failed, trying enhanced infogent agent...
+[INFOGENT] Processing question: How does a new user log into Nautilus via CILogon and get added to their namespace?
+[Knowledge Base] Found 1 relevant templates
+[Knowledge Base] Using 1 existing templates
+[!] Enhanced answer generation failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+
+SUCCESS: True
+RESPONSE LENGTH: 1205 characters
+DURATION: 1.83 seconds
+NRP SPECIFIC: True
+SOURCE CITATIONS: 0
+
+RESPONSE PREVIEW:
+--------------------------------------------------
+
+ERROR: 'charmap' codec can't encode characters in position 111-112: character maps to <undefined>
+DURATION: 1.83 seconds
+
+================================================================================
+PROCESSING QUESTION 10
+================================================================================
+Q: What steps must a namespace admin follow to invite other users and manage namespace resources?
+================================================================================
+[Orchestrator] Processing: What steps must a namespace admin follow to invite other users and manage namespace resources?
+[Intent Router]
+Intent: question
+Confidence: low
+Routing to: INFOGENT Agent (information gathering)
+Reasoning: Matched 3 indicators: what, pattern:\b(how|what|why|when|where)\b
+[Fast INFOGENT] Processing: What steps must a namespace admin follow to invite other users and manage namespace resources?
+[Fast INFOGENT] Found 0 knowledge base results
+[Fast INFOGENT] Insufficient knowledge, falling back to fresh extraction
+[Fast INFOGENT] Falling back to real-time NRP documentation search for: What steps must a namespace admin follow to invite other users and manage namespace resources?
+[Fast INFOGENT] Real-time search failed, trying enhanced infogent agent...
+[INFOGENT] Processing question: What steps must a namespace admin follow to invite other users and manage namespace resources?
+[Knowledge Base] Found 3 relevant templates
+[Knowledge Base] Using 3 existing templates
+[!] Enhanced answer generation failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+
+SUCCESS: True
+RESPONSE LENGTH: 2249 characters
+DURATION: 1.84 seconds
+NRP SPECIFIC: True
+SOURCE CITATIONS: 0
+
+RESPONSE PREVIEW:
+--------------------------------------------------[INFO] Using Serper search provider
+[INFO] Loaded 4 templates from knowledge base
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.381526 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.806928 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Using Serper search provider
+[INFO] Loaded 4 templates from knowledge base
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.377653 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.938505 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Using Serper search provider
+[INFO] Loaded 4 templates from knowledge base
+[INFO] Deep extraction from: https://nrp.ai/documentation/
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.443334 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.926299 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.412342 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.953001 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.445855 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.871212 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.484220 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.986067 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] Extracted 0 templates and 50 knowledge chunks
+[INFO] Deep extraction from: https://nrp.ai/documentation/userdocs/start/getting-started
+[INFO] Found NRP caution: New namespace management page The namespaces manag...
+[INFO] Found NRP caution: Note for ORCID users We require email to be visibl...
+[INFO] Found NRP caution: Note for ORCID users We require email to be visibl...
+[INFO] Found NRP caution: Read it before using the cluster Containers are st...
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.398729 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.754094 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.466386 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.779999 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.490550 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.754072 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.497322 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.817520 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.492151 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.877186 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.423462 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.955102 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.404503 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.750332 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] Extracted 0 templates and 158 knowledge chunks
+[INFO] Deep extraction from: https://nrp.ai/documentation/userdocs/start/using-nautilus
+[INFO] Found NRP caution: Caution Single pods without any Workload Controlle...
+[INFO] Found NRP caution: Caution Do not run long sleep inside a job. See th...
+[INFO] Found NRP caution: Caution Deployments are automatically deleted afte...
+[INFO] Found NRP caution: Caution If a node cannot satisfy the resource requ...
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.454073 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.880929 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.476686 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.936334 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.416525 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.851544 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.437558 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.912534 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.380983 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.822804 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.478070 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.880229 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.446827 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.913538 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.389048 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.752932 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.483648 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.798775 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.452488 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.882488 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.426851 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.860034 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.449229 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.793066 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] Extracted 0 templates and 112 knowledge chunks
+[INFO] Deep extraction from: https://nrp.ai/documentation/userdocs/start/hierarchy
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.447440 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.803821 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.472248 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.771521 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.392468 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.845107 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.481266 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.950065 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.447856 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.883557 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.390406 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.883113 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.443904 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.889983 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.485753 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.821263 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] Extracted 0 templates and 67 knowledge chunks
+[INFO] Deep extraction from: https://nrp.ai/documentation/userdocs/start/glossary
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.475449 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.804194 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] Extracted 0 templates and 66 knowledge chunks
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.498163 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.985811 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+
+
+ERROR: 'charmap' codec can't encode characters in position 122-123: character maps to <undefined>
+DURATION: 1.84 seconds
+
+================================================================================
+PROCESSING QUESTION 12
+================================================================================
+Q: How do users flash an Alveo FPGA via the ESnet SmartNIC workflow on
+================================================================================
+[Orchestrator] Processing: How do users flash an Alveo FPGA via the ESnet SmartNIC workflow on
+[Intent Router]
+Intent: question
+Confidence: low
+Routing to: INFOGENT Agent (information gathering)
+Reasoning: Matched 3 indicators: how, pattern:\b(how|what|why|when|where)\b
+[Fast INFOGENT] Processing: How do users flash an Alveo FPGA via the ESnet SmartNIC workflow on
+[Fast INFOGENT] Found 0 knowledge base results
+[Fast INFOGENT] Insufficient knowledge, falling back to fresh extraction
+[Fast INFOGENT] Falling back to real-time NRP documentation search for: How do users flash an Alveo FPGA via the ESnet SmartNIC workflow on
+[Fast INFOGENT] Real-time search failed, trying enhanced infogent agent...
+[INFOGENT] Processing question: How do users flash an Alveo FPGA via the ESnet SmartNIC workflow on
+[Knowledge Base] Found 2 relevant templates
+[Knowledge Base] Using 2 existing templates (relevance > 0.3)
+[!] Enhanced answer generation failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+
+SUCCESS: True
+RESPONSE LENGTH: 2232 characters
+DURATION: 1.81 seconds
+NRP SPECIFIC: True
+SOURCE CITATIONS: 0
+
+RESPONSE PREVIEW:
+--------------------------------------------------
+
+ERROR: 'charmap' codec can't encode characters in position 95-96: character maps to <undefined>
+DURATION: 1.81 seconds
+
+================================================================================
+PROCESSING QUESTION 13
+================================================================================
+Q: What are the prerequisites (hugepages, IOMMU) for running DPDK on FPGA-equipped nodes?
+================================================================================
+[Orchestrator] Processing: What are the prerequisites hugepages, IOMMU for running DPDK on FPGA-equipped nodes?
+[Intent Router]
+Intent: question
+Confidence: low
+Routing to: INFOGENT Agent (information gathering)
+Reasoning: Matched 3 indicators: what, pattern:\b(how|what|why|when|where)\b
+[Fast INFOGENT] Processing: What are the prerequisites hugepages, IOMMU for running DPDK on FPGA-equipped nodes?
+[Fast INFOGENT] Found 0 knowledge base results
+[Fast INFOGENT] Insufficient knowledge, falling back to fresh extraction
+[Fast INFOGENT] Falling back to real-time NRP documentation search for: What are the prerequisites hugepages, IOMMU for running DPDK on FPGA-equipped nodes?
+[Fast INFOGENT] Real-time search failed, trying enhanced infogent agent...
+[INFOGENT] Processing question: What are the prerequisites hugepages, IOMMU for running DPDK on FPGA-equipped nodes?
+[Knowledge Base] Found 3 relevant templates
+[Knowledge Base] Using 2 existing templates (relevance > 0.3)
+[!] Enhanced answer generation failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+
+SUCCESS: True
+RESPONSE LENGTH: 2239 characters
+DURATION: 1.75 seconds
+NRP SPECIFIC: True
+SOURCE CITATIONS: 0
+
+RESPONSE PREVIEW:
+--------------------------------------------------
+
+ERROR: 'charmap' codec can't encode characters in position 112-113: character maps to <undefined>
+DURATION: 1.75 seconds
+
+================================================================================
+PROCESSING QUESTION 14
+================================================================================
+Q: How do users configure a P4-programmable SmartNIC (e.g., Alveo U55C) using Kubernetes on
+================================================================================
+[Orchestrator] Processing: How do users configure a P4-programmable SmartNIC e.g., Alveo U55C using Kubernetes on
+[Intent Router]
+Intent: question
+Confidence: low
+Routing to: INFOGENT Agent (information gathering)
+Reasoning: Matched 3 indicators: how, pattern:\b(how|what|why|when|where)\b
+[Fast INFOGENT] Processing: How do users configure a P4-programmable SmartNIC e.g., Alveo U55C using Kubernetes on
+[Fast INFOGENT] Found 5 knowledge base results
+[Fast INFOGENT] Insufficient knowledge, falling back to fresh extraction
+[Fast INFOGENT] Falling back to real-time NRP documentation search for: How do users configure a P4-programmable SmartNIC e.g., Alveo U55C using Kubernetes on
+[Fast INFOGENT] Real-time search failed, trying enhanced infogent agent...
+[INFOGENT] Processing question: How do users configure a P4-programmable SmartNIC e.g., Alveo U55C using Kubernetes on
+[Knowledge Base] Found 0 relevant templates
+[Knowledge Base] No existing templates found, attempting extraction
+[Navigator] Using Enhanced Navigator for query: How do users configure a P4-programmable SmartNIC e.g., Alveo U55C using Kubernetes on
+[Enhanced Navigator] Query focus areas: ['k8s', 'fpga', 'admin']
+[Enhanced Navigator] FPGA/Admin query detected, using direct admin documentation links
+[Enhanced Navigator] Added 3 direct admin documentation links
+[Enhanced Navigator] Using NRP built-in search for: How do users configure a P4-programmable SmartNIC e.g., Alveo U55C using Kubernetes on
+[NRP Search] Searching for: How do users configure a P4-programmable SmartNIC e.g., Alveo U55C using Kubernetes on
+[NRP Search] Optimized query: How do users configure a P4-programmable SmartNIC e.g., Alveo U55C using Kubernetes on
+[NRP Search] Found 8 results
+[Enhanced Navigator] NRP search found 8 results
+[Enhanced Navigator] Discovered 11 unique relevant links
+[Navigator] Enhanced Navigator found 10 relevant sources
+[Deep Extractor] Processing: https://nrp.ai/documentation/
+[Deep Extractor] Processing: https://nrp.ai/documentation/userdocs/start/getting-started
+[Deep Extractor] Processing: https://nrp.ai/documentation/userdocs/start/using-nautilus
+[Deep Extractor] Processing: https://nrp.ai/documentation/userdocs/start/hierarchy
+[Deep Extractor] Processing: https://nrp.ai/documentation/userdocs/start/glossary
+[Deep Extractor] Extracted 0 templates, 453 knowledge chunks
+[Knowledge Base] Updated with 0 new templates
+[Knowledge Base] Found 0 relevant templates
+[!] Enhanced answer generation failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+
+SUCCESS: True
+RESPONSE LENGTH: 367 characters
+DURATION: 64.95 seconds
+NRP SPECIFIC: True
+SOURCE CITATIONS: 0
+
+RESPONSE PREVIEW:
+--------------------------------------------------
+# Information about: How do users configure a P4-programmable SmartNIC e.g., Alveo U55C using Kubernetes on
+
+## NRP-Specific Settings
+
+- default_namespace: gsoc
+
+For more detailed information, please consult the NRP documentation.
+
+
+**What's next?**
+- Need help with deployment steps?
+- Want to see m...
+--------------------------------------------------
+
+================================================================================
+PROCESSING QUESTION 15
+================================================================================
+Q: How can users access and use Ceph-based S3 object storage within their namespace?
+================================================================================
+[Orchestrator] Processing: How can users access and use Ceph-based S3 object storage within their namespace?
+[Intent Router]
+Intent: question
+Confidence: low
+Routing to: INFOGENT Agent (information gathering)
+Reasoning: Matched 3 indicators: how, pattern:\b(how|what|why|when|where)\b
+[Fast INFOGENT] Processing: How can users access and use Ceph-based S3 object storage within their namespace?
+[Fast INFOGENT] Found 2 knowledge base results[INFO] Using Serper search provider
+[INFO] Loaded 4 templates from knowledge base
+[INFO] Deep extraction from: https://nrp.ai/documentation/userdocs/storage/ceph-s3
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.442747 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.938280 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.461123 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.893744 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.439396 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.810948 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.444402 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.855479 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[WARNING] Semantic analysis failed: upstream connect error or disconnect/reset before headers. reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.407632 seconds
+[INFO] HTTP Request: POST https://ellm.nrp-nautilus.io/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+[INFO] Retrying request to /chat/completions in 0.792183 seconds

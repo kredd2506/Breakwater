@@ -167,9 +167,201 @@
       },
       "query_length": 26,
       "response_length": 26
+    },
+    {
+      "timestamp": "2025-09-24T09:10:33.198644",
+      "query": "list my pods",
+      "intent": "COMMAND",
+      "response": "Error: HTTP 404: Not Found",
+      "success": false,
+      "metadata": {
+        "k8s_operation": true
+      },
+      "query_length": 12,
+      "response_length": 26
+    },
+    {
+      "timestamp": "2025-09-24T09:10:35.250163",
+      "query": "get deployments",
+      "intent": "COMMAND",
+      "response": "Error: HTTP 404: Not Found",
+      "success": false,
+      "metadata": {
+        "k8s_operation": true
+      },
+      "query_length": 15,
+      "response_length": 26
+    },
+    {
+      "timestamp": "2025-09-24T09:10:37.311753",
+      "query": "describe services",
+      "intent": "COMMAND",
+      "response": "Error: HTTP 404: Not Found",
+      "success": false,
+      "metadata": {
+        "k8s_operation": true
+      },
+      "query_length": 17,
+      "response_length": 26
+    },
+    {
+      "timestamp": "2025-09-24T09:10:39.373350",
+      "query": "show cluster info",
+      "intent": "COMMAND",
+      "response": "Error: HTTP 404: Not Found",
+      "success": false,
+      "metadata": {
+        "k8s_operation": true
+      },
+      "query_length": 17,
+      "response_length": 26
+    },
+    {
+      "timestamp": "2025-09-24T09:10:41.397752",
+      "query": "How do I request A100 GPUs?",
+      "intent": "QUESTION",
+      "response": "Error: HTTP 404: Not Found",
+      "success": false,
+      "metadata": {
+        "documentation": true
+      },
+      "query_length": 27,
+      "response_length": 26
+    },
+    {
+      "timestamp": "2025-09-24T09:10:43.454018",
+      "query": "Show me storage examples",
+      "intent": "QUESTION",
+      "response": "Error: HTTP 404: Not Found",
+      "success": false,
+      "metadata": {
+        "documentation": true
+      },
+      "query_length": 24,
+      "response_length": 26
+    },
+    {
+      "timestamp": "2025-09-24T09:10:45.499152",
+      "query": "What are the YAML templates?",
+      "intent": "QUESTION",
+      "response": "Error: HTTP 404: Not Found",
+      "success": false,
+      "metadata": {
+        "documentation": true
+      },
+      "query_length": 28,
+      "response_length": 26
+    },
+    {
+      "timestamp": "2025-09-24T09:10:47.528861",
+      "query": "Help with networking setup",
+      "intent": "QUESTION",
+      "response": "Error: HTTP 404: Not Found",
+      "success": false,
+      "metadata": {
+        "documentation": true
+      },
+      "query_length": 26,
+      "response_length": 26
+    },
+    {
+      "timestamp": "2025-09-24T10:18:26.330406",
+      "query": "list my pods",
+      "intent": "COMMAND",
+      "response": "Error: HTTP 404: Not Found",
+      "success": false,
+      "metadata": {
+        "k8s_operation": true
+      },
+      "query_length": 12,
+      "response_length": 26
+    },
+    {
+      "timestamp": "2025-09-24T10:18:28.388011",
+      "query": "get deployments",
+      "intent": "COMMAND",
+      "response": "Error: HTTP 404: Not Found",
+      "success": false,
+      "metadata": {
+        "k8s_operation": true
+      },
+      "query_length": 15,
+      "response_length": 26
+    },
+    {
+      "timestamp": "2025-09-24T10:18:30.451061",
+      "query": "describe services",
+      "intent": "COMMAND",
+      "response": "Error: HTTP 404: Not Found",
+      "success": false,
+      "metadata": {
+        "k8s_operation": true
+      },
+      "query_length": 17,
+      "response_length": 26
+    },
+    {
+      "timestamp": "2025-09-24T10:18:32.503411",
+      "query": "show cluster info",
+      "intent": "COMMAND",
+      "response": "Error: HTTP 404: Not Found",
+      "success": false,
+      "metadata": {
+        "k8s_operation": true
+      },
+      "query_length": 17,
+      "response_length": 26
+    },
+    {
+      "timestamp": "2025-09-24T10:18:34.580249",
+      "query": "How do I request A100 GPUs?",
+      "intent": "QUESTION",
+      "response": "Error: HTTP 404: Not Found",
+      "success": false,
+      "metadata": {
+        "documentation": true
+      },
+      "query_length": 27,
+      "response_length": 26
+    },
+    {
+      "timestamp": "2025-09-24T10:18:36.647712",
+      "query": "Show me storage examples",
+      "intent": "QUESTION",
+      "response": "Error: HTTP 404: Not Found",
+      "success": false,
+      "metadata": {
+        "documentation": true
+      },
+      "query_length": 24,
+      "response_length": 26
+    },
+    {
+      "timestamp": "2025-09-24T10:18:38.701763",
+      "query": "What are the YAML templates?",
+      "intent": "QUESTION",
+      "response": "Error: HTTP 404: Not Found",
+      "success": false,
+      "metadata": {
+        "documentation": true
+      },
+      "query_length": 28,
+      "response_length": 26
+    },
+    {
+      "timestamp": "2025-09-24T10:18:40.762661",
+      "query": "Help with networking setup",
+      "intent": "QUESTION",
+      "response": "Error: HTTP 404: Not Found",
+      "success": false,
+      "metadata": {
+        "documentation": true
+      },
+      "query_length": 26,
+      "response_length": 26
     }
   ],
-  "last_updated": "2025-09-23T18:31:38.657752",
-  "total_queries": 14,
+  "last_updated": "2025-09-24T10:18:40.762661",
+  "total_queries": 30,
   "successful_responses": 5
 }

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NRP K8s DeepSeek-R1 Chat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chat-container {
+            width: 95%;
+            max-width: 1000px;
+            height: 90vh;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .chat-header h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .chat-header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .status-indicator {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #4ade80;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f8fafc;
+        }
+
+        .message {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 15px 20px;
+            border-radius: 18px;
+            position: relative;
+        }
+
+        .message.user .message-content {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-bottom-right-radius: 6px;
+        }
+
+        .message.assistant .message-content {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-bottom-left-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 18px;
+            margin: 0 10px;
+        }
+
+        .message.user .message-avatar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            order: 2;
+        }
+
+        .message.assistant .message-avatar {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .chat-input-container {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .chat-input-wrapper {
+            display: flex;
+            gap: 10px;
+            align-items: flex-end;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 25px;
+            font-size: 16px;
+            resize: none;
+            min-height: 50px;
+            max-height: 120px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .send-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: transform 0.2s;
+        }
+
+        .send-button:hover {
+            transform: scale(1.1);
+        }
+
+        .send-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 15px 20px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            border-bottom-left-radius: 6px;
+            max-width: 70%;
+            margin-bottom: 20px;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #94a3b8;
+            animation: typingBounce 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typingBounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .control-button {
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .control-button:hover {
+            background: #e2e8f0;
+        }
+
+        .example-questions {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .example-question {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 12px 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .example-question:hover {
+            background: #e2e8f0;
+            transform: translateY(-1px);
+        }
+
+        .welcome-message {
+            text-align: center;
+            padding: 40px 20px;
+            color: #64748b;
+        }
+
+        .welcome-message h2 {
+            margin-bottom: 15px;
+            color: #334155;
+        }
+
+        @media (max-width: 768px) {
+            .chat-container {
+                width: 100%;
+                height: 100vh;
+                border-radius: 0;
+            }
+
+            .message-content {
+                max-width: 85%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="status-indicator" title="DeepSeek-R1 Online"></div>
+            <h1>🚀 NRP K8s Expert Assistant</h1>
+            <p>Powered by DeepSeek-R1 • Kubernetes & GPU Specialist</p>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <div class="welcome-message">
+                <h2>👋 Welcome to your NRP Kubernetes Expert!</h2>
+                <p>I'm powered by DeepSeek-R1 and specialized in helping you with National Research Platform and Kubernetes operations.</p>
+
+                <div class="example-questions">
+                    <div class="example-question" onclick="sendExampleQuestion(this)">
+                        🎮 How do I request A100 GPUs in my Kubernetes deployment?
+                    </div>
+                    <div class="example-question" onclick="sendExampleQuestion(this)">
+                        📦 Show me a complete YAML example for TensorFlow with GPU
+                    </div>
+                    <div class="example-question" onclick="sendExampleQuestion(this)">
+                        🔧 My pod is stuck in Pending state, help me debug it
+                    </div>
+                    <div class="example-question" onclick="sendExampleQuestion(this)">
+                        💾 How do I configure shared memory for GPU workloads?
+                    </div>
+                </div>
+
+                <div id="k8sCommands" style="display: none;">
+                    <h3 style="margin: 20px 0 10px 0; color: #334155;">🔧 Quick K8s Commands</h3>
+                    <div class="example-questions">
+                        <div class="example-question" onclick="sendK8sCommand('list pods')">
+                            📋 list pods
+                        </div>
+                        <div class="example-question" onclick="sendK8sCommand('list deployments')">
+                            🚀 list deployments
+                        </div>
+                        <div class="example-question" onclick="sendK8sCommand('list services')">
+                            🌐 list services
+                        </div>
+                        <div class="example-question" onclick="sendK8sCommand('list secrets')">
+                            🔐 list secrets
+                        </div>
+                        <div class="example-question" onclick="sendK8sCommand('list nodes')">
+                            💻 list nodes
+                        </div>
+                        <div class="example-question" onclick="sendK8sCommand('get namespace')">
+                            📁 get namespace
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="typing-indicator" id="typingIndicator">
+            <div class="message">
+                <div class="message-avatar">🤖</div>
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-input-container">
+            <div class="controls">
+                <button class="control-button" onclick="clearChat()">🗑️ Clear Chat</button>
+                <button class="control-button" onclick="showHelp()">❓ Help</button>
+                <button class="control-button" onclick="showHistory()">📚 History</button>
+                <button class="control-button" id="k8sToggle" onclick="toggleK8sCommands()">🔧 K8s Commands</button>
+            </div>
+            <div class="chat-input-wrapper">
+                <textarea
+                    id="messageInput"
+                    class="chat-input"
+                    placeholder="Ask me anything about NRP, Kubernetes, GPU allocation, deployments..."
+                    onkeydown="handleKeyDown(event)"
+                ></textarea>
+                <button id="sendButton" class="send-button" onclick="sendMessage()">
+                    ➤
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let sessionId = 'session_' + Date.now();
+
+        function addMessage(content, isUser = false) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const welcomeMessage = messagesContainer.querySelector('.welcome-message');
+            if (welcomeMessage) {
+                welcomeMessage.style.display = 'none';
+            }
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user' : 'assistant'}`;
+
+            messageDiv.innerHTML = `
+                <div class="message-avatar">${isUser ? '🧑' : '🤖'}</div>
+                <div class="message-content">
+                    ${isUser ? escapeHtml(content) : formatMarkdown(content)}
+                </div>
+            `;
+
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function formatMarkdown(text) {
+            return text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/`(.*?)`/g, '<code style="background:#f1f5f9;padding:2px 4px;border-radius:3px;">$1</code>')
+                .replace(/\n\n/g, '</p><p>')
+                .replace(/\n/g, '<br>')
+                .replace(/^/, '<p>')
+                .replace(/$/, '</p>');
+        }
+
+        function showTyping() {
+            document.getElementById('typingIndicator').style.display = 'block';
+            const messagesContainer = document.getElementById('chatMessages');
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function hideTyping() {
+            document.getElementById('typingIndicator').style.display = 'none';
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const sendButton = document.getElementById('sendButton');
+            const message = input.value.trim();
+
+            if (!message) return;
+
+            // Add user message
+            addMessage(message, true);
+            input.value = '';
+            sendButton.disabled = true;
+            showTyping();
+
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        session_id: sessionId
+                    })
+                });
+
+                const data = await response.json();
+                hideTyping();
+
+                if (data.response) {
+                    addMessage(data.response, false);
+                } else {
+                    addMessage('Sorry, I encountered an error. Please try again.', false);
+                }
+            } catch (error) {
+                hideTyping();
+                addMessage('Connection error. Please check if the server is running.', false);
+            }
+
+            sendButton.disabled = false;
+            input.focus();
+        }
+
+        function handleKeyDown(event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                sendMessage();
+            }
+        }
+
+        function sendExampleQuestion(element) {
+            const question = element.textContent.replace(/^🎮|📦|🔧|💾/, '').trim();
+            document.getElementById('messageInput').value = question;
+            sendMessage();
+        }
+
+        function sendK8sCommand(command) {
+            document.getElementById('messageInput').value = command;
+            sendMessage();
+        }
+
+        let k8sCommandsVisible = false;
+        function toggleK8sCommands() {
+            const k8sCommands = document.getElementById('k8sCommands');
+            const toggle = document.getElementById('k8sToggle');
+
+            k8sCommandsVisible = !k8sCommandsVisible;
+
+            if (k8sCommandsVisible) {
+                k8sCommands.style.display = 'block';
+                toggle.style.background = '#667eea';
+                toggle.style.color = 'white';
+            } else {
+                k8sCommands.style.display = 'none';
+                toggle.style.background = '#f1f5f9';
+                toggle.style.color = 'inherit';
+            }
+        }
+
+        // Load K8s status on page load
+        async function loadK8sStatus() {
+            try {
+                const response = await fetch('/api/k8s-status');
+                const status = await response.json();
+
+                if (status.available) {
+                    console.log('K8s operations available for namespace:', status.namespace);
+                    // Show K8s commands section
+                    document.getElementById('k8sCommands').style.display = 'block';
+                    k8sCommandsVisible = true;
+                    const toggle = document.getElementById('k8sToggle');
+                    toggle.style.background = '#667eea';
+                    toggle.style.color = 'white';
+                } else {
+                    console.log('K8s operations not available');
+                    document.getElementById('k8sToggle').style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Error loading K8s status:', error);
+            }
+        }
+
+        async function clearChat() {
+            if (confirm('Are you sure you want to clear the chat history?')) {
+                try {
+                    await fetch(`/api/clear/${sessionId}`, { method: 'POST' });
+                    document.getElementById('chatMessages').innerHTML = `
+                        <div class="welcome-message">
+                            <h2>👋 Chat cleared! Ready for new questions.</h2>
+                            <p>Ask me anything about NRP and Kubernetes!</p>
+                        </div>
+                    `;
+                } catch (error) {
+                    console.error('Error clearing chat:', error);
+                }
+            }
+        }
+
+        function showHelp() {
+            addMessage(`# 🤖 DeepSeek-R1 NRP Assistant Help
+
+I can help you with:
+
+**🎮 GPU Resources:**
+- GPU allocation and scheduling
+- A100, A40, RTX series configuration
+- Resource limits and requests
+
+**📦 Deployments:**
+- YAML configuration files
+- Container specifications
+- Best practices
+
+**🔧 Troubleshooting:**
+- Pod issues and debugging
+- Resource conflicts
+- Performance optimization
+
+**💾 Storage & Networking:**
+- Persistent volumes
+- Service configuration
+- Ingress setup
+
+Just ask your questions naturally!`, false);
+        }
+
+        async function showHistory() {
+            try {
+                const response = await fetch(`/api/history/${sessionId}`);
+                const data = await response.json();
+
+                if (data.history && data.history.length > 0) {
+                    let historyText = "# 📚 Conversation History\n\n";
+                    data.history.forEach((msg, index) => {
+                        const role = msg.role === 'user' ? '🧑 You' : '🤖 DeepSeek-R1';
+                        historyText += `**${role}:** ${msg.content.substring(0, 100)}...\n\n`;
+                    });
+                    addMessage(historyText, false);
+                } else {
+                    addMessage("No conversation history yet. Start asking questions!", false);
+                }
+            } catch (error) {
+                addMessage("Error retrieving history.", false);
+            }
+        }
+
+        // Focus input on load and check K8s status
+        document.getElementById('messageInput').focus();
+        loadK8sStatus();
+    </script>
+</body>
+</html>

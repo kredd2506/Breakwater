@@ -1,43 +1,44 @@
+import os
+from dotenv import load_dotenv
 from openai import OpenAI
 
-client = OpenAI(
-    api_key="QmKTZlW0ck0XO1rvu7SpDiDs3bnOqKoM",
-    base_url="https://ellm.nrp-nautilus.io/v1"  # keep /v1
-)
+load_dotenv()
 
-completion = client.chat.completions.create(
-    model="gemma3",  # ensure this matches /v1/models
-    messages=[
-        {
-            "role": "user",
-            "content": "Talk like a pirate. Now count from 1 to 43."
-        }
-    ],
-)
+# Use specific credentials for this test
+api_key = "60giG4L3xNAMC1FT2f2ivYnExpHYA1fD"
+base_url = "https://ellm.nrp-nautilus.io/v1"
+model = "deepseek-r1"
 
-print(completion.choices[0].message.content)
+print(f"Using API key: {api_key[:10]}...")
+print(f"Using base URL: {base_url}")
+print(f"Using model: {model}")
 
+try:
+    client = OpenAI(
+        api_key=api_key,
+        base_url=base_url
+    )
 
-# # NRP K8s System Configuration
-# # Copy this file to .env and fill in your values
+    completion = client.chat.completions.create(
+        model=model,
+        messages=[
+            {
+                "role": "user",
+                "content": "Talk like a pirate. Now count from 1 to 43."
+            }
+        ],
+    )
 
-# NRP_BASE_URL=https://llm.nrp-nautilus.io/
+    print("Success!")
+    content = completion.choices[0].message.content
+    # Handle encoding issues on Windows
+    try:
+        print(content)
+    except UnicodeEncodeError:
+        # Replace problematic characters with safe alternatives
+        safe_content = content.encode('ascii', errors='replace').decode('ascii')
+        print(safe_content)
 
-# # NRP API Configuration
-# NRP_API_KEY=sk-gY3H4d_Xv4Qf2Ig-x5DjFw
-
-# NRP_MODEL=glm-v
-
-
-# nrp_key_2=sk-lCnKFKjil5JhwphaeYpVUQ
-# nrp_model2=glm-v
-# # Alternative: OpenAI Configuration (fallback)
-# # OPENAI_API_KEY=your_openai_api_key_here
-# # OPENAI_BASE_URL=https://api.openai.com/v1
-
-# # Kubernetes Configuration
-# # Uses your existing kubectl config by default
-
-# # Optional: Search API Keys (for enhanced features)
-# # SERPER_API_KEY=your_serper_api_key
-# # BING_SEARCH_KEY=your_bing_search_key
+except Exception as e:
+    print(f"Error: {e}")
+    print(f"Error type: {type(e)}")

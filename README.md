@@ -1,106 +1,83 @@
-# NRP K8s System
+# NRP K8s System 🚀
 
-**Intelligent NRP + Kubernetes routing and management system**
+An intelligent routing and management system that combines NRP (National Research Platform) LLM capabilities with Kubernetes operations. Features both a web-based chat interface and a powerful MCP (Model Context Protocol) server.
 
-A smart routing system that analyzes user intent and routes requests to appropriate handlers:
-- **Command Detection**: Routes kubectl/k8s operational commands to k8s_operations.py  
-- **Question/Explanation**: Routes documentation questions to NRP+K8s hybrid system
+## ✨ Features
 
-## Features
+- 🌐 **Web Chat Interface** - Browser-based chat with NRP DeepSeek-R1 integration
+- 🔧 **MCP Server** - FastMCP server with Kubernetes operations and NRP knowledge base
+- ☸️ **Kubernetes Operations** - Full K8s resource management and troubleshooting
+- 🧠 **Intelligent Routing** - AI-powered intent classification and response routing
+- 📚 **NRP Knowledge Base** - Comprehensive documentation and templates
+- 🎮 **GPU Support** - A100, A40, RTX series with proper resource specifications
+- 📊 **Progress Tracking** - Real-time progress reporting and structured logging
 
-- 🤖 **Intelligent Intent Classification**: Uses NRP LLM to determine if user wants to execute commands or get explanations
-- ⚡ **Complete K8s Operations**: Create, delete, list, describe pods and deployments through Python Kubernetes client
-- 🚀 **Resource Creation**: Create pods and deployments with configurable parameters (image, replicas, resources)
-- 📚 **NRP Documentation Integration**: Get comprehensive guidance using NRP LLM with contextual examples
-- 🔄 **Smart Fallback**: Handles unclear intents and vague descriptions with intelligent defaults
-- 💬 **Interactive Mode**: Chat interface for continuous interaction
-- 🧩 **Modular Architecture**: Clean package structure for easy maintenance and extension
+## 🚀 Quick Start
 
-## Quick Start
+### Prerequisites
+- Python 3.8 or higher
+- Git
+- Internet connection for package installation
 
-### Installation
+### 1. Clone and Setup
 
 ```bash
-# Clone or copy the nrp_k8s_system directory
-cd nrp_k8s_system
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Or install as a package
-pip install -e .
+git clone <your-repo-url>
+cd breakwater
+python setup.py
 ```
 
-### Configuration
+The setup script will:
+- ✅ Check Python version
+- 📦 Install all dependencies
+- 📁 Create necessary directories
+- 🔧 Setup environment configuration
+- 📄 Create .env file from template
 
-1. Copy the environment template:
-   ```bash
-   cp config/default.env .env
-   ```
+### 2. Start the Servers
 
-2. Edit `.env` with your NRP credentials:
-   ```bash
-   NRP_API_KEY=your_nrp_api_key_here
-   NRP_BASE_URL=https://llm.nrp-nautilus.io/
-   NRP_MODEL=gemma3
-   ```
-
-3. Ensure kubectl is configured for your NRP cluster
-
-### Usage
-
-**Single command mode:**
+**Option A: Both servers at once**
 ```bash
-# List and inspect resources
-python -m nrp_k8s_system.intelligent_router "list my pods"
-python -m nrp_k8s_system.intelligent_router "describe pod myapp"
-python -m nrp_k8s_system.intelligent_router "logs my-pod"
+# Terminal 1 - Web Server (Port 5000)
+python start_web_server.py
 
-# Create resources
-python -m nrp_k8s_system.intelligent_router "create pod my-app image=nginx"
-python -m nrp_k8s_system.intelligent_router "create deployment web-app image=nginx replicas=3"
-
-# Delete resources
-python -m nrp_k8s_system.intelligent_router "delete pod my-app"
-python -m nrp_k8s_system.intelligent_router "delete deployment web-app"
-
-# Documentation/guidance
-python -m nrp_k8s_system.intelligent_router "How do I request GPUs?"
-python -m nrp_k8s_system.intelligent_router "What are storage best practices?"
+# Terminal 2 - MCP Server (Port 8020)
+python start_mcp_server.py
 ```
 
-**Interactive mode:**
+**Option B: Individual servers**
 ```bash
-python -m nrp_k8s_system.intelligent_router
+# Web Server only
+python web_chat_server.py
+
+# MCP Server only
+cd mcp && python ultimate_fastmcp_server.py
 ```
 
-**Using as installed package:**
-```bash
-# If installed with pip install -e .
-nrp-k8s "list pods"
-intelligent-router
-```
+### 3. Access the Interfaces
 
-## Architecture
+- 🌐 **Web Chat**: http://localhost:5000
+- 🔗 **MCP Server**: http://localhost:8020/mcp
+
+## 📋 Project Structure
 
 ```
-nrp_k8s_system/
-├── __init__.py                 # Package initialization
-├── intelligent_router.py      # Main routing logic
-├── cli.py                     # CLI entry point
-├── requirements.txt           # Dependencies
-├── pyproject.toml            # Package configuration
-├── core/                     # Core utilities
-│   ├── __init__.py
-│   └── nrp_init.py           # NRP LLM initialization
-├── systems/                  # System components
-│   ├── __init__.py
-│   ├── k8s_operations.py     # Kubernetes operations
-│   └── qain.py              # Information extraction (optional)
-├── cache/                    # Cache directory
-│   └── .gitkeep
-└── config/                   # Configuration templates
-    └── default.env           # Environment template
+breakwater/
+├── 🌐 web_chat_server.py          # Flask web server with chat interface
+├── 📄 templates/chat.html         # Web chat interface
+├── 🔧 mcp/                        # MCP server and related components
+│   ├── ultimate_fastmcp_server.py # Main MCP server
+│   ├── cache/                     # NRP knowledge base cache
+│   └── docs/                      # Documentation and examples
+├── ☸️ nrp_k8s_system/             # Core K8s operations
+│   ├── intelligent_router.py     # Main routing logic
+│   ├── core/                     # Core utilities
+│   └── systems/                  # K8s operations
+├── 📦 requirements.txt            # All dependencies
+├── 🔧 setup.py                   # Automated setup script
+├── 🚀 start_web_server.py        # Web server launcher
+├── 🚀 start_mcp_server.py        # MCP server launcher
+└── 📄 README.md                  # This file
 ```
 
 ## Components

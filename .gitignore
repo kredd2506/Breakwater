@@ -62,9 +62,28 @@ coverage/
 secrets.*
 credentials.*
 
+# === NRP K8s System Specific ===
+# Virtual Environments
+nrp_k8s_system/venv/
+
+# Keep important knowledge bases (include these)
+!mcp/cache/*.py
+!mcp/cache/*.json
+!mcp/cache/*.md
+!nrp_k8s_system/cache/fast_knowledge/
+!nrp_k8s_system/cache/enhanced_knowledge_base/
+!nrp_k8s_system/cache/nautilus_docs/
+
+# Exclude temporary/generated cache files
+**/conversation_buffer.json
+**/knowledge_updates.json
+**/__pycache__/
+
+# Keep environment template but not actual config
+!.env.example
+
 # === Git ===
 *.patch
 *.diff
 .claude/settings.local.json
 NUL
-CLAUDE.md
